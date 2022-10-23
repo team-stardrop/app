@@ -1,0 +1,174 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow: hidden;
+}
+html body {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+}
+html body header {
+  box-sizing: border-box;
+  border-right: 1px solid black;
+  display: flex;
+  position: fixed;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 75px;
+  height: 100%;
+}
+html body header .header-top {
+  position: relative;
+  width: 100%;
+  font-size: 0;
+}
+html body header .header-top .header-top-content {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+}
+html body header .header-top .header-top-content a {
+  margin: 20px 0;
+}
+html body header .header-top .header-top-content .header-top-content-home {
+  display: inline-block;
+  width: 50px;
+  aspect-ratio: 1/1;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+html body header .header-top .header-top-content .header-top-content-account {
+  display: inline-block;
+  width: 50px;
+  aspect-ratio: 1/1;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+html body header .header-top .header-top-content .header-top-content-item {
+  display: inline-block;
+  width: 50px;
+  aspect-ratio: 1/1;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+html body header .header-bottom {
+  position: relative;
+  width: 100%;
+  font-size: 0;
+}
+html body header .header-bottom .header-bottom-content {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+}
+html body header .header-bottom .header-bottom-content a {
+  margin: 20px 0;
+}
+html body header .header-bottom .header-bottom-content .header-bottom-register {
+  display: inline-block;
+  width: 50px;
+  aspect-ratio: 1/1;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+html body header .header-bottom .header-bottom-content .header-bottom-content-post {
+  display: inline-block;
+  width: 50px;
+  aspect-ratio: 1/1;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+html body main {
+  position: relative;
+  width: calc(100% - 75px);
+  height: 100%;
+  margin-left: 75px;
+}
+html body main .main-content {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+}
+html body main .main-content .main-content-content {
+  width: 100%;
+  margin-bottom: 40px;
+}
+html body main .main-content .main-content-content .main-content-content-name {
+  width: 100%;
+}
+html body main .main-content .main-content-content .main-content-content-name .main-content-content-name-text {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+html body main .main-content .main-content-content .main-content-content-posts {
+  width: 100%;
+}
+html body main .main-content .main-content-content .main-content-content-posts .main-content-content-posts-area {
+  display: flex;
+  overflow-x: scroll;
+  margin: 0 60px;
+  width: calc(100% - 120px);
+}
+html body main .main-content .main-content-content .main-content-content-posts .main-content-content-posts-area .main-content-content-posts-area-post {
+  display: inline-block;
+  margin: 0 20px;
+  aspect-ratio: 16/9;
+  height: 210px;
+  border: 1px solid black;
+}
+html body main .main-content .main-content-content .main-content-content-posts .main-content-content-posts-area .main-content-content-posts-area-post .main-content-content-posts-area-post-content {
+  position: relative;
+  width: 100%;
+  height: 85%;
+}
+html body main .main-content .main-content-content .main-content-content-posts .main-content-content-posts-area .main-content-content-posts-area-post .main-content-content-posts-area-post-content .main-content-content-posts-area-post-content-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 75%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  text-align: center;
+}
+html body main .main-content .main-content-content .main-content-content-posts .main-content-content-posts-area .main-content-content-posts-area-post .main-content-content-posts-area-post-meta {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 15%;
+}
+html body main .main-content .main-content-content .main-content-content-posts .main-content-content-posts-area .main-content-content-posts-area-post .main-content-content-posts-area-post-meta .main-content-content-posts-area-post-meta-name {
+  position: relative;
+  height: 100%;
+}
+html body main .main-content .main-content-content .main-content-content-posts .main-content-content-posts-area .main-content-content-posts-area-post .main-content-content-posts-area-post-meta .main-content-content-posts-area-post-meta-name .main-content-content-posts-area-post-meta-name-text {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+html body main .main-content .main-content-content .main-content-content-posts .main-content-content-posts-area .main-content-content-posts-area-post .main-content-content-posts-area-post-meta .main-content-content-posts-area-post-meta-data {
+  position: relative;
+  height: 100%;
+}
+html body main .main-content .main-content-content .main-content-content-posts .main-content-content-posts-area .main-content-content-posts-area-post .main-content-content-posts-area-post-meta .main-content-content-posts-area-post-meta-data .main-content-content-posts-area-post-meta-data-text {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+html body main .main-content .main-content-content .main-content-content-posts .main-content-content-posts-area :first-child {
+  margin-left: 0;
+}
+html body main .main-content .main-content-content .main-content-content-posts .main-content-content-posts-area :last-child {
+  margin-right: 0;
+}
+html body main .main-content :last-child {
+  margin-bottom: 0;
+}
+/*# sourceMappingURL=main.css.map */
