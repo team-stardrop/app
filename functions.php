@@ -67,3 +67,15 @@ function print_favorite_count($comment_id) {
 
   echo $count['cnt'];
 }
+
+/**
+ * 
+ * @param 
+ * @return 
+ */
+
+function get_odai_posted_user($user_id) {
+  $pdo = connect();
+  $sql = "SELECT id, username FROM `users` WHERE id = $user_id";
+  return $users = $pdo->query($sql);
+}

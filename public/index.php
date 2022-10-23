@@ -62,21 +62,22 @@ $post_array = $pdo->query($sql);
 <body>
 
 <header>
-        <div class="header-top">
-            <div class="header-top-content">
-                <a class="header-top-content-home"></a>
-                <a href="mypage.php" class="header-top-content-account"></a>
-                <a href="item.php" class="header-top-content-item"></a>
-            </div>
+    <div class="header-top">
+        <div class="header-top-content">
+            <a class="header-top-content-home"></a>
+            <a href="mypage.php" class="header-top-content-account"></a>
+            <a href="item.php" class="header-top-content-item"></a>
         </div>
-        <div class="header-bottom">
-            <div class="header-bottom-content">
-                <a href="signup_form.php" class="header-bottom-register"></a>
-                <a href="odai.php" class="header-bottom-content-post"></a>
-            </div>
+    </div>
+    <div class="header-bottom">
+        <div class="header-bottom-content">
+            <a href="signup_form.php" class="header-bottom-register"></a>
+            <a href="odai.php" class="header-bottom-content-post"></a>
         </div>
-    </header>
-    <main>
+    </div>
+</header>
+    <!-- 投稿を表示 -->
+  <main>
     <?php if (isset($_SESSION['post_err'])) : ?>
     <p><?php echo $_SESSION['post_err']; ?></p>
   <?php endif; ?>
@@ -99,58 +100,23 @@ $post_array = $pdo->query($sql);
                 </div>
                 <div class="main-content-content-posts">
                     <div class="main-content-content-posts-area">
+                    <?php foreach($post_array as $post):
+                      $users = get_odai_posted_user($post['user_id']);
+                    ?>
                         <div class="main-content-content-posts-area-post">
                             <div class="main-content-content-posts-area-post-content">
-                                <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
+                                <div class="main-content-content-posts-area-post-content-text"><?php echo $post['odai'] ?></div>
                             </div>
                             <div class="main-content-content-posts-area-post-meta">
                                 <div class="main-content-content-posts-area-post-meta-name">
-                                    <div class="main-content-content-posts-area-post-meta-name-text">名前</div>
+                                    <div class="main-content-content-posts-area-post-meta-name-text">名前：<?php foreach($users as $user): echo $user['username']; endforeach;?></div>
                                 </div>
                                 <div class="main-content-content-posts-area-post-meta-data">
-                                    <div class="main-content-content-posts-area-post-meta-data-text">2022-01-01</div>
+                                    <div class="main-content-content-posts-area-post-meta-data-text"><?php echo $post['post_date']; ?></div>
                                 </div>
                             </div>
                         </div>
-                        <div class="main-content-content-posts-area-post">
-                            <div class="main-content-content-posts-area-post-content">
-                                <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
-                            </div>
-                            <div class="main-content-content-posts-area-post-meta">
-                                <div class="main-content-content-posts-area-post-meta-name">
-                                    <div class="main-content-content-posts-area-post-meta-name-text">名前</div>
-                                </div>
-                                <div class="main-content-content-posts-area-post-meta-data">
-                                    <div class="main-content-content-posts-area-post-meta-data-text">2022-01-01</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="main-content-content-posts-area-post">
-                            <div class="main-content-content-posts-area-post-content">
-                                <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
-                            </div>
-                            <div class="main-content-content-posts-area-post-meta">
-                                <div class="main-content-content-posts-area-post-meta-name">
-                                    <div class="main-content-content-posts-area-post-meta-name-text">名前</div>
-                                </div>
-                                <div class="main-content-content-posts-area-post-meta-data">
-                                    <div class="main-content-content-posts-area-post-meta-data-text">2022-01-01</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="main-content-content-posts-area-post">
-                            <div class="main-content-content-posts-area-post-content">
-                                <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
-                            </div>
-                            <div class="main-content-content-posts-area-post-meta">
-                                <div class="main-content-content-posts-area-post-meta-name">
-                                    <div class="main-content-content-posts-area-post-meta-name-text">名前</div>
-                                </div>
-                                <div class="main-content-content-posts-area-post-meta-data">
-                                    <div class="main-content-content-posts-area-post-meta-data-text">2022-01-01</div>
-                                </div>
-                            </div>
-                        </div>
+                        <?php endforeach;?>
                     </div>
                 </div>
             </div>
@@ -218,25 +184,6 @@ $post_array = $pdo->query($sql);
             </div>
         </div>
     </main>
-    
-  <!-- 投稿を表示 -->
-  <section>
-      <?php foreach($post_array as $post):
-        $userid = $post['user_id'];
-        $sql = "SELECT id, username FROM `users` WHERE id = $userid";
-        $users = $pdo->query($sql);
-      ?>
-      <article>
-        <div>
-          <div>
-            <p>名前：<?php foreach($users as $user): echo $user['username']; endforeach;?></p>
-            <p><?php echo $post['post_date']; ?></p>
-          </div>
-          <p><?php echo $post['odai'] ?></p>
-        </div>
-      </article>
-      <?php endforeach;?>
-    </section>
 
 </body>
 </html>
