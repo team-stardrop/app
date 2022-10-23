@@ -2,6 +2,14 @@
 
 session_start();
 require_once '../classes/UserLogic.php';
+require_once '../dbconnect.php';
+require_once '../functions.php';
+
+date_default_timezone_set("Asia/Tokyo");
+
+$post_array = array();
+$pdo = connect();
+$err_messages = [];
 
 //ログインしているか判定
 $result = UserLogic::checkLogin();
@@ -9,6 +17,37 @@ $result = UserLogic::checkLogin();
 if($result) {
   $login_user = $_SESSION['login_user'];
 }
+
+//フォームを打ち込んだとき
+if(!empty($_POST['odai'])){
+  //ログインしているか判定し，していなかったら投稿できない
+  if (!$result) {
+    $_SESSION['post_err'] = 'ユーザを登録してログインしてください';
+    header('Location: index.php');
+    return;
+  }
+  //投稿が空の場合
+  if(empty($_POST['odai'])) {
+    $err_messages['odai'] = "記入されていません";
+  } else {
+    try{
+      $stmt = $pdo->prepare("INSERT INTO `odais` (`odai`, `user_id`, `post_date`) VALUES (:odai, :user_id, :post_date)");
+      $stmt->bindParam(':odai', $_POST['odai'], PDO::PARAM_STR);
+      $stmt->bindParam(':user_id', $_POST['user_id'], PDO::PARAM_STR);
+      $stmt->bindParam(':post_date', $_POST['post_date'], PDO::PARAM_STR);
+    
+      $stmt->execute();
+
+      header('Location: http://localhost:80/oogiri-app/public/index.php');
+      exit;
+    } catch (PDOException $e){
+      echo $e->getMessage();
+    }
+  }
+}
+
+$sql = "SELECT id, odai, user_id, post_date FROM `odais`";
+$post_array = $pdo->query($sql);
 
 ?>
 <!DOCTYPE html>
@@ -38,6 +77,21 @@ if($result) {
         </div>
     </header>
     <main>
+    <?php if (isset($_SESSION['post_err'])) : ?>
+    <p><?php echo $_SESSION['post_err']; ?></p>
+  <?php endif; ?>
+
+  <!-- 投稿フォーム -->
+  <form method="POST">
+    <?php if (isset($err_messages['odai'])) : ?>
+      <p><?php echo $err_messages['odai']; ?></p>
+    <?php endif; ?>
+    <textarea placeholder="お題を記入．．．" name="odai"></textarea>
+    <input type="submit" value="投稿" name="submitButton">
+    <input type="hidden" name="user_id" value="<?php echo $login_user['id'] ?>">
+    <input type="hidden" name="post_date" value="<?php echo date("Y-m-d H:i:s") ?>">
+  </form>
+
         <div class="main-content">
             <div class="main-content-content">
                 <div class="main-content-content-name">
@@ -164,5 +218,25 @@ if($result) {
             </div>
         </div>
     </main>
+    
+  <!-- 投稿を表示 -->
+  <section>
+      <?php foreach($post_array as $post):
+        $userid = $post['user_id'];
+        $sql = "SELECT id, username FROM `users` WHERE id = $userid";
+        $users = $pdo->query($sql);
+      ?>
+      <article>
+        <div>
+          <div>
+            <p>名前：<?php foreach($users as $user): echo $user['username']; endforeach;?></p>
+            <p><?php echo $post['post_date']; ?></p>
+          </div>
+          <p><?php echo $post['odai'] ?></p>
+        </div>
+      </article>
+      <?php endforeach;?>
+    </section>
+
 </body>
 </html>
