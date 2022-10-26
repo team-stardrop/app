@@ -89,6 +89,7 @@ html body main {
   width: calc(100% - 75px);
   height: 100%;
   margin-left: 75px;
+  overflow-y: auto;
 }
 html body main .main-content {
   position: absolute;
