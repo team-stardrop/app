@@ -10,6 +10,7 @@ html {
         height: 100vh;
         height: 100dvh;
         header {
+            z-index: 1;
             box-sizing: border-box;
             border-right: 1px solid black;
             display: flex;
@@ -45,11 +46,55 @@ html {
                         border-radius: 50%;
                     }
                     .header-top-content-item {
+                        position: relative;
                         display: inline-block;
                         width: 50px;
                         aspect-ratio: 1 / 1;
                         border: 1px solid black;
                         border-radius: 50%;
+                        &:hover .header-top-content-item-field {
+                            display: block;
+                        }
+                        &:hover .header-top-content-item-subField {
+                            display: block;
+                        }
+                        .header-top-content-item-subField {
+                            display: none;
+                            position: absolute;
+                            top: -1px;
+                            left: -1px;
+                            width: calc(50px + 1px + 1px + ((75px - 50px - 1px - 1px) / 2) + 10px + 150px + 40px + 40px);
+                            height: calc(50px + 1px + 1px);
+                        }
+                        .header-top-content-item-field {
+                            display: none;
+                            position: absolute;
+                            top: 0;
+                            left: calc(100% + ((75px - 50px)/2) + 10px);
+                            background-color: white;
+                            box-shadow: 4px 4px 10px gray;
+                            .header-top-content-item-field-title {
+                                font-size: 1.2rem;
+                                width: 100%;
+                                padding-left: 10px;
+                                margin-bottom: 25px;
+                            }
+                            ul {
+                                margin: 0px 40px 20px 40px;
+                                list-style: none;
+                                width: 150px;
+                                li {
+                                    text-align: center;
+                                    font-size: 1.1rem;
+                                    border-bottom: 1px solid black;
+                                    padding-top: 10px;
+                                    &:hover {
+                                        border-bottom: 1px solid orange;
+                                        transition: .25s;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
