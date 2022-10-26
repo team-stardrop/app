@@ -1,5 +1,5 @@
 <?php
-require_once 'env.php';
+require_once '../../env.php';
 ini_set('display_errors', true);
 function connect()
 {
