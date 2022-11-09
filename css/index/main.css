@@ -174,11 +174,28 @@ html body main .main-content .main-content-content {
   margin-bottom: 40px;
 }
 html body main .main-content .main-content-content .main-content-content-name {
+  position: relative;
   width: 100%;
   font-size: 0;
   margin-bottom: 20px;
 }
-html body main .main-content .main-content-content .main-content-content-name .main-content-content-name-text-orange {
+html body main .main-content .main-content-content .main-content-content-name .main-content-content-name-border {
+  z-index: -1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 1px;
+  background-color: lightgray;
+}
+html body main .main-content .main-content-content .main-content-content-name .main-content-content-name-text {
+  display: inline-block;
+  height: 100%;
+  background-color: white;
+  padding-right: 20px;
+}
+html body main .main-content .main-content-content .main-content-content-name .main-content-content-name-text .main-content-content-name-text-orange {
   position: relative;
   box-sizing: border-box;
   margin-right: 10px;
@@ -188,7 +205,7 @@ html body main .main-content .main-content-content .main-content-content-name .m
   aspect-ratio: 1/1;
   background-color: #fbb03b;
 }
-html body main .main-content .main-content-content .main-content-content-name .main-content-content-name-text-orange .main-content-content-name-text-orange-text {
+html body main .main-content .main-content-content .main-content-content-name .main-content-content-name-text .main-content-content-name-text-orange .main-content-content-name-text-orange-text {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -196,7 +213,7 @@ html body main .main-content .main-content-content .main-content-content-name .m
   font-size: 2rem;
   font-weight: bold;
 }
-html body main .main-content .main-content-content .main-content-content-name .main-content-content-name-text-white {
+html body main .main-content .main-content-content .main-content-content-name .main-content-content-name-text .main-content-content-name-text-white {
   position: relative;
   box-sizing: border-box;
   margin-right: 10px;
@@ -206,7 +223,7 @@ html body main .main-content .main-content-content .main-content-content-name .m
   aspect-ratio: 1/1;
   background-color: white;
 }
-html body main .main-content .main-content-content .main-content-content-name .main-content-content-name-text-white .main-content-content-name-text-white-text {
+html body main .main-content .main-content-content .main-content-content-name .main-content-content-name-text .main-content-content-name-text-white .main-content-content-name-text-white-text {
   position: absolute;
   top: 50%;
   left: 50%;
