@@ -67,9 +67,14 @@ $post_array = $pdo->query($sql);
     <header>
         <div class="header-top">
             <div class="header-top-content">
-                <a class="header-top-content-home"></a>
-                <a href="mypage.php" class="header-top-content-account"></a>
+                <a class="header-top-content-home">
+                    <div class="header-top-content-home-icon"></div>
+                </a>
+                <a href="mypage.php" class="header-top-content-account">
+                    <div class="header-top-content-account-icon"></div>
+                </a>
                 <a href="item.php" class="header-top-content-item">
+                    <div class="header-top-content-item-icon"></div>
                     <div class="header-top-content-item-subField"></div>
                     <div class="header-top-content-item-field">
                         <div class="header-top-content-item-field-title">カテゴリー</div>
@@ -90,8 +95,12 @@ $post_array = $pdo->query($sql);
         </div>
         <div class="header-bottom">
             <div class="header-bottom-content">
-                <a href="signup_form.php" class="header-bottom-register"></a>
-                <a href="odai.php" class="header-bottom-content-post"></a>
+                <a href="signup_form.php" class="header-bottom-register">
+                    <div class="header-bottom-content-register-icon"></div>
+                </a>
+                <a href="odai.php" class="header-bottom-content-post">
+                    <div class="header-bottom-content-post"></div>
+                </a>
             </div>
         </div>
     </header>

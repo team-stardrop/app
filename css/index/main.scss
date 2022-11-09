@@ -36,23 +36,38 @@ html {
                         display: inline-block;
                         width: 50px;
                         aspect-ratio: 1 / 1;
-                        border: 1px solid black;
-                        border-radius: 50%;
+                        .header-top-content-home-icon {
+                            width: 100%;
+                            height: 100%;
+                            background-image: url(../../images/01_1.svg);
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
                     }
                     .header-top-content-account {
                         display: inline-block;
                         width: 50px;
                         aspect-ratio: 1 / 1;
-                        border: 1px solid black;
-                        border-radius: 50%;
+                        .header-top-content-account-icon {
+                            width: 100%;
+                            height: 100%;
+                            background-image: url(../../images/02_0.svg);
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
                     }
                     .header-top-content-item {
                         position: relative;
                         display: inline-block;
                         width: 50px;
                         aspect-ratio: 1 / 1;
-                        border: 1px solid black;
-                        border-radius: 50%;
+                        .header-top-content-item-icon {
+                            width: 100%;
+                            height: 100%;
+                            background-image: url(../../images/03_0.svg);
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
                         &:hover .header-top-content-item-field {
                             display: block;
                         }
@@ -115,15 +130,25 @@ html {
                         display: inline-block;
                         width: 50px;
                         aspect-ratio: 1 / 1;
-                        border: 1px solid black;
-                        border-radius: 50%;
+                        .header-bottom-content-register-icon {
+                            width: 100%;
+                            height: 100%;
+                            background-image: url(../../images/04_0.svg);
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
                     }
                     .header-bottom-content-post {
                         display: inline-block;
                         width: 50px;
                         aspect-ratio: 1 / 1;
-                        border: 1px solid black;
-                        border-radius: 50%;
+                        .header-bottom-content-post {
+                            width: 100%;
+                            height: 100%;
+                            background-image: url(../../images/05_0.svg);
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
                     }
                 }
             }
