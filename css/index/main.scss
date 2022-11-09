@@ -17,6 +17,7 @@ html {
             position: fixed;
             flex-direction: column;
             justify-content: space-between;
+            background-color: #fbb03b;
             width: 75px;
             height: 100%;
             .header-top {
@@ -35,23 +36,38 @@ html {
                         display: inline-block;
                         width: 50px;
                         aspect-ratio: 1 / 1;
-                        border: 1px solid black;
-                        border-radius: 50%;
+                        .header-top-content-home-icon {
+                            width: 100%;
+                            height: 100%;
+                            background-image: url(../../images/01_1.svg);
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
                     }
                     .header-top-content-account {
                         display: inline-block;
                         width: 50px;
                         aspect-ratio: 1 / 1;
-                        border: 1px solid black;
-                        border-radius: 50%;
+                        .header-top-content-account-icon {
+                            width: 100%;
+                            height: 100%;
+                            background-image: url(../../images/02_0.svg);
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
                     }
                     .header-top-content-item {
                         position: relative;
                         display: inline-block;
                         width: 50px;
                         aspect-ratio: 1 / 1;
-                        border: 1px solid black;
-                        border-radius: 50%;
+                        .header-top-content-item-icon {
+                            width: 100%;
+                            height: 100%;
+                            background-image: url(../../images/03_0.svg);
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
                         &:hover .header-top-content-item-field {
                             display: block;
                         }
@@ -114,15 +130,25 @@ html {
                         display: inline-block;
                         width: 50px;
                         aspect-ratio: 1 / 1;
-                        border: 1px solid black;
-                        border-radius: 50%;
+                        .header-bottom-content-register-icon {
+                            width: 100%;
+                            height: 100%;
+                            background-image: url(../../images/04_0.svg);
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
                     }
                     .header-bottom-content-post {
                         display: inline-block;
                         width: 50px;
                         aspect-ratio: 1 / 1;
-                        border: 1px solid black;
-                        border-radius: 50%;
+                        .header-bottom-content-post {
+                            width: 100%;
+                            height: 100%;
+                            background-image: url(../../images/05_0.svg);
+                            background-position: center;
+                            background-repeat: no-repeat;
+                        }
                     }
                 }
             }
@@ -144,9 +170,43 @@ html {
                     margin-bottom: 40px;
                     .main-content-content-name {
                         width: 100%;
-                        .main-content-content-name-text {
-                            font-size: 2rem;
-                            margin-bottom: 20px;
+                        font-size: 0;
+                        margin-bottom: 20px;
+                        .main-content-content-name-text-orange {
+                            position: relative;
+                            box-sizing: border-box;
+                            margin-right: 10px;
+                            border: 2px solid black;
+                            display: inline-block;
+                            width: 50px;
+                            aspect-ratio: 1 / 1;
+                            background-color: #fbb03b;
+                            .main-content-content-name-text-orange-text {
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                                font-size: 2rem;
+                                font-weight: bold;
+                            }
+                        }
+                        .main-content-content-name-text-white {
+                            position: relative;
+                            box-sizing: border-box;
+                            margin-right: 10px;
+                            border: 2px solid black;
+                            display: inline-block;
+                            width: 40px;
+                            aspect-ratio: 1 / 1;
+                            background-color: white;
+                            .main-content-content-name-text-white-text {
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                                font-size: 1.7rem;
+                                font-weight: bold;
+                            }
                         }
                     }
                     .main-content-content-posts {

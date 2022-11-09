@@ -67,9 +67,14 @@ $post_array = $pdo->query($sql);
     <header>
         <div class="header-top">
             <div class="header-top-content">
-                <a class="header-top-content-home"></a>
-                <a href="mypage.php" class="header-top-content-account"></a>
+                <a class="header-top-content-home">
+                    <div class="header-top-content-home-icon"></div>
+                </a>
+                <a href="mypage.php" class="header-top-content-account">
+                    <div class="header-top-content-account-icon"></div>
+                </a>
                 <a href="item.php" class="header-top-content-item">
+                    <div class="header-top-content-item-icon"></div>
                     <div class="header-top-content-item-subField"></div>
                     <div class="header-top-content-item-field">
                         <div class="header-top-content-item-field-title">カテゴリー</div>
@@ -90,8 +95,12 @@ $post_array = $pdo->query($sql);
         </div>
         <div class="header-bottom">
             <div class="header-bottom-content">
-                <a href="signup_form.php" class="header-bottom-register"></a>
-                <a href="odai.php" class="header-bottom-content-post"></a>
+                <a href="signup_form.php" class="header-bottom-register">
+                    <div class="header-bottom-content-register-icon"></div>
+                </a>
+                <a href="odai.php" class="header-bottom-content-post">
+                    <div class="header-bottom-content-post"></div>
+                </a>
             </div>
         </div>
     </header>
@@ -115,7 +124,15 @@ $post_array = $pdo->query($sql);
         <div class="main-content">
             <div class="main-content-content">
                 <div class="main-content-content-name">
-                    <div class="main-content-content-name-text">AAA</div>
+                    <div class="main-content-content-name-text-orange">
+                        <div class="main-content-content-name-text-orange-text">新</div>
+                    </div>
+                    <div class="main-content-content-name-text-white">
+                        <div class="main-content-content-name-text-white-text">着</div>
+                    </div>
+                    <div class="main-content-content-name-text-white">
+                        <div class="main-content-content-name-text-white-text">順</div>
+                    </div>
                 </div>
                 <div class="main-content-content-posts">
                     <div class="main-content-content-posts-area">
@@ -143,7 +160,21 @@ $post_array = $pdo->query($sql);
 
             <div class="main-content-content">
                 <div class="main-content-content-name">
-                    <div class="main-content-content-name-text">AAA</div>
+                <div class="main-content-content-name-text-orange">
+                        <div class="main-content-content-name-text-orange-text">注</div>
+                    </div>
+                    <div class="main-content-content-name-text-white">
+                        <div class="main-content-content-name-text-white-text">目</div>
+                    </div>
+                    <div class="main-content-content-name-text-white">
+                        <div class="main-content-content-name-text-white-text">の</div>
+                    </div>
+                    <div class="main-content-content-name-text-white">
+                        <div class="main-content-content-name-text-white-text">お</div>
+                    </div>
+                    <div class="main-content-content-name-text-white">
+                        <div class="main-content-content-name-text-white-text">題</div>
+                    </div>
                 </div>
                 <div class="main-content-content-posts">
                     <div class="main-content-content-posts-area">
