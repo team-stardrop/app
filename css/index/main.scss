@@ -169,43 +169,60 @@ html {
                     width: 100%;
                     margin-bottom: 40px;
                     .main-content-content-name {
+                        position: relative;
                         width: 100%;
                         font-size: 0;
                         margin-bottom: 20px;
-                        .main-content-content-name-text-orange {
-                            position: relative;
-                            box-sizing: border-box;
-                            margin-right: 10px;
-                            border: 2px solid black;
-                            display: inline-block;
-                            width: 50px;
-                            aspect-ratio: 1 / 1;
-                            background-color: #fbb03b;
-                            .main-content-content-name-text-orange-text {
-                                position: absolute;
-                                top: 50%;
-                                left: 50%;
-                                transform: translate(-50%, -50%);
-                                font-size: 2rem;
-                                font-weight: bold;
-                            }
+                        .main-content-content-name-border {
+                            z-index: -1;
+                            position: absolute;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%, -50%);
+                            width: 100%;
+                            height: 1px;
+                            background-color: lightgray;
                         }
-                        .main-content-content-name-text-white {
-                            position: relative;
-                            box-sizing: border-box;
-                            margin-right: 10px;
-                            border: 2px solid black;
+                        .main-content-content-name-text {
                             display: inline-block;
-                            width: 40px;
-                            aspect-ratio: 1 / 1;
+                            height: 100%;
                             background-color: white;
-                            .main-content-content-name-text-white-text {
-                                position: absolute;
-                                top: 50%;
-                                left: 50%;
-                                transform: translate(-50%, -50%);
-                                font-size: 1.7rem;
-                                font-weight: bold;
+                            padding-right: 20px;
+                            .main-content-content-name-text-orange {
+                                position: relative;
+                                box-sizing: border-box;
+                                margin-right: 10px;
+                                border: 2px solid black;
+                                display: inline-block;
+                                width: 50px;
+                                aspect-ratio: 1 / 1;
+                                background-color: #fbb03b;
+                                .main-content-content-name-text-orange-text {
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);
+                                    font-size: 2rem;
+                                    font-weight: bold;
+                                }
+                            }
+                            .main-content-content-name-text-white {
+                                position: relative;
+                                box-sizing: border-box;
+                                margin-right: 10px;
+                                border: 2px solid black;
+                                display: inline-block;
+                                width: 40px;
+                                aspect-ratio: 1 / 1;
+                                background-color: white;
+                                .main-content-content-name-text-white-text {
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);
+                                    font-size: 1.7rem;
+                                    font-weight: bold;
+                                }
                             }
                         }
                     }
@@ -217,22 +234,28 @@ html {
                             margin: 0 60px;
                             width: calc(100% - (60px * 2));
                             .main-content-content-posts-area-post {
+                                position: relative;
                                 display: inline-block;
                                 margin: 0 20px;
                                 aspect-ratio: 16 / 9;
                                 height: 210px;
-                                border: 1px solid black;
+                                background-image: url(../../images/textbox_01.svg);
+                                background-repeat: no-repeat;
+                                background-position: center;
                                 .main-content-content-posts-area-post-content {
-                                    position: relative;
-                                    width: 100%;
-                                    height: 85%;
+                                    position: absolute;
+                                    top: 42%;
+                                    left: 52%;
+                                    transform: translate(-50%, -50%);
+                                    width: 70%;
+                                    height: 80%;
                                     .main-content-content-posts-area-post-content-text {
                                         position: absolute;
                                         top: 50%;
                                         left: 50%;
                                         width: 75%;
                                         transform: translate(-50%, -50%);
-                                        font-size: 2rem;
+                                        font-size: 1.9rem;
                                         text-align: center;
                                     }
                                 }
