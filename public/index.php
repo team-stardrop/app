@@ -146,15 +146,6 @@ $post_array = $pdo->query($sql);
                                 <div class="main-content-content-posts-area-post-content">
                                     <div class="main-content-content-posts-area-post-content-text"><?php echo $post['odai'] ?></div>
                                 </div>
-                                <div class="main-content-content-posts-area-post-meta">
-                                    <div class="main-content-content-posts-area-post-meta-name">
-                                        <div class="main-content-content-posts-area-post-meta-name-text">名前：<?php foreach ($users as $user) : echo $user['username'];
-                                                                                                            endforeach; ?></div>
-                                    </div>
-                                    <div class="main-content-content-posts-area-post-meta-data">
-                                        <div class="main-content-content-posts-area-post-meta-data-text"><?php echo $post['post_date']; ?></div>
-                                    </div>
-                                </div>
                             </div>
                         <?php endforeach; ?>
                     </div>
@@ -188,52 +179,20 @@ $post_array = $pdo->query($sql);
                             <div class="main-content-content-posts-area-post-content">
                                 <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
                             </div>
-                            <div class="main-content-content-posts-area-post-meta">
-                                <div class="main-content-content-posts-area-post-meta-name">
-                                    <div class="main-content-content-posts-area-post-meta-name-text">名前</div>
-                                </div>
-                                <div class="main-content-content-posts-area-post-meta-data">
-                                    <div class="main-content-content-posts-area-post-meta-data-text">2022-01-01</div>
-                                </div>
+                        </div>
+                        <div class="main-content-content-posts-area-post">
+                            <div class="main-content-content-posts-area-post-content">
+                                <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
                             </div>
                         </div>
                         <div class="main-content-content-posts-area-post">
                             <div class="main-content-content-posts-area-post-content">
                                 <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
                             </div>
-                            <div class="main-content-content-posts-area-post-meta">
-                                <div class="main-content-content-posts-area-post-meta-name">
-                                    <div class="main-content-content-posts-area-post-meta-name-text">名前</div>
-                                </div>
-                                <div class="main-content-content-posts-area-post-meta-data">
-                                    <div class="main-content-content-posts-area-post-meta-data-text">2022-01-01</div>
-                                </div>
-                            </div>
                         </div>
                         <div class="main-content-content-posts-area-post">
                             <div class="main-content-content-posts-area-post-content">
                                 <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
-                            </div>
-                            <div class="main-content-content-posts-area-post-meta">
-                                <div class="main-content-content-posts-area-post-meta-name">
-                                    <div class="main-content-content-posts-area-post-meta-name-text">名前</div>
-                                </div>
-                                <div class="main-content-content-posts-area-post-meta-data">
-                                    <div class="main-content-content-posts-area-post-meta-data-text">2022-01-01</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="main-content-content-posts-area-post">
-                            <div class="main-content-content-posts-area-post-content">
-                                <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
-                            </div>
-                            <div class="main-content-content-posts-area-post-meta">
-                                <div class="main-content-content-posts-area-post-meta-name">
-                                    <div class="main-content-content-posts-area-post-meta-name-text">名前</div>
-                                </div>
-                                <div class="main-content-content-posts-area-post-meta-data">
-                                    <div class="main-content-content-posts-area-post-meta-data-text">2022-01-01</div>
-                                </div>
                             </div>
                         </div>
                     </div>
