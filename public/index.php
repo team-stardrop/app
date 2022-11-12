@@ -98,7 +98,7 @@ $post_array = $pdo->query($sql);
                 <a href="signup_form.php" class="header-bottom-register">
                     <div class="header-bottom-content-register-icon"></div>
                 </a>
-                <a href="odai.php" class="header-bottom-content-post">
+                <a class="header-bottom-content-post">
                     <div class="header-bottom-content-post"></div>
                 </a>
             </div>
