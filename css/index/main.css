@@ -37,6 +37,7 @@ html body header .header-top .header-top-content {
 }
 html body header .header-top .header-top-content a {
   margin: 20px 0;
+  cursor: pointer;
 }
 html body header .header-top .header-top-content .header-top-content-home {
   display: inline-block;
@@ -133,6 +134,7 @@ html body header .header-bottom .header-bottom-content {
 }
 html body header .header-bottom .header-bottom-content a {
   margin: 20px 0;
+  cursor: pointer;
 }
 html body header .header-bottom .header-bottom-content .header-bottom-register {
   display: inline-block;
