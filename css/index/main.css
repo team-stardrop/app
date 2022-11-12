@@ -8,6 +8,7 @@ html {
   cursor: default;
 }
 html body {
+  position: relative;
   width: 100vw;
   height: 100vh;
   height: 100dvh;
@@ -37,6 +38,7 @@ html body header .header-top .header-top-content {
 }
 html body header .header-top .header-top-content a {
   margin: 20px 0;
+  cursor: pointer;
 }
 html body header .header-top .header-top-content .header-top-content-home {
   display: inline-block;
@@ -133,6 +135,7 @@ html body header .header-bottom .header-bottom-content {
 }
 html body header .header-bottom .header-bottom-content a {
   margin: 20px 0;
+  cursor: pointer;
 }
 html body header .header-bottom .header-bottom-content .header-bottom-register {
   display: inline-block;
@@ -321,5 +324,154 @@ html body main .main-content .main-content-content .main-content-content-posts .
 }
 html body main .main-content :last-child {
   margin-bottom: 0;
+}
+html body .postLayer {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(128, 128, 128, 0.9);
+  z-index: 100;
+  font-size: 0;
+}
+html body .postLayer .postLayer-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 60%;
+  background-color: white;
+}
+html body .postLayer .postLayer-content .category {
+  position: relative;
+  height: 100%;
+  width: 200px;
+  display: inline-block;
+}
+html body .postLayer .postLayer-content .category .category-content {
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: calc(100% - 80px);
+  padding: 40px 20px;
+  list-style: none;
+  border-right: 1px solid black;
+  overflow-y: auto;
+}
+html body .postLayer .postLayer-content .category .category-content li {
+  text-align: left;
+  font-size: 1.4rem;
+  padding: 10px 20px;
+  transition: 0.25s;
+  border-radius: 50px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+html body .postLayer .postLayer-content .category .category-content li:hover {
+  border: 1px solid #fbb03b;
+}
+html body .postLayer .postLayer-content .form {
+  width: calc(100% - 200px);
+  height: 100%;
+  display: inline-block;
+}
+html body .postLayer .postLayer-content .form .form-top {
+  width: 100%;
+  height: calc(100% - 50px - 40px);
+}
+html body .postLayer .postLayer-content .form .form-top .form-top-top {
+  position: relative;
+  width: 100%;
+  height: 75px;
+}
+html body .postLayer .postLayer-content .form .form-top .form-top-top .form-top-top-closeButton {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  height: 50px;
+  aspect-ratio: 1/1;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  transition: 0.25s;
+}
+html body .postLayer .postLayer-content .form .form-top .form-top-top .form-top-top-closeButton:hover {
+  border: 1px solid #fbb03b;
+}
+html body .postLayer .postLayer-content .form .form-top .form-top-top .form-top-top-closeButton .form-top-top-closeButton-border-1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 1px;
+  height: 80%;
+  background-color: black;
+}
+html body .postLayer .postLayer-content .form .form-top .form-top-top .form-top-top-closeButton .form-top-top-closeButton-border-2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  width: 1px;
+  height: 80%;
+  background-color: black;
+}
+html body .postLayer .postLayer-content .form .form-top .form-top-bottom {
+  width: 100%;
+  height: calc(100% - 75px);
+}
+html body .postLayer .postLayer-content .form .form-top .form-top-bottom .form-top-bottom-content {
+  position: relative;
+  height: 100%;
+  margin: 0 auto;
+  width: calc(100% - 20px - 50px);
+}
+html body .postLayer .postLayer-content .form .form-top .form-top-bottom .form-top-bottom-content textarea {
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border: none;
+  resize: none;
+  font-size: 1.1rem;
+  border: 1px solid rgb(226, 226, 226);
+  border-radius: 10px;
+}
+html body .postLayer .postLayer-content .form .form-bottom {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 40px;
+}
+html body .postLayer .postLayer-content .form .form-bottom .form-bottom-postButtonContent {
+  box-sizing: border-box;
+  position: absolute;
+  right: 40px;
+  margin: 5px 0;
+  height: calc(100% - 10px);
+  padding: 5px 20px;
+  border-radius: 25px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: 0.25s;
+}
+html body .postLayer .postLayer-content .form .form-bottom .form-bottom-postButtonContent:hover {
+  border: 1px solid #fbb03b;
+}
+html body .postLayer .postLayer-content .form .form-bottom .form-bottom-postButtonContent .form-bottom-postButtonContent-text {
+  font-size: 1rem;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  line-height: 30px;
 }
 /*# sourceMappingURL=main.css.map */
