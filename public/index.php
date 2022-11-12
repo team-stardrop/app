@@ -73,7 +73,7 @@ $post_array = $pdo->query($sql);
                 <a href="mypage.php" class="header-top-content-account">
                     <div class="header-top-content-account-icon"></div>
                 </a>
-                <a href="item.php" class="header-top-content-item">
+                <div class="header-top-content-item">
                     <div class="header-top-content-item-icon"></div>
                     <div class="header-top-content-item-subField"></div>
                     <div class="header-top-content-item-field">
@@ -90,7 +90,7 @@ $post_array = $pdo->query($sql);
                             <li>その他</li>
                         </ul>
                     </div>
-                </a>
+                </div>
             </div>
         </div>
         <div class="header-bottom">
