@@ -79,15 +79,15 @@ $post_array = $pdo->query($sql);
                     <div class="header-top-content-item-field">
                         <div class="header-top-content-item-field-title">カテゴリー</div>
                         <ul>
-                            <li>動物</li>
-                            <li>スポーツ</li>
-                            <li>仕事</li>
-                            <li>学校</li>
-                            <li>食べ物</li>
-                            <li>旅行</li>
-                            <li>恋愛</li>
-                            <li>仕事</li>
-                            <li>その他</li>
+                            <li><a href="item.php?item_id=1">動物</a></li>
+                            <li><a href="item.php?item_id=2">スポーツ</a></li>
+                            <li><a href="item.php?item_id=3">仕事</a></li>
+                            <li><a href="item.php?item_id=4">学校</a></li>
+                            <li><a href="item.php?item_id=5">食べ物</a></li>
+                            <li><a href="item.php?item_id=6">旅行</a></li>
+                            <li><a href="item.php?item_id=7">恋愛</a></li>
+                            <li><a href="item.php?item_id=8">行事</a></li>
+                            <li><a href="item.php?item_id=9">その他</a></li>
                         </ul>
                     </div>
                 </div>
