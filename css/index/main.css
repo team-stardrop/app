@@ -5,6 +5,7 @@
 
 html {
   overflow: hidden;
+  cursor: default;
 }
 html body {
   width: 100vw;
@@ -113,6 +114,7 @@ html body header .header-top .header-top-content .header-top-content-item .heade
   font-size: 1.1rem;
   border-bottom: 1px solid black;
   padding-top: 10px;
+  cursor: pointer;
 }
 html body header .header-top .header-top-content .header-top-content-item .header-top-content-item-field ul li:hover {
   border-bottom: 1px solid orange;
