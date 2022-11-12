@@ -5,6 +5,7 @@
 
 html {
   overflow: hidden;
+  cursor: default;
 }
 html body {
   width: 100vw;
