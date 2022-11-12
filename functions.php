@@ -69,7 +69,7 @@ function print_favorite_count($comment_id) {
 }
 
 /**
- * 
+ * お題を投稿した人のデータを取得
  * @param 
  * @return 
  */
@@ -78,4 +78,17 @@ function get_odai_posted_user($user_id) {
   $pdo = connect();
   $sql = "SELECT id, username FROM `users` WHERE id = $user_id";
   return $users = $pdo->query($sql);
+}
+
+/**
+ * カテゴリーデータを取得
+ * 
+ */
+
+function get_item_data($item_id) {
+  $pdo = connect();
+  $sql = "SELECT id, item_name  FROM `items` WHERE id = $item_id";
+  $stmt = $pdo->query($sql);
+  $item = $stmt->fetch(PDO::FETCH_ASSOC);
+  return $item;
 }
