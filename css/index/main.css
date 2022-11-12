@@ -444,6 +444,7 @@ html body .postLayer-content .form .form-top .form-top-bottom .form-top-bottom-c
   height: 100%;
   border: none;
   resize: none;
+  padding: 5px 5px;
   font-size: 1.1rem;
   border: 1px solid rgb(226, 226, 226);
   border-radius: 10px;
