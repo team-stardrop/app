@@ -14,6 +14,7 @@ html body {
 html body main {
   width: 100%;
   height: 100%;
+  background-color: white;
 }
 html body main .category {
   position: relative;
