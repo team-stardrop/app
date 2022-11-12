@@ -67,7 +67,7 @@ $post_array = $pdo->query($sql);
     <header>
         <div class="header-top">
             <div class="header-top-content">
-                <a class="header-top-content-home">
+                <a href="index.php" class="header-top-content-home">
                     <div class="header-top-content-home-icon"></div>
                 </a>
                 <a href="mypage.php" class="header-top-content-account">
