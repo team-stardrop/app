@@ -44,4 +44,28 @@ html body .register-form .message-box .return-signup {
   background: linear-gradient(to right, #ffb257, #ffb257);
   text-decoration: none;
 }
+html body .register-form .message-box .go-home {
+  display: block;
+  border-radius: 5em;
+  border: 0;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: bold;
+  font-size: 13px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  padding: 10px 40px;
+  margin: 25px auto 0;
+  width: 80px;
+  color: #fff;
+  background: linear-gradient(to right, #ffb257, #ffb257);
+  text-decoration: none;
+}
+html body .register-form .message-box .go-mypage {
+  display: block;
+  font-family: "Ubuntu", sans-serif;
+  font-weight: bold;
+  font-size: 17px;
+  margin: 20px auto 0;
+  color: #ffb257;
+  border-bottom: 3px #ffb257;
+}
 /*# sourceMappingURL=main.css.map */
