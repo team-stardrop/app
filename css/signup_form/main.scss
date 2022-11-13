@@ -4,11 +4,10 @@
 }
 
 html {
-    overflow: hidden;
-
     body {
         background-color: #ffd19a;
         font-family: 'Ubuntu', sans-serif;
+        overflow-y: auto;
 
         .taggle-button-box{
             display: flex;
