@@ -4,12 +4,10 @@
 }
 
 html {
-    overflow: hidden;
-
     body {
         background-color: #ffd19a;
         font-family: 'Ubuntu', sans-serif;
-
+        overflow-y: auto;
         .register-form {
             margin: 10% auto;
             text-align:  center;

@@ -3,12 +3,10 @@
   padding: 0;
 }
 
-html {
-  overflow: hidden;
-}
 html body {
   background-color: #ffd19a;
   font-family: "Ubuntu", sans-serif;
+  overflow-y: auto;
 }
 html body .register-form {
   margin: 10% auto;
