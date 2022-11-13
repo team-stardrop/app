@@ -35,7 +35,9 @@ if (count($err) === 0) {
   //登録処理
   $hasCreated = UserLogic::createUser($_POST);
 
-  if(!$hasCreated) {
+  if($hasCreated) {
+    UserLogic::login($email, $password);
+  } else {
     $err[] = '登録に失敗しました';
   }
 }
@@ -56,6 +58,7 @@ if (count($err) === 0) {
         <?php endforeach ?>
     <?php else : ?>
         <p>ユーザ登録が完了しました．</p>
+        <a href="mypage.php">マイページ</a>
     <?php endif ?>
     <a href="./signup_form.php">戻る</a>
 </body>
