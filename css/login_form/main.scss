@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    body {
+        background-color: #ffd19a;
+        font-family: 'Ubuntu', sans-serif;
+        overflow-y: auto;
+
+        .taggle-button-box{
+            display: flex;
+            margin-top: 20px;
+            .home {
+                position: relative;
+                left: 12px;
+                display: inline-block;
+                width: 50px;
+                aspect-ratio: 1 / 1;
+    
+                .home-icon {
+                    width: 100%;
+                    height: 100%;
+                    background-image: url(../../images/01_0.svg);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                }
+            }
+        }
+
+        .login-form {
+            margin: 7% auto;
+            text-align:  center;
+            background-color: #FFFFFF;
+            width: 400px;
+            border-radius: 1.5em;
+            box-shadow: 0px 11px 35px 2px rgba(0, 0, 0, 0.14);
+
+            .login-form-title-box {
+                .login-form-title {
+                    padding-top: 40px;
+                    color: #fa9f32;
+                    font-family: 'Ubuntu', sans-serif;
+                    font-size: 23px;
+                    font-weight: bold;
+                }
+                .login-prompt{
+                    padding-top: 15px;
+                    font-size: 13px;
+                    font-weight: 700;
+                    letter-spacing: 1px;
+                    color: #fa9f32;
+                }
+            }
+
+            .container-login {
+                position: relative;
+                form{
+                    display: block;
+                    padding-top: 13px;
+                    .input-field-group {
+                        :focus {
+                            border: 2px solid rgba(0, 0, 0, 0.18) !important;
+                        }
+                            
+                        :focus::placeholder {
+                            color: transparent;
+                        }
+    
+                        ::placeholder {
+                            color: #999;
+                        }
+
+                        .input-field {
+                            input {
+                                width: 76%;
+                                color: rgb(38, 50, 56);
+                                font-weight: 700;
+                                font-size: 14px;
+                                letter-spacing: 1px;
+                                background: rgba(136, 126, 126, 0.04);
+                                padding: 10px 20px;
+                                border: none;
+                                border-radius: 20px;
+                                outline: none;
+                                box-sizing: border-box;
+                                border: 2px solid rgba(0, 0, 0, 0.02);
+                                margin-top: 27px;
+                                font-family: 'Ubuntu', sans-serif;
+                                }
+                        }
+
+                    }
+                    .error-message{
+                        font-weight: 700;
+                        color: #fa9f32;
+                        padding-top: 8px;
+                        font-size: 15px;
+                        font-family: 'Ubuntu', sans-serif;
+                    }
+                    .submit {
+                        margin-top: 27px;
+                        cursor: pointer;
+                        border-radius: 5em;
+                        color: #fff;
+                        background: linear-gradient(to right, #ffb257, #ffb257);
+                        border: 0;
+                        padding-left: 40px;
+                        padding-right: 40px;
+                        padding-bottom: 10px;
+                        padding-top: 10px;
+                        font-family: 'Ubuntu', sans-serif;
+                        font-size: 13px;
+                        outline: none;
+                        box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+                    }
+                }
+            }
+
+            .login {
+                font-weight: 700;
+                padding-bottom: 50px;
+                padding-top: 25px;
+                text-decoration: none;
+                color: #fa9f32;
+                display: block;
+                font-size: 13px;
+                letter-spacing: 1px;
+            }
+        }
+    }
+}
