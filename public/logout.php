@@ -29,8 +29,7 @@ UserLogic::logout();
     <div class="login-form">
         <div class="message-box">
             <h2 class="login-form-title">ログアウト完了</h2>
-            <p class="message">ログアウトが完了しました</p>
-            <a href="login_form.php" class="go-login">ログイン画面へ</a>
+            <a href="./index.php" class="go-home">ホームへ</a>
         </div>
     </div>
 </body>
