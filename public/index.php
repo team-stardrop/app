@@ -228,7 +228,6 @@ $post_array = $pdo->query($sql);
                     <input class="form-bottom-postButtonContent-text" type="submit" value="投稿する" name="submitButton">
                     <input type="hidden" name="user_id" value="<?php echo $login_user['id'] ?>">
                     <input type="hidden" name="post_date" value="<?php echo date("Y-m-d H:i:s") ?>">
-                    <input type="hidden" name="item_id" value="1">
                 </a>
             </div>
         </form>
