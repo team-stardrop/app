@@ -22,11 +22,15 @@ UserLogic::logout();
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/logout/main.css">
   <title>ログアウト</title>
 </head>
 <body>
-  <h2>ログアウト完了</h2>
-  <p>ログアウトが完了しました</p>
-  <a href="login_form.php">ログイン画面へ</a>
+    <div class="login-form">
+        <div class="message-box">
+            <h2 class="login-form-title">ログアウト完了</h2>
+            <a href="./index.php" class="go-home">ホームへ</a>
+        </div>
+    </div>
 </body>
 </html>
