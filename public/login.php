@@ -37,11 +37,16 @@ if(!$result) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/login/main.css">
   <title>ログイン完了画面</title>
 </head>
 <body>
-  <h2>ログイン完了</h2>
-  <p>ログインしました</p>
-  <a href="./mypage.php">マイページへ</a>
+    <div class="login-form">
+        <div class="message-box">
+            <h2 class="login-form-title">ログイン完了</h2>
+            <a href="./index.php" class="go-home">ホーム</a>
+            <a href="./mypage.php" class="go-mypage">マイページへ</a>
+        </div>
+    </div>
 </body>
 </html>
