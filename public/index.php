@@ -19,7 +19,7 @@ if ($result) {
 }
 
 //フォームを打ち込んだとき
-if (!empty($_POST['odai'])) {
+if (!empty($_POST['submitButton'])) {
     //ログインしているか判定し，していなかったら投稿できない
     if (!$result) {
         $_SESSION['post_err'] = 'ユーザを登録してログインしてください';
@@ -106,20 +106,15 @@ $post_array = $pdo->query($sql);
     </header>
     <!-- 投稿を表示 -->
     <main>
+        
+        <div class="error">
         <?php if (isset($_SESSION['post_err'])) : ?>
-            <p><?php echo $_SESSION['post_err']; ?></p>
+            <p class="error-content"><?php echo $_SESSION['post_err']; ?></p>
         <?php endif; ?>
-
-        <!-- 投稿フォーム -->
-        <form method="POST">
-            <?php if (isset($err_messages['odai'])) : ?>
-                <p><?php echo $err_messages['odai']; ?></p>
-            <?php endif; ?>
-            <textarea placeholder="お題を記入．．．" name="odai"></textarea>
-            <input type="submit" value="投稿" name="submitButton">
-            <input type="hidden" name="user_id" value="<?php echo $login_user['id'] ?>">
-            <input type="hidden" name="post_date" value="<?php echo date("Y-m-d H:i:s") ?>">
-        </form>
+        <?php if (isset($err_messages['odai'])) : ?>
+            <p class="error-content"><?php echo $err_messages['odai']; ?></p>
+        <?php endif; ?>
+        </div>
 
         <div class="main-content">
             <div class="main-content-content">
@@ -202,6 +197,7 @@ $post_array = $pdo->query($sql);
     </main>
 
     <div class="postLayer"></div>
+    <!-- 投稿モーダル -->
     <div class="postLayer-content">
         <div class="category">
             <ul class="category-content">
@@ -216,7 +212,9 @@ $post_array = $pdo->query($sql);
                 <li><a>その他</a></li>
             </ul>
         </div>
-        <div class="form">
+        
+        <!-- 投稿フォーム -->
+        <form class="form" method="POST">
             <div class="form-top">
                 <div class="form-top-top">
                     <a class="form-top-top-closeButton">
@@ -226,16 +224,18 @@ $post_array = $pdo->query($sql);
                 </div>
                 <div class="form-top-bottom">
                     <div class="form-top-bottom-content">
-                        <textarea></textarea>
+                    <textarea placeholder="お題を記入．．．" name="odai"></textarea>
                     </div>
                 </div>
             </div>
             <div class="form-bottom">
                 <a class="form-bottom-postButtonContent">
-                    <div class="form-bottom-postButtonContent-text">投稿する</div>
+                    <input class="form-bottom-postButtonContent-text" type="submit" value="投稿する" name="submitButton">
+                    <input type="hidden" name="user_id" value="<?php echo $login_user['id'] ?>">
+                    <input type="hidden" name="post_date" value="<?php echo date("Y-m-d H:i:s") ?>">
                 </a>
             </div>
-        </div>
+        </form>
     </div>
 
     <script src="../script/index/index.js"></script>

@@ -165,6 +165,21 @@ html {
             height: 100%;
             margin-left: 75px;
             overflow-y: auto;
+            .error {
+                position: absolute;
+                top: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                .error-content {
+                    padding: 3px 10px;
+                    background-color: rgba(128, 128, 128, 0.6);
+                    border-radius: 10px;
+                    margin-bottom: 5px;
+                    &:last-child {
+                        margin-bottom: 0;
+                    }
+                }
+            }
             .main-header {
                 box-sizing: border-box;
                 position: relative;
@@ -465,12 +480,17 @@ html {
                         &:hover {
                             border: 1px solid #fbb03b;
                         }
+                        input {
+                            cursor: pointer;
+                        }
                         .form-bottom-postButtonContent-text {
                             font-size: 1rem;
                             height: 100%;
                             width: 100%;
                             text-align: center;
                             line-height: 30px;
+                            background-color: transparent;
+                            border: none;
                         }
                     }
                 }

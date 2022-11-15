@@ -21,7 +21,7 @@ if ($result) {
 }
 
 //フォームを打ち込んだとき
-if (!empty($_POST['odai'])) {
+if (!empty($_POST['submitButton'])) {
     //ログインしているか判定し，していなかったら投稿できない
     if (!$result) {
         $_SESSION['post_err'] = 'ユーザを登録してログインしてください';

@@ -168,6 +168,21 @@ html body main {
   margin-left: 75px;
   overflow-y: auto;
 }
+html body main .error {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+html body main .error .error-content {
+  padding: 3px 10px;
+  background-color: rgba(128, 128, 128, 0.6);
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+html body main .error .error-content:last-child {
+  margin-bottom: 0;
+}
 html body main .main-header {
   box-sizing: border-box;
   position: relative;
@@ -470,11 +485,16 @@ html body .postLayer-content .form .form-bottom .form-bottom-postButtonContent {
 html body .postLayer-content .form .form-bottom .form-bottom-postButtonContent:hover {
   border: 1px solid #fbb03b;
 }
+html body .postLayer-content .form .form-bottom .form-bottom-postButtonContent input {
+  cursor: pointer;
+}
 html body .postLayer-content .form .form-bottom .form-bottom-postButtonContent .form-bottom-postButtonContent-text {
   font-size: 1rem;
   height: 100%;
   width: 100%;
   text-align: center;
   line-height: 30px;
+  background-color: transparent;
+  border: none;
 }
 /*# sourceMappingURL=main.css.map */
