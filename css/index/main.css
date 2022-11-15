@@ -485,6 +485,9 @@ html body .postLayer-content .form .form-bottom .form-bottom-postButtonContent {
 html body .postLayer-content .form .form-bottom .form-bottom-postButtonContent:hover {
   border: 1px solid #fbb03b;
 }
+html body .postLayer-content .form .form-bottom .form-bottom-postButtonContent form {
+  cursor: pointer;
+}
 html body .postLayer-content .form .form-bottom .form-bottom-postButtonContent .form-bottom-postButtonContent-text {
   font-size: 1rem;
   height: 100%;

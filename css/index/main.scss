@@ -480,6 +480,9 @@ html {
                         &:hover {
                             border: 1px solid #fbb03b;
                         }
+                        form {
+                            cursor: pointer;
+                        }
                         .form-bottom-postButtonContent-text {
                             font-size: 1rem;
                             height: 100%;
