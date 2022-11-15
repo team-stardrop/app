@@ -170,15 +170,18 @@ html body main {
 }
 html body main .error {
   position: absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 10px;
+  left: 10px;
+  z-index: 50;
 }
 html body main .error .error-content {
   padding: 3px 10px;
-  background-color: rgba(128, 128, 128, 0.6);
+  background-color: rgba(184, 184, 184, 0.9);
   border-radius: 10px;
   margin-bottom: 5px;
+  opacity: 0;
+  transition: 0.5s;
+  pointer-events: none;
 }
 html body main .error .error-content:last-child {
   margin-bottom: 0;
