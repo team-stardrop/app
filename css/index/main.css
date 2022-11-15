@@ -485,7 +485,7 @@ html body .postLayer-content .form .form-bottom .form-bottom-postButtonContent {
 html body .postLayer-content .form .form-bottom .form-bottom-postButtonContent:hover {
   border: 1px solid #fbb03b;
 }
-html body .postLayer-content .form .form-bottom .form-bottom-postButtonContent form {
+html body .postLayer-content .form .form-bottom .form-bottom-postButtonContent input {
   cursor: pointer;
 }
 html body .postLayer-content .form .form-bottom .form-bottom-postButtonContent .form-bottom-postButtonContent-text {
