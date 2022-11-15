@@ -59,6 +59,7 @@ $post_array = $pdo->query($sql);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/index/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="../script/index/notification.js"></script>
     <title>大喜利</title>
 </head>
 
@@ -106,14 +107,18 @@ $post_array = $pdo->query($sql);
     </header>
     <!-- 投稿を表示 -->
     <main>
-        
+
         <div class="error">
-        <?php if (isset($_SESSION['post_err'])) : ?>
-            <p class="error-content"><?php echo $_SESSION['post_err']; ?></p>
-        <?php endif; ?>
-        <?php if (isset($err_messages['odai'])) : ?>
-            <p class="error-content"><?php echo $err_messages['odai']; ?></p>
-        <?php endif; ?>
+            <?php if (isset($_SESSION['post_err'])) : ?>
+                <script>
+                    notification("<?php echo $_SESSION['post_err']; ?>");
+                </script>
+            <?php endif; ?>
+            <?php if (isset($err_messages['odai'])) : ?>
+                <script>
+                    notification("<?php echo $err_messages['odai']; ?>");
+                </script>
+            <?php endif; ?>
         </div>
 
         <div class="main-content">
@@ -212,7 +217,7 @@ $post_array = $pdo->query($sql);
                 <li><a>その他</a></li>
             </ul>
         </div>
-        
+
         <!-- 投稿フォーム -->
         <form class="form" method="POST">
             <div class="form-top">
@@ -224,7 +229,7 @@ $post_array = $pdo->query($sql);
                 </div>
                 <div class="form-top-bottom">
                     <div class="form-top-bottom-content">
-                    <textarea placeholder="お題を記入．．．" name="odai"></textarea>
+                        <textarea placeholder="お題を記入．．．" name="odai"></textarea>
                     </div>
                 </div>
             </div>
