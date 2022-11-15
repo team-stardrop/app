@@ -5,6 +5,7 @@ require_once '../classes/UserLogic.php';
 require_once '../dbconnect.php';
 require_once '../functions.php';
 
+$item_id = $_GET['item_id'];
 $item = get_item_data($_GET['item_id']);
 
 date_default_timezone_set("Asia/Tokyo");
@@ -48,7 +49,7 @@ if (!empty($_POST['submitButton'])) {
     }
 }
 
-$sql = "SELECT id, odai, user_id, post_date FROM `odais`";
+$sql = "SELECT id, odai, user_id, post_date FROM `odais` WHERE item_id = $item_id";
 $post_array = $pdo->query($sql);
 
 ?>
