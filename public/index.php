@@ -19,7 +19,7 @@ if ($result) {
 }
 
 //フォームを打ち込んだとき
-if (!empty($_POST['odai'])) {
+if (!empty($_POST['submitButton'])) {
     //ログインしているか判定し，していなかったら投稿できない
     if (!$result) {
         $_SESSION['post_err'] = 'ユーザを登録してログインしてください';
@@ -110,6 +110,9 @@ $post_array = $pdo->query($sql);
         <div class="error">
         <?php if (isset($_SESSION['post_err'])) : ?>
             <p class="error-content"><?php echo $_SESSION['post_err']; ?></p>
+        <?php endif; ?>
+        <?php if (isset($err_messages['odai'])) : ?>
+            <p class="error-content"><?php echo $err_messages['odai']; ?></p>
         <?php endif; ?>
         </div>
 
