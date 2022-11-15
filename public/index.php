@@ -107,9 +107,11 @@ $post_array = $pdo->query($sql);
     <!-- 投稿を表示 -->
     <main>
         
+        <div class="error">
         <?php if (isset($_SESSION['post_err'])) : ?>
-            <p><?php echo $_SESSION['post_err']; ?></p>
+            <p class="error-content"><?php echo $_SESSION['post_err']; ?></p>
         <?php endif; ?>
+        </div>
 
         <div class="main-content">
             <div class="main-content-content">
