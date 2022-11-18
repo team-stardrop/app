@@ -143,8 +143,10 @@ $post_array = $pdo->query($sql);
                             $users = get_odai_posted_user($post['user_id']);
                         ?>
                             <div class="main-content-content-posts-area-post">
-                                <div class="main-content-content-posts-area-post-content">
-                                    <div class="main-content-content-posts-area-post-content-text"><?php echo $post['odai'] ?></div>
+                                <div class="main-content-content-posts-area-post-top">
+                                    <div class="main-content-content-posts-area-post-content">
+                                        <div class="main-content-content-posts-area-post-content-text"><?php echo $post['odai'] ?></div>
+                                    </div>
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -157,16 +159,7 @@ $post_array = $pdo->query($sql);
                     <div class="main-content-content-name-border"></div>
                     <div class="main-content-content-name-text">
                         <div class="main-content-content-name-text-orange">
-                            <div class="main-content-content-name-text-orange-text">注</div>
-                        </div>
-                        <div class="main-content-content-name-text-white">
-                            <div class="main-content-content-name-text-white-text">目</div>
-                        </div>
-                        <div class="main-content-content-name-text-white">
-                            <div class="main-content-content-name-text-white-text">の</div>
-                        </div>
-                        <div class="main-content-content-name-text-white">
-                            <div class="main-content-content-name-text-white-text">お</div>
+                            <div class="main-content-content-name-text-orange-text">お</div>
                         </div>
                         <div class="main-content-content-name-text-white">
                             <div class="main-content-content-name-text-white-text">題</div>
@@ -176,23 +169,31 @@ $post_array = $pdo->query($sql);
                 <div class="main-content-content-posts">
                     <div class="main-content-content-posts-area">
                         <div class="main-content-content-posts-area-post">
-                            <div class="main-content-content-posts-area-post-content">
-                                <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
+                            <div class="main-content-content-posts-area-post-top">
+                                <div class="main-content-content-posts-area-post-content">
+                                    <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
+                                </div>
                             </div>
                         </div>
                         <div class="main-content-content-posts-area-post">
-                            <div class="main-content-content-posts-area-post-content">
-                                <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
+                            <div class="main-content-content-posts-area-post-top">
+                                <div class="main-content-content-posts-area-post-content">
+                                    <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
+                                </div>
                             </div>
                         </div>
                         <div class="main-content-content-posts-area-post">
-                            <div class="main-content-content-posts-area-post-content">
-                                <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
+                            <div class="main-content-content-posts-area-post-top">
+                                <div class="main-content-content-posts-area-post-content">
+                                    <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
+                                </div>
                             </div>
                         </div>
                         <div class="main-content-content-posts-area-post">
-                            <div class="main-content-content-posts-area-post-content">
-                                <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
+                            <div class="main-content-content-posts-area-post-top">
+                                <div class="main-content-content-posts-area-post-content">
+                                    <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
+                                </div>
                             </div>
                         </div>
                     </div>
