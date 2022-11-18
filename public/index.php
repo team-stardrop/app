@@ -203,7 +203,7 @@ $post_array = $pdo->query($sql);
 
     <div class="postLayer"></div>
     <!-- 投稿モーダル -->
-    <div class="postLayer-content">
+    <form class="postLayer-content" method="POST">
         <div class="category">
             <ul class="category-content">
                 <li>
@@ -244,8 +244,7 @@ $post_array = $pdo->query($sql);
             </ul>
         </div>
 
-        <!-- 投稿フォーム -->
-        <form class="form" method="POST">
+        <div class="form">
             <div class="form-top">
                 <div class="form-top-top">
                     <a class="form-top-top-closeButton">
@@ -266,8 +265,8 @@ $post_array = $pdo->query($sql);
                     <input type="hidden" name="post_date" value="<?php echo date("Y-m-d H:i:s") ?>">
                 </a>
             </div>
-        </form>
-    </div>
+        </div>
+    </form>
 
     <script src="../script/index/index.js"></script>
 </body>
