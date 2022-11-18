@@ -207,7 +207,7 @@ $post_array = $pdo->query($sql);
         <div class="category">
             <ul class="category-content">
                 <li>
-                    <input type="radio" name="post-category" id="animal" checked="">
+                    <input type="radio" name="post-category" id="animal">
                     <label for="animal">動物</label>
                 </li>
                 <li>
