@@ -385,15 +385,28 @@ html body .postLayer-content .category .category-content {
   overflow-y: auto;
 }
 html body .postLayer-content .category .category-content li {
+  margin: 5px 0;
+}
+html body .postLayer-content .category .category-content li input {
+  display: none;
+}
+html body .postLayer-content .category .category-content li input:checked + label {
+  background-color: rgba(251, 177, 59, 0.3058823529);
+}
+html body .postLayer-content .category .category-content li label {
+  box-sizing: border-box;
   text-align: left;
   font-size: 1.4rem;
   padding: 10px 20px;
   transition: 0.25s;
   border-radius: 50px;
-  border: 1px solid transparent;
   cursor: pointer;
+  border: 1px solid transparent;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
 }
-html body .postLayer-content .category .category-content li:hover {
+html body .postLayer-content .category .category-content li label:hover {
   border: 1px solid #fbb03b;
 }
 html body .postLayer-content .form {

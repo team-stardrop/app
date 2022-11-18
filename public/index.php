@@ -206,15 +206,41 @@ $post_array = $pdo->query($sql);
     <div class="postLayer-content">
         <div class="category">
             <ul class="category-content">
-                <li><a>動物</a></li>
-                <li><a>スポーツ</a></li>
-                <li><a>仕事</a></li>
-                <li><a>学校</a></li>
-                <li><a>食べ物</a></li>
-                <li><a>旅行</a></li>
-                <li><a>恋愛</a></li>
-                <li><a>行事</a></li>
-                <li><a>その他</a></li>
+                <li>
+                    <input type="radio" name="post-category" id="animal">
+                    <label for="animal">動物</label>
+                </li>
+                <li>
+                    <input type="radio" name="post-category" id="sport">
+                    <label for="sport">スポーツ</label>
+                </li>
+                <li><input type="radio" name="post-category" id="job">
+                    <label for="job">仕事</label>
+                </li>
+                <li>
+                    <input type="radio" name="post-category" id="school">
+                    <label for="school">学校</label>
+                </li>
+                <li>
+                    <input type="radio" name="post-category" id="food">
+                    <label for="food">食べ物</label>
+                </li>
+                <li>
+                    <input type="radio" name="post-category" id="trip">
+                    <label for="trip">旅行</label>
+                </li>
+                <li>
+                    <input type="radio" name="post-category" id="love">
+                    <label for="love">恋愛</label>
+                </li>
+                <li>
+                    <input type="radio" name="post-category" id="event">
+                    <label for="event">行事</label>
+                </li>
+                <li>
+                    <input type="radio" name="post-category" id="other">
+                    <label for="other">その他</label>
+                </li>
             </ul>
         </div>
 
