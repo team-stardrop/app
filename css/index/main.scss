@@ -270,6 +270,10 @@ html {
                     }
                     .main-content-content-posts {
                         width: 100%;
+                        margin-bottom: 80px;
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
                         .main-content-content-posts-area {
                             display: flex;
                             overflow-x: scroll;

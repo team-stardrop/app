@@ -274,6 +274,10 @@ html body main .main-content .main-content-content .main-content-content-name .m
 }
 html body main .main-content .main-content-content .main-content-content-posts {
   width: 100%;
+  margin-bottom: 80px;
+}
+html body main .main-content .main-content-content .main-content-content-posts:last-child {
+  margin-bottom: 0;
 }
 html body main .main-content .main-content-content .main-content-content-posts .main-content-content-posts-area {
   display: flex;
