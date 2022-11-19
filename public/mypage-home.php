@@ -101,7 +101,7 @@ $login_user = $_SESSION['login_user'];
                     <div class="main-content-myContent-coin">
                         <div class="main-content-myContent-coin-content"></div>
                     </div>
-                    <div class="main-content-myContent-coinText"><?php echo h($login_user['point']) ?> Pt</div>
+                    <div class="main-content-myContent-coinText"><?php echo h($login_user['point']) ?></div>
                 </div>
                 <div class="main-content-myContent-content">
 
