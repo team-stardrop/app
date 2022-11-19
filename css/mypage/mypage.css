@@ -167,7 +167,7 @@ html body main {
   width: calc(100% - 75px);
   height: 100%;
   margin-left: 75px;
-  overflow-y: auto;
+  overflow: hidden;
 }
 html body main .error {
   position: absolute;

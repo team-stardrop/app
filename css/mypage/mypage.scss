@@ -165,7 +165,7 @@ html {
             width: calc(100% - 75px);
             height: 100%;
             margin-left: 75px;
-            overflow-y: auto;
+            overflow: hidden;
             .error {
                 position: absolute;
                 bottom: 10px;
