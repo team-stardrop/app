@@ -222,7 +222,7 @@ html body main .main-content .main-content-myContent .main-content-myContent-sel
 html body main .main-content .main-content-myContent .main-content-myContent-selector .main-content-myContent-selector-content {
   display: inline-flex;
   height: 100%;
-  margin-left: 50px;
+  margin-left: 25px;
 }
 html body main .main-content .main-content-myContent .main-content-myContent-selector .main-content-myContent-selector-content a {
   margin: 0 25px;
