@@ -92,7 +92,93 @@ if ($result) {
         </div>
 
         <!-- ここから -->
+        <div class="main-content">
+            <div class="main-content-odai">
+                <div class="main-content-odai-text">
+                    <div class="main-content-odai-text-content">ここにお題を書きます</div>
+                </div>
+                <div class="main-content-odai-meta">
+                    <div class="main-content-odai-meta-name">ここに名前を入れるよ</div>
+                    <div class="main-content-odai-meta-day">2022-10 18:16:51</div>
+                </div>
+            </div>
+            <div class="main-content-post">
+                <input type="text" class="main-content-post-input" placeholder="回答をする">
+                <a class="main-content-post-send">
+                    <div class="main-content-post-send-icon"></div>
+                </a>
 
+            <div class="main-content-answer">
+                <div class="main-content-answer-top">
+                    <div class="main-content-answer-top-text">ここに回答を書いて行くよ！</div>
+                </div>
+                <div class="main-content-answer-bottom">
+                    <div class="main-content-answer-bottom-content">
+                        <div class="main-content-answer-bottom-content-name">名前</div>
+                        <div class="main-content-answer-bottom-content-day">2022-10 18:16:51</div>
+                        <div class="main-content-answer-bottom-content-likeImg"></div>
+                        <div class="main-content-answer-bottom-content-likeNum">10</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-content-answer">
+                <div class="main-content-answer-top">
+                    <div class="main-content-answer-top-text">ここに回答を書いて行くよ！</div>
+                </div>
+                <div class="main-content-answer-bottom">
+                    <div class="main-content-answer-bottom-content">
+                        <div class="main-content-answer-bottom-content-name">名前</div>
+                        <div class="main-content-answer-bottom-content-day">2022-10 18:16:51</div>
+                        <div class="main-content-answer-bottom-content-likeImg"></div>
+                        <div class="main-content-answer-bottom-content-likeNum">10</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-content-answer">
+                <div class="main-content-answer-top">
+                    <div class="main-content-answer-top-text">ここに回答を書いて行くよ！</div>
+                </div>
+                <div class="main-content-answer-bottom">
+                    <div class="main-content-answer-bottom-content">
+                        <div class="main-content-answer-bottom-content-name">名前</div>
+                        <div class="main-content-answer-bottom-content-day">2022-10 18:16:51</div>
+                        <div class="main-content-answer-bottom-content-likeImg"></div>
+                        <div class="main-content-answer-bottom-content-likeNum">10</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-content-answer">
+                <div class="main-content-answer-top">
+                    <div class="main-content-answer-top-text">ここに回答を書いて行くよ！</div>
+                </div>
+                <div class="main-content-answer-bottom">
+                    <div class="main-content-answer-bottom-content">
+                        <div class="main-content-answer-bottom-content-name">名前</div>
+                        <div class="main-content-answer-bottom-content-day">2022-10 18:16:51</div>
+                        <div class="main-content-answer-bottom-content-likeImg"></div>
+                        <div class="main-content-answer-bottom-content-likeNum">10</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-content-answer">
+                <div class="main-content-answer-top">
+                    <div class="main-content-answer-top-text">ここに回答を書いて行くよ！</div>
+                </div>
+                <div class="main-content-answer-bottom">
+                    <div class="main-content-answer-bottom-content">
+                        <div class="main-content-answer-bottom-content-name">名前</div>
+                        <div class="main-content-answer-bottom-content-day">2022-10 18:16:51</div>
+                        <div class="main-content-answer-bottom-content-likeImg"></div>
+                        <div class="main-content-answer-bottom-content-likeNum">10</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
         <!-- ここに書くよ！ -->
     </main>
 

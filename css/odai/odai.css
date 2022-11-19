@@ -4,7 +4,6 @@
 }
 
 html {
-  overflow: hidden;
   cursor: default;
 }
 html body {
@@ -185,6 +184,130 @@ html body main .error .error-content {
 }
 html body main .error .error-content:last-child {
   margin-bottom: 0;
+}
+html body main .main-content {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  min-width: 1000px;
+  max-width: 1500px;
+  padding: 10px 40px;
+  overflow-y: auto;
+  margin: auto;
+}
+html body main .main-content .main-content-odai {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1593/502;
+  background-image: url(../../images/textbox_02.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+html body main .main-content .main-content-odai .main-content-odai-text {
+  position: absolute;
+  top: 40%;
+  left: 51%;
+  transform: translate(-50%, -50%);
+  width: 94%;
+  height: 73%;
+  resize: none;
+}
+html body main .main-content .main-content-odai .main-content-odai-text .main-content-odai-text-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+}
+html body main .main-content .main-content-odai .main-content-odai-meta {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 88%;
+  height: 25px;
+  padding: 0 20px;
+}
+html body main .main-content .main-content-post {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin-top: 20px;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+}
+html body main .main-content .main-content-post .main-content-post-input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding-left: 10px;
+  padding-right: 50px;
+}
+html body main .main-content .main-content-post .main-content-post-send {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 50px;
+  aspect-ratio: 1/1;
+  cursor: pointer;
+}
+html body main .main-content .main-content-post .main-content-post-send .main-content-post-send-icon {
+  position: relative;
+  top: 50%;
+  left: calc(50% + 5px);
+  transform: translate(-50%, -50%);
+  border-left: 10px solid black;
+  border-top: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  width: 0;
+  height: 0;
+}
+html body main .main-content .main-content-answer {
+  position: relative;
+  width: 100%;
+  height: 75px;
+  margin-top: 25px;
+  border-left: 1px solid black;
+}
+html body main .main-content .main-content-answer .main-content-answer-top {
+  width: 100%;
+  height: 50px;
+}
+html body main .main-content .main-content-answer .main-content-answer-top .main-content-answer-top-text {
+  width: 100%;
+  height: 100%;
+  line-height: 50px;
+}
+html body main .main-content .main-content-answer .main-content-answer-bottom {
+  position: relative;
+  width: 100%;
+  height: 25px;
+}
+html body main .main-content .main-content-answer .main-content-answer-bottom .main-content-answer-bottom-content {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  padding-right: 20px;
+}
+html body main .main-content .main-content-answer .main-content-answer-bottom .main-content-answer-bottom-content div {
+  display: inline-block;
+  margin: 0 10px;
+}
+html body main .main-content .main-content-answer .main-content-answer-bottom .main-content-answer-bottom-content .main-content-answer-bottom-content-likeImg {
+  background-image: url(../../images/06_0.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 25px;
+  aspect-ratio: 1/1;
+}
+html body main .main-content .main-content-answer .main-content-answer-bottom .main-content-answer-bottom-content .main-content-answer-bottom-content-likeNum {
+  font-size: 1rem;
 }
 html body .postLayer {
   display: none;
