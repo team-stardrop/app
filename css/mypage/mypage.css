@@ -205,6 +205,7 @@ html body main .main-content .main-content-myInfo .main-content-myInfo-name {
   left: 0;
   transform: translateY(-50%);
   font-size: 3rem;
+  margin-left: 25px;
 }
 html body main .main-content .main-content-myContent {
   margin-top: 50px;
