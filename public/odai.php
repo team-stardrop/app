@@ -107,7 +107,7 @@ if ($result) {
                 <a class="main-content-post-send">
                     <div class="main-content-post-send-icon"></div>
                 </a>
-
+            </div>
             <div class="main-content-answer">
                 <div class="main-content-answer-top">
                     <div class="main-content-answer-top-text">ここに回答を書いて行くよ！</div>
