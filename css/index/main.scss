@@ -94,10 +94,11 @@ html {
                             background-color: white;
                             box-shadow: 4px 4px 10px gray;
                             .header-top-content-item-field-title {
+                                box-sizing: border-box;
                                 font-size: 1.2rem;
                                 width: 100%;
                                 padding-left: 10px;
-                                margin-bottom: 25px;
+                                padding-bottom: 25px;
                             }
                             ul {
                                 margin: 0px 40px 20px 40px;
