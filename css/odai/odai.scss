@@ -276,6 +276,8 @@ html {
                         width: 100%;
                         height: 50px;
                         .main-content-answer-top-text {
+                            box-sizing: border-box;
+                            margin-left: 20px;
                             width: 100%;
                             height: 100%;
                             line-height: 50px;
