@@ -1,0 +1,30 @@
+html {
+    body {
+        main {
+            .main-content {
+                .main-content-myContent {
+                    .main-content-myContent-selector {
+                        .main-content-myContent-selector-content {
+                            .main-content-myContent-selector-content-home {
+                                box-sizing: border-box;
+                                background-color: transparent;
+                                border-left: 2px solid transparent;
+                                border-top: 2px solid transparent;
+                                border-right: 2px solid transparent;
+                            }
+                            .main-content-myContent-selector-content-odai {}
+                            .main-content-myContent-selector-content-answer {}
+                            .main-content-myContent-selector-content-like {
+                                box-sizing: border-box;
+                                background-color: #fbb03b;
+                                border-left: 2px solid black;
+                                border-top: 2px solid black;
+                                border-right: 2px solid black;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

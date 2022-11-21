@@ -29,12 +29,15 @@ if (!empty($_POST['submitButton'])) {
     //投稿が空の場合
     if (empty($_POST['odai'])) {
         $err_messages['odai'] = "記入されていません";
+    } else if (empty($_POST['post_category'])) {
+        $err_messages['category'] = "カテゴリーが選択されていません";
     } else {
         try {
-            $stmt = $pdo->prepare("INSERT INTO `odais` (`odai`, `user_id`, `post_date`) VALUES (:odai, :user_id, :post_date)");
+            $stmt = $pdo->prepare("INSERT INTO `odais` (`odai`, `user_id`, `post_date` , `item_id`) VALUES (:odai, :user_id, :post_date, :item_id)");
             $stmt->bindParam(':odai', $_POST['odai'], PDO::PARAM_STR);
             $stmt->bindParam(':user_id', $_POST['user_id'], PDO::PARAM_STR);
             $stmt->bindParam(':post_date', $_POST['post_date'], PDO::PARAM_STR);
+            $stmt->bindParam(':item_id', $_POST['post_category'], PDO::PARAM_STR);
 
             $stmt->execute();
 
@@ -46,7 +49,7 @@ if (!empty($_POST['submitButton'])) {
     }
 }
 
-$sql = "SELECT id, odai, user_id, post_date FROM `odais`";
+$sql = "SELECT * FROM `odais`";
 $post_array = $pdo->query($sql);
 
 ?>
@@ -71,7 +74,7 @@ $post_array = $pdo->query($sql);
                 <a href="index.php" class="header-top-content-home">
                     <div class="header-top-content-home-icon"></div>
                 </a>
-                <a href="mypage.php" class="header-top-content-account">
+                <a href="mypage-home.php" class="header-top-content-account">
                     <div class="header-top-content-account-icon"></div>
                 </a>
                 <div class="header-top-content-item">
@@ -119,6 +122,11 @@ $post_array = $pdo->query($sql);
                     notification("<?php echo $err_messages['odai']; ?>");
                 </script>
             <?php endif; ?>
+            <?php if (isset($err_messages['category'])) : ?>
+                <script>
+                    notification("<?php echo $err_messages['category']; ?>");
+                </script>
+            <?php endif; ?>
         </div>
 
         <div class="main-content">
@@ -143,8 +151,10 @@ $post_array = $pdo->query($sql);
                             $users = get_odai_posted_user($post['user_id']);
                         ?>
                             <div class="main-content-content-posts-area-post">
-                                <div class="main-content-content-posts-area-post-content">
-                                    <div class="main-content-content-posts-area-post-content-text"><?php echo $post['odai'] ?></div>
+                                <div class="main-content-content-posts-area-post-top">
+                                    <div class="main-content-content-posts-area-post-content">
+                                        <div class="main-content-content-posts-area-post-content-text"><?php echo $post['odai'] ?></div>
+                                    </div>
                                 </div>
                             </div>
                         <?php endforeach; ?>
@@ -157,16 +167,7 @@ $post_array = $pdo->query($sql);
                     <div class="main-content-content-name-border"></div>
                     <div class="main-content-content-name-text">
                         <div class="main-content-content-name-text-orange">
-                            <div class="main-content-content-name-text-orange-text">注</div>
-                        </div>
-                        <div class="main-content-content-name-text-white">
-                            <div class="main-content-content-name-text-white-text">目</div>
-                        </div>
-                        <div class="main-content-content-name-text-white">
-                            <div class="main-content-content-name-text-white-text">の</div>
-                        </div>
-                        <div class="main-content-content-name-text-white">
-                            <div class="main-content-content-name-text-white-text">お</div>
+                            <div class="main-content-content-name-text-orange-text">お</div>
                         </div>
                         <div class="main-content-content-name-text-white">
                             <div class="main-content-content-name-text-white-text">題</div>
@@ -176,23 +177,31 @@ $post_array = $pdo->query($sql);
                 <div class="main-content-content-posts">
                     <div class="main-content-content-posts-area">
                         <div class="main-content-content-posts-area-post">
-                            <div class="main-content-content-posts-area-post-content">
-                                <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
+                            <div class="main-content-content-posts-area-post-top">
+                                <div class="main-content-content-posts-area-post-content">
+                                    <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
+                                </div>
                             </div>
                         </div>
                         <div class="main-content-content-posts-area-post">
-                            <div class="main-content-content-posts-area-post-content">
-                                <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
+                            <div class="main-content-content-posts-area-post-top">
+                                <div class="main-content-content-posts-area-post-content">
+                                    <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
+                                </div>
                             </div>
                         </div>
                         <div class="main-content-content-posts-area-post">
-                            <div class="main-content-content-posts-area-post-content">
-                                <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
+                            <div class="main-content-content-posts-area-post-top">
+                                <div class="main-content-content-posts-area-post-content">
+                                    <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
+                                </div>
                             </div>
                         </div>
                         <div class="main-content-content-posts-area-post">
-                            <div class="main-content-content-posts-area-post-content">
-                                <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
+                            <div class="main-content-content-posts-area-post-top">
+                                <div class="main-content-content-posts-area-post-content">
+                                    <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -207,38 +216,38 @@ $post_array = $pdo->query($sql);
         <div class="category">
             <ul class="category-content">
                 <li>
-                    <input type="radio" name="post-category" id="animal">
+                    <input type="radio" name="post_category" id="animal" value="1">
                     <label for="animal">動物</label>
                 </li>
                 <li>
-                    <input type="radio" name="post-category" id="sport">
+                    <input type="radio" name="post_category" id="sport" value="2">
                     <label for="sport">スポーツ</label>
                 </li>
-                <li><input type="radio" name="post-category" id="job">
+                <li><input type="radio" name="post_category" id="job" value="3">
                     <label for="job">仕事</label>
                 </li>
                 <li>
-                    <input type="radio" name="post-category" id="school">
+                    <input type="radio" name="post_category" id="school" value="4">
                     <label for="school">学校</label>
                 </li>
                 <li>
-                    <input type="radio" name="post-category" id="food">
+                    <input type="radio" name="post_category" id="food" value="5">
                     <label for="food">食べ物</label>
                 </li>
                 <li>
-                    <input type="radio" name="post-category" id="trip">
+                    <input type="radio" name="post_category" id="trip" value="6">
                     <label for="trip">旅行</label>
                 </li>
                 <li>
-                    <input type="radio" name="post-category" id="love">
+                    <input type="radio" name="post_category" id="love" value="7">
                     <label for="love">恋愛</label>
                 </li>
                 <li>
-                    <input type="radio" name="post-category" id="event">
+                    <input type="radio" name="post_category" id="event" value="8">
                     <label for="event">行事</label>
                 </li>
                 <li>
-                    <input type="radio" name="post-category" id="other">
+                    <input type="radio" name="post_category" id="other" value="9">
                     <label for="other">その他</label>
                 </li>
             </ul>

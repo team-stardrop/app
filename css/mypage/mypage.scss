@@ -42,7 +42,7 @@ html {
                         .header-top-content-home-icon {
                             width: 100%;
                             height: 100%;
-                            background-image: url(../../images/01_1.svg);
+                            background-image: url(../../images/01_0.svg);
                             background-position: center;
                             background-repeat: no-repeat;
                         }
@@ -54,7 +54,7 @@ html {
                         .header-top-content-account-icon {
                             width: 100%;
                             height: 100%;
-                            background-image: url(../../images/02_0.svg);
+                            background-image: url(../../images/02_1.svg);
                             background-position: center;
                             background-repeat: no-repeat;
                         }
@@ -131,6 +131,7 @@ html {
                     a {
                         margin: 20px 0;
                         cursor: pointer;
+                        color: black;
                     }
                     .header-bottom-register {
                         display: inline-block;
@@ -164,7 +165,7 @@ html {
             width: calc(100% - 75px);
             height: 100%;
             margin-left: 75px;
-            overflow-y: auto;
+            overflow: hidden;
             .error {
                 position: absolute;
                 bottom: 10px;
@@ -183,174 +184,276 @@ html {
                     }
                 }
             }
-            .main-header {
-                box-sizing: border-box;
-                position: relative;
-                position: fixed;
-                z-index: 2;
-                width: 100%;
-                height: 50px;
-                background-color: rgba(255, 255, 255);
-                border-bottom: 2px solid #fbb03b;
-                // box-shadow: 0px 2px 2px rgb(221, 221, 221);
-                .main-header-text {
-                    position: absolute;
-                    top: 50%;
-                    left: 40px;
-                    transform: translateY(-50%);
-                    font-size: 1.2rem;
-                }
-            }
             .main-content {
-                position: absolute;
-                top: 100px;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 85%;
-                .main-content-content {
+                box-sizing: border-box;
+                width: 100%;
+                height: 100%;
+                padding: 10px 20px;
+                padding-bottom: 0;
+                .main-content-myInfo {
+                    position: relative;
                     width: 100%;
-                    margin-bottom: 40px;
-                    .main-content-content-name {
-                        position: relative;
+                    height: 75px;
+                    .main-content-myInfo-name {
+                        position: absolute;
+                        top: 50%;
+                        left: 0;
+                        transform: translateY(-50%);
+                        font-size: 3rem;
+                        margin-left: 25px;
+                    }
+                }
+                .main-content-myContent {
+                    margin-top: 50px;
+                    width: 100%;
+                    height: calc(100% - 3rem - 75px);
+                    font-size: 0;
+                    .main-content-myContent-selector {
+                        display: inline-block;
                         width: 100%;
-                        font-size: 0;
-                        margin-bottom: 20px;
-                        .main-content-content-name-border {
-                            z-index: -1;
-                            position: absolute;
-                            top: 50%;
-                            left: 50%;
-                            transform: translate(-50%, -50%);
-                            width: 100%;
-                            height: 1px;
-                            background-color: lightgray;
-                        }
-                        .main-content-content-name-text {
-                            display: inline-block;
+                        height: 50px;
+                        border-bottom: 2px solid black;
+                        .main-content-myContent-selector-content {
+                            display: inline-flex;
                             height: 100%;
-                            background-color: white;
-                            padding-right: 20px;
-                            .main-content-content-name-text-orange {
-                                position: relative;
-                                box-sizing: border-box;
-                                margin-right: 10px;
-                                border: 2px solid black;
+                            margin-left: 25px;
+                            a {
+                                margin: 0 25px;
+                                cursor: pointer;
                                 display: inline-block;
-                                width: 50px;
-                                aspect-ratio: 1 / 1;
+                                width: 150px;
+                                height: 100%;
+                                border-radius: 25px 25px 0 0;
+                                font-size: 1.2rem;
+                                line-height: 50px;
+                                text-align: center;
+                                border: none;
+                                text-decoration: none;
+                                color: black;
+                                &:visited {
+                                    color: black;
+                                    border: none;
+                                }
+                                &:first-child {
+                                    margin-left: 0;
+                                }
+                                &:last-child {
+                                    margin-right: 0;
+                                }
+                            }
+                            .main-content-myContent-selector-content-home {
+                                box-sizing: border-box;
                                 background-color: #fbb03b;
-                                .main-content-content-name-text-orange-text {
-                                    position: absolute;
-                                    top: 50%;
-                                    left: 50%;
-                                    transform: translate(-50%, -50%);
-                                    font-size: 2rem;
-                                    font-weight: bold;
-                                }
+                                border-left: 2px solid black;
+                                border-top: 2px solid black;
+                                border-right: 2px solid black;
                             }
-                            .main-content-content-name-text-white {
-                                position: relative;
-                                box-sizing: border-box;
-                                margin-right: 10px;
-                                border: 2px solid black;
-                                display: inline-block;
-                                width: 40px;
+                            .main-content-myContent-selector-content-odai {}
+                            .main-content-myContent-selector-content-answer {}
+                            .main-content-myContent-selector-content-like {}
+                        }
+                        .main-content-myContent-coin {
+                            position: relative;
+                            display: inline-block;
+                            margin-left: 50px;
+                            width: 50px;
+                            vertical-align: bottom;
+                            overflow: visible;
+                            .main-content-myContent-coin-content {
+                                position: absolute;
+                                bottom: 0;
+                                left: 0;
                                 aspect-ratio: 1 / 1;
-                                background-color: white;
-                                .main-content-content-name-text-white-text {
-                                    position: absolute;
-                                    top: 50%;
-                                    left: 50%;
-                                    transform: translate(-50%, -50%);
-                                    font-size: 1.7rem;
-                                    font-weight: bold;
-                                }
+                                width: 100%;
+                                background-image: url(../../images/coin.svg);
+                                background-repeat: no-repeat;
+                                background-position: center;
                             }
+                        }
+                        .main-content-myContent-coinText {
+                            display: inline-block;
+                            margin-left: 10px;
+                            font-size: 1.4rem;
                         }
                     }
-                    .main-content-content-posts {
+                    .main-content-myContent-content {
+                        box-sizing: border-box;
                         width: 100%;
-                        margin-bottom: 80px;
-                        &:last-child {
-                            margin-bottom: 0;
-                        }
-                        .main-content-content-posts-area {
-                            display: flex;
-                            overflow-x: scroll;
-                            margin: 0 60px;
-                            width: calc(100% - (60px * 2));
-                            .main-content-content-posts-area-post {
+                        height: calc(100% - 50px);
+                        overflow-y: auto;
+                        padding: 60px 60px;
+                        .main-content-content {
+                            width: 100%;
+                            margin-bottom: 40px;
+                            .main-content-content-name {
                                 position: relative;
-                                display: inline-block;
-                                margin: 0 20px;
+                                width: 100%;
                                 font-size: 0;
-                                .main-content-content-posts-area-post-top {
-                                    position: relative;
-                                    aspect-ratio: 404.4 / 279.8;
-                                    height: 180px;
-                                    background-image: url(../../images/textbox_01.svg);
-                                    background-repeat: no-repeat;
-                                    background-position: center;
-                                    .main-content-content-posts-area-post-content {
-                                        position: absolute;
-                                        top: 42%;
-                                        left: 52%;
-                                        transform: translate(-50%, -50%);
-                                        width: 70%;
-                                        height: 80%;
-                                        .main-content-content-posts-area-post-content-text {
+                                margin-bottom: 20px;
+                                .main-content-content-name-border {
+                                    z-index: -1;
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);
+                                    width: 100%;
+                                    height: 1px;
+                                    background-color: lightgray;
+                                }
+                                .main-content-content-name-text {
+                                    display: inline-block;
+                                    height: 100%;
+                                    background-color: white;
+                                    padding-right: 20px;
+                                    .main-content-content-name-text-orange {
+                                        position: relative;
+                                        box-sizing: border-box;
+                                        margin-right: 10px;
+                                        border: 2px solid black;
+                                        display: inline-block;
+                                        width: 50px;
+                                        aspect-ratio: 1 / 1;
+                                        background-color: #fbb03b;
+                                        .main-content-content-name-text-orange-text {
                                             position: absolute;
                                             top: 50%;
                                             left: 50%;
-                                            width: 75%;
                                             transform: translate(-50%, -50%);
-                                            font-size: 1.9rem;
-                                            text-align: center;
+                                            font-size: 2rem;
+                                            font-weight: bold;
                                         }
                                     }
-                                }
-                                .main-content-content-posts-area-post-bottom {
-                                    margin-top: 20px;
-                                    width: 100%;
-                                    height: 50px;
-                                    border-radius: 10px;
-                                    border: 1px solid black;
-                                    overflow: hidden;
-                                    .main-content-content-posts-area-post-bottom-top {
-                                        width: 100%;
-                                        height: 50%;
-                                        .main-content-content-posts-area-post-bottom-top-text {
-                                            box-sizing: border-box;
-                                            width: 100%;
-                                            height: 100%;
-                                            padding: 0 5px;
-                                            font-size: 1rem;
-                                        }
-                                    }
-                                    .main-content-content-posts-area-post-bottom-bottom {
-                                        width: 100%;
-                                        height: 50%;
-                                        .main-content-content-posts-area-post-bottom-bottom-text {
-                                            box-sizing: border-box;
-                                            width: 100%;
-                                            height: 100%;
-                                            padding: 0 5px;
-                                            font-size: 1rem;
+                                    .main-content-content-name-text-white {
+                                        position: relative;
+                                        box-sizing: border-box;
+                                        margin-right: 10px;
+                                        border: 2px solid black;
+                                        display: inline-block;
+                                        width: 40px;
+                                        aspect-ratio: 1 / 1;
+                                        background-color: white;
+                                        .main-content-content-name-text-white-text {
+                                            position: absolute;
+                                            top: 50%;
+                                            left: 50%;
+                                            transform: translate(-50%, -50%);
+                                            font-size: 1.7rem;
+                                            font-weight: bold;
                                         }
                                     }
                                 }
                             }
-                             :first-child {
-                                margin-left: 0;
-                            }
-                             :last-child {
-                                margin-right: 0;
+                            .main-content-content-posts {
+                                width: 100%;
+                                margin-bottom: 80px;
+                                &:last-child {
+                                    margin-bottom: 0;
+                                }
+                                .main-content-content-posts-area {
+                                    display: flex;
+                                    overflow-x: scroll;
+                                    margin: 0 60px;
+                                    width: calc(100% - (60px * 2));
+                                    .main-content-content-posts-area-post {
+                                        position: relative;
+                                        display: inline-block;
+                                        margin: 0 20px;
+                                        font-size: 0;
+                                        .main-content-content-posts-area-post-top {
+                                            position: relative;
+                                            aspect-ratio: 404.4 / 279.8;
+                                            height: 180px;
+                                            background-image: url(../../images/textbox_01.svg);
+                                            background-repeat: no-repeat;
+                                            background-position: center;
+                                            .main-content-content-posts-area-post-content {
+                                                position: absolute;
+                                                top: 42%;
+                                                left: 52%;
+                                                transform: translate(-50%, -50%);
+                                                width: 70%;
+                                                height: 80%;
+                                                .main-content-content-posts-area-post-content-text {
+                                                    position: absolute;
+                                                    top: 50%;
+                                                    left: 50%;
+                                                    width: 75%;
+                                                    transform: translate(-50%, -50%);
+                                                    font-size: 1.9rem;
+                                                    text-align: center;
+                                                }
+                                            }
+                                        }
+                                        .main-content-content-posts-area-post-bottom {
+                                            margin-top: 20px;
+                                            width: 100%;
+                                            height: 50px;
+                                            border-radius: 10px;
+                                            border: 1px solid black;
+                                            overflow: hidden;
+                                            .main-content-content-posts-area-post-bottom-top {
+                                                width: 100%;
+                                                height: 50%;
+                                                .main-content-content-posts-area-post-bottom-top-text {
+                                                    box-sizing: border-box;
+                                                    width: 100%;
+                                                    height: 100%;
+                                                    padding: 0 5px;
+                                                    font-size: 1rem;
+                                                }
+                                            }
+                                            .main-content-content-posts-area-post-bottom-bottom {
+                                                width: 100%;
+                                                height: 50%;
+                                                .main-content-content-posts-area-post-bottom-bottom-text {
+                                                    box-sizing: border-box;
+                                                    width: 100%;
+                                                    height: 100%;
+                                                    padding: 0 5px;
+                                                    font-size: 1rem;
+                                                }
+                                            }
+                                        }
+                                        .main-content-content-posts-area-post-meta {
+                                            display: flex;
+                                            justify-content: space-between;
+                                            width: 100%;
+                                            height: 15%;
+                                            .main-content-content-posts-area-post-meta-name {
+                                                padding-left: 5px;
+                                                position: relative;
+                                                height: 100%;
+                                                .main-content-content-posts-area-post-meta-name-text {
+                                                    position: relative;
+                                                    top: 50%;
+                                                    transform: translateY(-50%);
+                                                }
+                                            }
+                                            .main-content-content-posts-area-post-meta-data {
+                                                padding-right: 5px;
+                                                position: relative;
+                                                height: 100%;
+                                                .main-content-content-posts-area-post-meta-data-text {
+                                                    position: relative;
+                                                    top: 50%;
+                                                    transform: translateY(-50%);
+                                                }
+                                            }
+                                        }
+                                    }
+                                     :first-child {
+                                        margin-left: 0;
+                                    }
+                                     :last-child {
+                                        margin-right: 0;
+                                    }
+                                }
                             }
                         }
+                         :last-child {
+                            margin-bottom: 0;
+                        }
                     }
-                }
-                 :last-child {
-                    margin-bottom: 0;
                 }
             }
         }
