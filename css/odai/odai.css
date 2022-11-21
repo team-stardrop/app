@@ -273,6 +273,7 @@ html body main .main-content .main-content-answer {
   height: 75px;
   margin-top: 25px;
   border-left: 1px solid black;
+  border-bottom: 1px solid black;
 }
 html body main .main-content .main-content-answer .main-content-answer-top {
   width: 100%;
