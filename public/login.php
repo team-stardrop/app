@@ -45,7 +45,7 @@ if(!$result) {
         <div class="message-box">
             <h2 class="login-form-title">ログイン完了</h2>
             <a href="./index.php" class="go-home">ホーム</a>
-            <a href="./mypage.php" class="go-mypage">マイページへ</a>
+            <a href="./mypage-home.php" class="go-mypage">マイページへ</a>
         </div>
     </div>
 </body>

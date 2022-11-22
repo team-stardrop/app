@@ -63,7 +63,7 @@ if (count($err) === 0) {
             <?php else : ?>
                 <p class="message">ユーザ登録が完了しました</p>
                 <a href="./index.php" class="go-home">ホーム</a>
-                <a href="./mypage.php" class="go-mypage">マイページへ</a>
+                <a href="./mypage-home.php" class="go-mypage">マイページへ</a>
             <?php endif ?>
         </div>
     </div>
