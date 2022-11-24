@@ -196,16 +196,39 @@ html body main .main-content {
 }
 html body main .main-content .main-content-myInfo {
   position: relative;
+  display: flex;
+  justify-content: space-between;
   width: 100%;
   height: 75px;
 }
 html body main .main-content .main-content-myInfo .main-content-myInfo-name {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  transform: translateY(-50%);
   font-size: 3rem;
   margin-left: 25px;
+  height: 75px;
+  line-height: 75px;
+}
+html body main .main-content .main-content-myInfo .main-content-myInfo-logout {
+  position: relative;
+  width: 100px;
+  height: 75px;
+}
+html body main .main-content .main-content-myInfo .main-content-myInfo-logout .main-content-myInfo-logout-button {
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 35px;
+  border-radius: 25px;
+  background-color: white;
+  border: none;
+  border: 1px solid #fbb03b;
+  cursor: pointer;
+  transition: 0.25s;
+}
+html body main .main-content .main-content-myInfo .main-content-myInfo-logout .main-content-myInfo-logout-button:hover {
+  background-color: rgba(251, 177, 59, 0.3058823529);
 }
 html body main .main-content .main-content-myContent {
   margin-top: 50px;

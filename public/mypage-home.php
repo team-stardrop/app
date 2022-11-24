@@ -89,10 +89,10 @@ $login_user = $_SESSION['login_user'];
         <div class="main-content">
             <div class="main-content-myInfo">
                 <div class="main-content-myInfo-name"><?php echo h($login_user['username']) ?></div>
+                <form class="main-content-myInfo-logout" action="logout.php" method="POST">
+                    <input class="main-content-myInfo-logout-button" type="submit" name="logout" value="ログアウト">
+                </form>
             </div>
-            <form action="logout.php" method="POST">
-                <input type="submit" name="logout" value="ログアウト">
-            </form>
             <div class="main-content-myContent">
                 <div class="main-content-myContent-selector">
                     <div class="main-content-myContent-selector-content">
