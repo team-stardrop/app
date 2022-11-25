@@ -32,6 +32,7 @@ if (!empty($_POST['submitButton'])) {
     } else if (empty($_POST['post_category'])) {
         $err_messages['category'] = "カテゴリーが選択されていません";
     } else {
+        // お題を保存
         try {
             $stmt = $pdo->prepare("INSERT INTO `odais` (`odai`, `user_id`, `post_date` , `item_id`) VALUES (:odai, :user_id, :post_date, :item_id)");
             $stmt->bindParam(':odai', $_POST['odai'], PDO::PARAM_STR);
@@ -41,7 +42,22 @@ if (!empty($_POST['submitButton'])) {
 
             $stmt->execute();
 
-            header('Location: http://localhost:80/oogiri-app/public/index.php');
+            // ポイント処理
+            try{
+                $login_user['point'] = $login_user['point']-20;
+                $_SESSION['login_user'] = $login_user;
+                $stmt = $pdo->prepare("UPDATE `users` SET point = :point WHERE id = :user_id");
+                $stmt->bindParam(':point', $login_user['point'], PDO::PARAM_STR);
+                $stmt->bindParam(':user_id', $login_user['id'], PDO::PARAM_STR);
+                
+                $stmt->execute();
+        
+                header('Location: http://localhost:80/oogiri-app/public/index.php');
+                exit;
+            } catch (PDOException $e){
+                echo $e->getMessage();
+            }
+
             exit;
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -51,6 +67,8 @@ if (!empty($_POST['submitButton'])) {
 
 $sql = "SELECT * FROM `odais`";
 $post_array = $pdo->query($sql);
+
+echo $login_user['point'];
 
 ?>
 <!DOCTYPE html>
