@@ -382,6 +382,11 @@ html {
                                         display: inline-block;
                                         margin: 0 20px;
                                         font-size: 0;
+                                        color: black;
+                                        text-decoration: none;
+                                        &:visited {
+                                            color: black;
+                                        }
                                         .main-content-content-posts-area-post-top {
                                             position: relative;
                                             aspect-ratio: 404.4 / 279.8;
