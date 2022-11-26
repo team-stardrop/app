@@ -31,7 +31,7 @@ if (!empty($_POST['submitButton'])) {
         $err_messages['odai'] = "記入されていません";
     } else if (empty($_POST['post_category'])) {
         $err_messages['category'] = "カテゴリーが選択されていません";
-    } else if ($login_user['point']<=0) {
+    } else if ($login_user['point']<20) {
         $err_messages['point'] = "ポイントが足りません";
     } else {
         // お題を保存
@@ -69,8 +69,6 @@ if (!empty($_POST['submitButton'])) {
 
 $sql = "SELECT * FROM `odais`";
 $post_array = $pdo->query($sql);
-
-echo $login_user['point'];
 
 ?>
 <!DOCTYPE html>
