@@ -31,7 +31,10 @@ if (!empty($_POST['submitButton'])) {
         $err_messages['odai'] = "記入されていません";
     } else if (empty($_POST['post_category'])) {
         $err_messages['category'] = "カテゴリーが選択されていません";
+    } else if ($login_user['point']<20) {
+        $err_messages['point'] = "お題投稿には20ポイント必要です";
     } else {
+        // お題を保存
         try {
             $stmt = $pdo->prepare("INSERT INTO `odais` (`odai`, `user_id`, `post_date` , `item_id`) VALUES (:odai, :user_id, :post_date, :item_id)");
             $stmt->bindParam(':odai', $_POST['odai'], PDO::PARAM_STR);
@@ -41,7 +44,22 @@ if (!empty($_POST['submitButton'])) {
 
             $stmt->execute();
 
-            header('Location: http://localhost:80/oogiri-app/public/index.php');
+            // ポイント処理
+            try{
+                $login_user['point'] = $login_user['point']-20;
+                $_SESSION['login_user'] = $login_user;
+                $stmt = $pdo->prepare("UPDATE `users` SET point = :point WHERE id = :user_id");
+                $stmt->bindParam(':point', $login_user['point'], PDO::PARAM_STR);
+                $stmt->bindParam(':user_id', $login_user['id'], PDO::PARAM_STR);
+                
+                $stmt->execute();
+        
+                header('Location: http://localhost:80/oogiri-app/public/index.php');
+                exit;
+            } catch (PDOException $e){
+                echo $e->getMessage();
+            }
+
             exit;
         } catch (PDOException $e) {
             echo $e->getMessage();
@@ -110,7 +128,7 @@ $post_array = $pdo->query($sql);
     </header>
     <!-- 投稿を表示 -->
     <main>
-
+        <!-- エラーメッセージ表示 -->
         <div class="error">
             <?php if (isset($_SESSION['post_err'])) : ?>
                 <script>
@@ -127,7 +145,16 @@ $post_array = $pdo->query($sql);
                     notification("<?php echo $err_messages['category']; ?>");
                 </script>
             <?php endif; ?>
+            <?php if (isset($err_messages['point'])) : ?>
+                <script>
+                    notification("<?php echo $err_messages['point']; ?>");
+                </script>
+            <?php endif; ?>
         </div>
+
+        <!-- ポイント表示 -->
+
+        <p><?php echo $login_user['point']; ?></p>
 
         <div class="main-content">
             <div class="main-content-content">
@@ -147,13 +174,13 @@ $post_array = $pdo->query($sql);
                 </div>
                 <div class="main-content-content-posts">
                     <div class="main-content-content-posts-area">
-                        <?php foreach ($post_array as $post) :
-                            $users = get_odai_posted_user($post['user_id']);
+                        <?php foreach ($post_array as $odai) :
+                            $users = get_odai_posted_user($odai['user_id']);
                         ?>
-                            <a href="odai.php" class="main-content-content-posts-area-post">
+                            <a href="odai.php?odai_id=<?php echo $odai['id']; ?>" class="main-content-content-posts-area-post">
                                 <div class="main-content-content-posts-area-post-top">
                                     <div class="main-content-content-posts-area-post-content">
-                                        <div class="main-content-content-posts-area-post-content-text"><?php echo $post['odai'] ?></div>
+                                        <div class="main-content-content-posts-area-post-content-text"><?php echo $odai['odai'] ?></div>
                                     </div>
                                 </div>
                             </a>
