@@ -102,12 +102,10 @@ if ($result) {
                     <div class="main-content-odai-meta-day">2022-10 18:16:51</div>
                 </div>
             </div>
-            <div class="main-content-post">
+            <form class="main-content-post">
                 <input type="text" class="main-content-post-input" placeholder="回答をする">
-                <a class="main-content-post-send">
-                    <div class="main-content-post-send-icon"></div>
-                </a>
-            </div>
+                <input type="submit" class="main-content-post-send"></input>
+            </form>
             <div class="main-content-answer">
                 <div class="main-content-answer-top">
                     <div class="main-content-answer-top-text">ここに回答を書いて行くよ！</div>

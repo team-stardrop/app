@@ -251,7 +251,7 @@ html body main .main-content .main-content-post .main-content-post-input {
   height: 100%;
   border: none;
   padding-left: 10px;
-  padding-right: 50px;
+  padding-right: 60px;
 }
 html body main .main-content .main-content-post .main-content-post-send {
   position: absolute;
@@ -259,20 +259,16 @@ html body main .main-content .main-content-post .main-content-post-send {
   right: 0;
   transform: translateY(-50%);
   width: 50px;
-  aspect-ratio: 1/1;
+  height: 25px;
   cursor: pointer;
+  border: none;
+  background-color: transparent;
+  border: 1px solid #fbb03b;
+  border-radius: 20px;
+  transition: 0.5s;
 }
-html body main .main-content .main-content-post .main-content-post-send .main-content-post-send-icon {
-  position: relative;
-  top: 50%;
-  left: calc(50% + 5px);
-  transform: translate(-50%, -50%);
-  border-left: 10px solid black;
-  border-top: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid transparent;
-  width: 0;
-  height: 0;
+html body main .main-content .main-content-post .main-content-post-send:hover {
+  background-color: rgba(251, 177, 59, 0.3058823529);
 }
 html body main .main-content .main-content-answer {
   position: relative;
