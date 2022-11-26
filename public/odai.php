@@ -98,7 +98,7 @@ if ($result) {
                     <div class="main-content-odai-text-content">ここにお題を書きます</div>
                 </div>
                 <div class="main-content-odai-meta">
-                    <div class="main-content-odai-meta-name">ここに名前を入れるよ</div>
+                    <div class="main-content-odai-meta-name"><?php echo $login_user['username']; ?></div>
                     <div class="main-content-odai-meta-day">2022-10 18:16:51</div>
                 </div>
             </div>
