@@ -388,6 +388,11 @@ html body main .main-content .main-content-myContent .main-content-myContent-con
   display: inline-block;
   margin: 0 20px;
   font-size: 0;
+  color: black;
+  text-decoration: none;
+}
+html body main .main-content .main-content-myContent .main-content-myContent-content .main-content-content .main-content-content-posts .main-content-content-posts-area .main-content-content-posts-area-post:visited {
+  color: black;
 }
 html body main .main-content .main-content-myContent .main-content-myContent-content .main-content-content .main-content-content-posts .main-content-content-posts-area .main-content-content-posts-area-post .main-content-content-posts-area-post-top {
   position: relative;

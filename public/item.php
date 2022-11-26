@@ -133,13 +133,13 @@ $post_array = $pdo->query($sql);
                         <?php foreach ($post_array as $post) :
                             $users = get_odai_posted_user($post['user_id']);
                         ?>
-                            <div class="main-content-content-posts-area-post">
+                            <a href="odai.php" class="main-content-content-posts-area-post">
                                 <div class="main-content-content-posts-area-post-top">
                                     <div class="main-content-content-posts-area-post-content">
                                         <div class="main-content-content-posts-area-post-content-text"><?php echo $post['odai'] ?></div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         <?php endforeach; ?>
                     </div>
                 </div>
@@ -168,41 +168,41 @@ $post_array = $pdo->query($sql);
                 </div>
                 <div class="main-content-content-posts">
                     <div class="main-content-content-posts-area">
-                        <div class="main-content-content-posts-area-post">
+                        <a href="odai.php" class="main-content-content-posts-area-post">
                             <div class="main-content-content-posts-area-post-top">
                                 <div class="main-content-content-posts-area-post-content">
                                     <div class="main-content-content-posts-area-post-content-text">ああああああああああああ</div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="main-content-content-posts-area-post">
+                        </a>
+                        <a href="odai.php" class="main-content-content-posts-area-post">
                             <div class="main-content-content-posts-area-post-top">
                                 <div class="main-content-content-posts-area-post-content">
                                     <div class="main-content-content-posts-area-post-content-text">ああああああああああああ</div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="main-content-content-posts-area-post">
+                        </a>
+                        <a href="odai.php" class="main-content-content-posts-area-post">
                             <div class="main-content-content-posts-area-post-top">
                                 <div class="main-content-content-posts-area-post-content">
                                     <div class="main-content-content-posts-area-post-content-text">ああああああああああああ</div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="main-content-content-posts-area-post">
+                        </a>
+                        <a href="odai.php" class="main-content-content-posts-area-post">
                             <div class="main-content-content-posts-area-post-top">
                                 <div class="main-content-content-posts-area-post-content">
                                     <div class="main-content-content-posts-area-post-content-text">ああああああああああああ</div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="main-content-content-posts-area-post">
+                        </a>
+                        <a href="odai.php" class="main-content-content-posts-area-post">
                             <div class="main-content-content-posts-area-post-top">
                                 <div class="main-content-content-posts-area-post-content">
                                     <div class="main-content-content-posts-area-post-content-text">ああああああああああああ</div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>

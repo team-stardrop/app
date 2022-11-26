@@ -123,7 +123,7 @@ $login_user = $_SESSION['login_user'];
                         </div>
                         <div class="main-content-content-posts">
                             <div class="main-content-content-posts-area">
-                                <div class="main-content-content-posts-area-post">
+                                <a href="odai.php" class="main-content-content-posts-area-post">
                                     <div class="main-content-content-posts-area-post-top">
                                         <div class="main-content-content-posts-area-post-content">
                                             <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
@@ -137,8 +137,8 @@ $login_user = $_SESSION['login_user'];
                                             <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="main-content-content-posts-area-post">
+                                </a>
+                                <a href="odai.php" class="main-content-content-posts-area-post">
                                     <div class="main-content-content-posts-area-post-top">
                                         <div class="main-content-content-posts-area-post-content">
                                             <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
@@ -152,8 +152,8 @@ $login_user = $_SESSION['login_user'];
                                             <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="main-content-content-posts-area-post">
+                                </a>
+                                <a href="odai.php" class="main-content-content-posts-area-post">
                                     <div class="main-content-content-posts-area-post-top">
                                         <div class="main-content-content-posts-area-post-content">
                                             <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
@@ -167,8 +167,8 @@ $login_user = $_SESSION['login_user'];
                                             <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="main-content-content-posts-area-post">
+                                </a>
+                                <a href="odai.php" class="main-content-content-posts-area-post">
                                     <div class="main-content-content-posts-area-post-top">
                                         <div class="main-content-content-posts-area-post-content">
                                             <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
@@ -182,13 +182,13 @@ $login_user = $_SESSION['login_user'];
                                             <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
 
                         <div class="main-content-content-posts">
                             <div class="main-content-content-posts-area">
-                                <div class="main-content-content-posts-area-post">
+                                <a href="odai.php" class="main-content-content-posts-area-post">
                                     <div class="main-content-content-posts-area-post-top">
                                         <div class="main-content-content-posts-area-post-content">
                                             <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
@@ -202,8 +202,8 @@ $login_user = $_SESSION['login_user'];
                                             <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="main-content-content-posts-area-post">
+                                </a>
+                                <a href="odai.php" class="main-content-content-posts-area-post">
                                     <div class="main-content-content-posts-area-post-top">
                                         <div class="main-content-content-posts-area-post-content">
                                             <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
@@ -217,8 +217,8 @@ $login_user = $_SESSION['login_user'];
                                             <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="main-content-content-posts-area-post">
+                                </a>
+                                <a href="odai.php" class="main-content-content-posts-area-post">
                                     <div class="main-content-content-posts-area-post-top">
                                         <div class="main-content-content-posts-area-post-content">
                                             <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
@@ -232,8 +232,8 @@ $login_user = $_SESSION['login_user'];
                                             <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="main-content-content-posts-area-post">
+                                </a>
+                                <a href="odai.php" class="main-content-content-posts-area-post">
                                     <div class="main-content-content-posts-area-post-top">
                                         <div class="main-content-content-posts-area-post-content">
                                             <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
@@ -247,13 +247,13 @@ $login_user = $_SESSION['login_user'];
                                             <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
 
                         <div class="main-content-content-posts">
                             <div class="main-content-content-posts-area">
-                                <div class="main-content-content-posts-area-post">
+                                <a href="odai.php" class="main-content-content-posts-area-post">
                                     <div class="main-content-content-posts-area-post-top">
                                         <div class="main-content-content-posts-area-post-content">
                                             <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
@@ -267,8 +267,8 @@ $login_user = $_SESSION['login_user'];
                                             <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="main-content-content-posts-area-post">
+                                </a>
+                                <a href="odai.php" class="main-content-content-posts-area-post">
                                     <div class="main-content-content-posts-area-post-top">
                                         <div class="main-content-content-posts-area-post-content">
                                             <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
@@ -282,8 +282,8 @@ $login_user = $_SESSION['login_user'];
                                             <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="main-content-content-posts-area-post">
+                                </a>
+                                <a href="odai.php" class="main-content-content-posts-area-post">
                                     <div class="main-content-content-posts-area-post-top">
                                         <div class="main-content-content-posts-area-post-content">
                                             <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
@@ -297,8 +297,8 @@ $login_user = $_SESSION['login_user'];
                                             <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="main-content-content-posts-area-post">
+                                </a>
+                                <a href="odai.php" class="main-content-content-posts-area-post">
                                     <div class="main-content-content-posts-area-post-top">
                                         <div class="main-content-content-posts-area-post-content">
                                             <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
@@ -312,13 +312,13 @@ $login_user = $_SESSION['login_user'];
                                             <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
 
                         <div class="main-content-content-posts">
                             <div class="main-content-content-posts-area">
-                                <div class="main-content-content-posts-area-post">
+                                <a href="odai.php" class="main-content-content-posts-area-post">
                                     <div class="main-content-content-posts-area-post-top">
                                         <div class="main-content-content-posts-area-post-content">
                                             <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
@@ -332,8 +332,8 @@ $login_user = $_SESSION['login_user'];
                                             <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="main-content-content-posts-area-post">
+                                </a>
+                                <a href="odai.php" class="main-content-content-posts-area-post">
                                     <div class="main-content-content-posts-area-post-top">
                                         <div class="main-content-content-posts-area-post-content">
                                             <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
@@ -347,8 +347,8 @@ $login_user = $_SESSION['login_user'];
                                             <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="main-content-content-posts-area-post">
+                                </a>
+                                <a href="odai.php" class="main-content-content-posts-area-post">
                                     <div class="main-content-content-posts-area-post-top">
                                         <div class="main-content-content-posts-area-post-content">
                                             <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
@@ -362,8 +362,8 @@ $login_user = $_SESSION['login_user'];
                                             <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="main-content-content-posts-area-post">
+                                </a>
+                                <a href="odai.php" class="main-content-content-posts-area-post">
                                     <div class="main-content-content-posts-area-post-top">
                                         <div class="main-content-content-posts-area-post-content">
                                             <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
@@ -377,7 +377,7 @@ $login_user = $_SESSION['login_user'];
                                             <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
                                         </div>
                                     </div>
-                                </div>
+                                </a>
                             </div>
                         </div>
                     </div>
