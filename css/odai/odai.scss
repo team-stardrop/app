@@ -171,6 +171,7 @@ html {
             width: calc(100% - 75px);
             height: 100%;
             margin-left: 75px;
+            overflow: hidden;
             overflow-y: auto;
             .error {
                 position: absolute;
@@ -318,6 +319,72 @@ html {
                     }
                 }
             }
+            .slide {
+                position: absolute;
+                display: flex;
+                right: calc(-125px - 125px - (10px * 4));
+                top: 25px;
+                height: 52px;
+                // background-color: #fbb03b;
+                z-index: 100;
+                overflow: hidden;
+                transition: .5s;
+                background-color: #fbb03b;
+                &:hover {
+                    right: 0;
+                }
+                &:hover .slide-bar .slide-bar-icon {
+                    border-top: 7px solid transparent;
+                    border-left: 7px solid transparent;
+                    border-bottom: 7px solid black;
+                    border-right: 7px solid black;
+                    left: 25%;
+                }
+                .slide-bar {
+                    position: relative;
+                    width: 25px;
+                    height: 100%;
+                    .slide-bar-icon {
+                        position: absolute;
+                        top: 50%;
+                        left: 75%;
+                        transform: translate(-50%, -50%) rotate(-45deg);
+                        border-top: 7px solid black;
+                        border-left: 7px solid black;
+                        border-bottom: 7px solid transparent;
+                        border-right: 7px solid transparent;
+                        transition: .5s;
+                    }
+                }
+                .slide-edit {
+                    width: 125px;
+                    height: 40px;
+                    margin: 5px 10px;
+                    line-height: 40px;
+                    text-align: center;
+                    border: 1px solid transparent;
+                    border-radius: 20px;
+                    transition: .5s;
+                    cursor: pointer;
+                    &:hover {
+                        background-color: rgb(148, 251, 255);
+                    }
+                }
+                .slide-delete {
+                    width: 125px;
+                    height: 40px;
+                    margin: 5px 10px;
+                    line-height: 40px;
+                    text-align: center;
+                    border: 1px solid transparent;
+                    border-radius: 20px;
+                    transition: .5s;
+                    cursor: pointer;
+                    &:hover {
+                        background-color: rgb(255, 75, 75);
+                    }
+                }
+            }
             // ここに書くよ！
         }
         .postLayer {
@@ -331,6 +398,171 @@ html {
             z-index: 100;
         }
         .postLayer-content {
+            z-index: 101;
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            height: 60%;
+            background-color: white;
+            font-size: 0;
+            .category {
+                position: relative;
+                height: 100%;
+                width: 200px;
+                display: inline-block;
+                .category-content {
+                    box-sizing: border-box;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 100%;
+                    height: calc(100% - 80px);
+                    padding: 40px 20px;
+                    list-style: none;
+                    border-right: 1px solid black;
+                    overflow-y: auto;
+                    li {
+                        margin: 5px 0;
+                        input {
+                            display: none;
+                            // position: absolute;
+                            // top: 505;
+                            // left: 50%;
+                            // transform: translate(-50%, -50%);
+                            // pointer-events: none;
+                            &:checked+label {
+                                background-color: #fbb13b4e;
+                            }
+                        }
+                        label {
+                            box-sizing: border-box;
+                            text-align: left;
+                            font-size: 1.4rem;
+                            padding: 10px 20px;
+                            transition: .25s;
+                            border-radius: 50px;
+                            cursor: pointer;
+                            border: 1px solid transparent;
+                            display: inline-block;
+                            width: 100%;
+                            height: 100%;
+                            &:hover {
+                                border: 1px solid #fbb03b;
+                            }
+                        }
+                    }
+                }
+            }
+            .form {
+                width: calc(100% - 200px);
+                height: 100%;
+                display: inline-block;
+                .form-top {
+                    width: 100%;
+                    height: calc(100% - 50px - 40px);
+                    .form-top-top {
+                        position: relative;
+                        width: 100%;
+                        height: 75px;
+                        .form-top-top-closeButton {
+                            position: absolute;
+                            right: 20px;
+                            top: 20px;
+                            height: 50px;
+                            aspect-ratio: 1 / 1;
+                            cursor: pointer;
+                            border: 1px solid transparent;
+                            border-radius: 50%;
+                            transition: .25s;
+                            &:hover {
+                                border: 1px solid #fbb03b;
+                            }
+                            .form-top-top-closeButton-border-1 {
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%) rotate(45deg);
+                                width: 1px;
+                                height: 80%;
+                                background-color: black;
+                            }
+                            .form-top-top-closeButton-border-2 {
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%) rotate(-45deg);
+                                width: 1px;
+                                height: 80%;
+                                background-color: black;
+                            }
+                        }
+                    }
+                    .form-top-bottom {
+                        width: 100%;
+                        height: calc(100% - 75px);
+                        .form-top-bottom-content {
+                            position: relative;
+                            height: 100%;
+                            margin: 0 auto;
+                            width: calc(100% - 20px - 50px);
+                            textarea {
+                                box-sizing: border-box;
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                                width: 100%;
+                                height: 100%;
+                                border: none;
+                                resize: none;
+                                padding: 5px 5px;
+                                font-size: 1.1rem;
+                                border: 1px solid rgb(226, 226, 226);
+                                border-radius: 10px;
+                            }
+                        }
+                    }
+                }
+                .form-bottom {
+                    position: relative;
+                    width: 100%;
+                    height: 50px;
+                    margin-bottom: 40px;
+                    .form-bottom-postButtonContent {
+                        box-sizing: border-box;
+                        position: absolute;
+                        right: 40px;
+                        margin: 5px 0;
+                        height: calc(100% - 10px);
+                        padding: 5px 20px;
+                        border-radius: 25px;
+                        border: 1px solid transparent;
+                        cursor: pointer;
+                        transition: .25s;
+                        &:hover {
+                            border: 1px solid #fbb03b;
+                        }
+                        input {
+                            cursor: pointer;
+                        }
+                        .form-bottom-postButtonContent-text {
+                            font-size: 1rem;
+                            height: 100%;
+                            width: 100%;
+                            text-align: center;
+                            line-height: 30px;
+                            background-color: transparent;
+                            border: none;
+                        }
+                    }
+                }
+            }
+        }
+        .postLayer-content-edit {
             z-index: 101;
             display: none;
             position: absolute;

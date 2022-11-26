@@ -172,6 +172,7 @@ html body main {
   width: calc(100% - 75px);
   height: 100%;
   margin-left: 75px;
+  overflow: hidden;
   overflow-y: auto;
 }
 html body main .error {
@@ -318,6 +319,71 @@ html body main .main-content .main-content-answer .main-content-answer-bottom .m
 }
 html body main .main-content .main-content-answer .main-content-answer-bottom .main-content-answer-bottom-content .main-content-answer-bottom-content-likeNum {
   font-size: 1rem;
+}
+html body main .slide {
+  position: absolute;
+  display: flex;
+  right: -290px;
+  top: 25px;
+  height: 52px;
+  z-index: 100;
+  overflow: hidden;
+  transition: 0.5s;
+  background-color: #fbb03b;
+}
+html body main .slide:hover {
+  right: 0;
+}
+html body main .slide:hover .slide-bar .slide-bar-icon {
+  border-top: 7px solid transparent;
+  border-left: 7px solid transparent;
+  border-bottom: 7px solid black;
+  border-right: 7px solid black;
+  left: 25%;
+}
+html body main .slide .slide-bar {
+  position: relative;
+  width: 25px;
+  height: 100%;
+}
+html body main .slide .slide-bar .slide-bar-icon {
+  position: absolute;
+  top: 50%;
+  left: 75%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  border-top: 7px solid black;
+  border-left: 7px solid black;
+  border-bottom: 7px solid transparent;
+  border-right: 7px solid transparent;
+  transition: 0.5s;
+}
+html body main .slide .slide-edit {
+  width: 125px;
+  height: 40px;
+  margin: 5px 10px;
+  line-height: 40px;
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+html body main .slide .slide-edit:hover {
+  background-color: rgb(148, 251, 255);
+}
+html body main .slide .slide-delete {
+  width: 125px;
+  height: 40px;
+  margin: 5px 10px;
+  line-height: 40px;
+  text-align: center;
+  border: 1px solid transparent;
+  border-radius: 20px;
+  transition: 0.5s;
+  cursor: pointer;
+}
+html body main .slide .slide-delete:hover {
+  background-color: rgb(255, 75, 75);
 }
 html body .postLayer {
   display: none;
@@ -481,6 +547,166 @@ html body .postLayer-content .form .form-bottom .form-bottom-postButtonContent i
   cursor: pointer;
 }
 html body .postLayer-content .form .form-bottom .form-bottom-postButtonContent .form-bottom-postButtonContent-text {
+  font-size: 1rem;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  line-height: 30px;
+  background-color: transparent;
+  border: none;
+}
+html body .postLayer-content-edit {
+  z-index: 101;
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  height: 60%;
+  background-color: white;
+  font-size: 0;
+}
+html body .postLayer-content-edit .category {
+  position: relative;
+  height: 100%;
+  width: 200px;
+  display: inline-block;
+}
+html body .postLayer-content-edit .category .category-content {
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: calc(100% - 80px);
+  padding: 40px 20px;
+  list-style: none;
+  border-right: 1px solid black;
+  overflow-y: auto;
+}
+html body .postLayer-content-edit .category .category-content li {
+  margin: 5px 0;
+}
+html body .postLayer-content-edit .category .category-content li input {
+  display: none;
+}
+html body .postLayer-content-edit .category .category-content li input:checked + label {
+  background-color: rgba(251, 177, 59, 0.3058823529);
+}
+html body .postLayer-content-edit .category .category-content li label {
+  box-sizing: border-box;
+  text-align: left;
+  font-size: 1.4rem;
+  padding: 10px 20px;
+  transition: 0.25s;
+  border-radius: 50px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+html body .postLayer-content-edit .category .category-content li label:hover {
+  border: 1px solid #fbb03b;
+}
+html body .postLayer-content-edit .form {
+  width: calc(100% - 200px);
+  height: 100%;
+  display: inline-block;
+}
+html body .postLayer-content-edit .form .form-top {
+  width: 100%;
+  height: calc(100% - 50px - 40px);
+}
+html body .postLayer-content-edit .form .form-top .form-top-top {
+  position: relative;
+  width: 100%;
+  height: 75px;
+}
+html body .postLayer-content-edit .form .form-top .form-top-top .form-top-top-closeButton {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  height: 50px;
+  aspect-ratio: 1/1;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  transition: 0.25s;
+}
+html body .postLayer-content-edit .form .form-top .form-top-top .form-top-top-closeButton:hover {
+  border: 1px solid #fbb03b;
+}
+html body .postLayer-content-edit .form .form-top .form-top-top .form-top-top-closeButton .form-top-top-closeButton-border-1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  width: 1px;
+  height: 80%;
+  background-color: black;
+}
+html body .postLayer-content-edit .form .form-top .form-top-top .form-top-top-closeButton .form-top-top-closeButton-border-2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(-45deg);
+  width: 1px;
+  height: 80%;
+  background-color: black;
+}
+html body .postLayer-content-edit .form .form-top .form-top-bottom {
+  width: 100%;
+  height: calc(100% - 75px);
+}
+html body .postLayer-content-edit .form .form-top .form-top-bottom .form-top-bottom-content {
+  position: relative;
+  height: 100%;
+  margin: 0 auto;
+  width: calc(100% - 20px - 50px);
+}
+html body .postLayer-content-edit .form .form-top .form-top-bottom .form-top-bottom-content textarea {
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border: none;
+  resize: none;
+  padding: 5px 5px;
+  font-size: 1.1rem;
+  border: 1px solid rgb(226, 226, 226);
+  border-radius: 10px;
+}
+html body .postLayer-content-edit .form .form-bottom {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin-bottom: 40px;
+}
+html body .postLayer-content-edit .form .form-bottom .form-bottom-postButtonContent {
+  box-sizing: border-box;
+  position: absolute;
+  right: 40px;
+  margin: 5px 0;
+  height: calc(100% - 10px);
+  padding: 5px 20px;
+  border-radius: 25px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: 0.25s;
+}
+html body .postLayer-content-edit .form .form-bottom .form-bottom-postButtonContent:hover {
+  border: 1px solid #fbb03b;
+}
+html body .postLayer-content-edit .form .form-bottom .form-bottom-postButtonContent input {
+  cursor: pointer;
+}
+html body .postLayer-content-edit .form .form-bottom .form-bottom-postButtonContent .form-bottom-postButtonContent-text {
   font-size: 1rem;
   height: 100%;
   width: 100%;
