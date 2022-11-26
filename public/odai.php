@@ -5,12 +5,25 @@ require_once '../classes/UserLogic.php';
 require_once '../dbconnect.php';
 require_once '../functions.php';
 
+$odai_id = $_GET['odai_id'];
+
 //ログインしているか判定
 $result = UserLogic::checkLogin();
 
 if ($result) {
     $login_user = $_SESSION['login_user'];
 }
+
+$pdo = connect();
+$sql = "SELECT * FROM `odais` WHERE id=$odai_id";
+$stmt = $pdo->query($sql);
+$odai = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$user_id = $odai['user_id'];
+
+$sql = "SELECT * FROM `users` WHERE id=$user_id";
+$stmt = $pdo->query($sql);
+$posted_user = $stmt->fetch(PDO::FETCH_ASSOC);
 
 ?>
 <!DOCTYPE html>
@@ -27,13 +40,6 @@ if ($result) {
 </head>
 
 <body>
-
-    <!-- <a href="mypage.php">マイページへ</a>
-  <a href="signup_form.php">登録はこちら</a>
-  <a href="login_form.php">ログインはこちら</a>
-  <a href="item.php">項目</a>
-  <a href="odai.php">投稿です</a> -->
-
 
     <header>
         <div class="header-top">
@@ -95,11 +101,11 @@ if ($result) {
         <div class="main-content">
             <div class="main-content-odai">
                 <div class="main-content-odai-text">
-                    <div class="main-content-odai-text-content">ここにお題を書きます</div>
+                    <div class="main-content-odai-text-content"><?php echo $odai['odai']; ?></div>
                 </div>
                 <div class="main-content-odai-meta">
-                    <div class="main-content-odai-meta-name">ここに名前を入れるよ</div>
-                    <div class="main-content-odai-meta-day">2022-10 18:16:51</div>
+                    <div class="main-content-odai-meta-name"><?php echo $posted_user['username']; ?></div>
+                    <div class="main-content-odai-meta-day"><?php echo $odai['post_date']; ?></div>
                 </div>
             </div>
             <div class="main-content-post">
