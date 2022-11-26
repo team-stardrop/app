@@ -31,6 +31,8 @@ if (!empty($_POST['submitButton'])) {
         $err_messages['odai'] = "記入されていません";
     } else if (empty($_POST['post_category'])) {
         $err_messages['category'] = "カテゴリーが選択されていません";
+    } else if ($login_user['point']<=0) {
+        $err_messages['point'] = "ポイントが足りません";
     } else {
         // お題を保存
         try {
@@ -128,7 +130,7 @@ echo $login_user['point'];
     </header>
     <!-- 投稿を表示 -->
     <main>
-
+        <!-- エラーメッセージ表示 -->
         <div class="error">
             <?php if (isset($_SESSION['post_err'])) : ?>
                 <script>
@@ -143,6 +145,11 @@ echo $login_user['point'];
             <?php if (isset($err_messages['category'])) : ?>
                 <script>
                     notification("<?php echo $err_messages['category']; ?>");
+                </script>
+            <?php endif; ?>
+            <?php if (isset($err_messages['point'])) : ?>
+                <script>
+                    notification("<?php echo $err_messages['point']; ?>");
                 </script>
             <?php endif; ?>
         </div>
