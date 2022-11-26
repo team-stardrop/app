@@ -32,7 +32,7 @@ if (!empty($_POST['submitButton'])) {
     } else if (empty($_POST['post_category'])) {
         $err_messages['category'] = "カテゴリーが選択されていません";
     } else if ($login_user['point']<20) {
-        $err_messages['point'] = "ポイントが足りません";
+        $err_messages['point'] = "お題投稿には20ポイント必要です";
     } else {
         // お題を保存
         try {
@@ -151,6 +151,10 @@ $post_array = $pdo->query($sql);
                 </script>
             <?php endif; ?>
         </div>
+
+        <!-- ポイント表示 -->
+
+        <p><?php echo $login_user['point']; ?></p>
 
         <div class="main-content">
             <div class="main-content-content">
