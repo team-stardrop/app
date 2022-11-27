@@ -41,13 +41,13 @@ function get_comment($comment_id) {
 }
 
 /**
- * コメントしたユーザー名を表示
+ * 回答したユーザー名を表示
  * @param string userのid
  * @return void
  */
-function print_username($commented_user_id) {
+function print_username($user_id) {
   $pdo = connect();
-  $sql = "SELECT username FROM `users` WHERE id=$commented_user_id";
+  $sql = "SELECT username FROM `users` WHERE id=$user_id";
   $stmt = $pdo->query($sql);
   $username = $stmt->fetch(PDO::FETCH_ASSOC);
   echo $username['username'];

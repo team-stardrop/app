@@ -49,9 +49,8 @@ if (!empty($_POST['post_answer_button'])) {
     }
 }
 
-$sql = "SELECT * FROM `answers`";
-$stmt = $pdo->query($sql);
-$answers = $stmt->fetch(PDO::FETCH_ASSOC);
+$sql = "SELECT * FROM `answers` WHERE odai_id=$odai_id";
+$answers = $pdo->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -146,7 +145,23 @@ $answers = $stmt->fetch(PDO::FETCH_ASSOC);
             </form>
 
             <!-- 回答を表示 -->
+            <?php foreach ($answers as $answer): ?>
             <div class="main-content-answer">
+                <div class="main-content-answer-top">
+                    <div class="main-content-answer-top-text"><?php echo $answer['answer']; ?></div>
+                </div>
+                <div class="main-content-answer-bottom">
+                    <div class="main-content-answer-bottom-content">
+                        <div class="main-content-answer-bottom-content-name"><?php print_username($answer['user_id']); ?></div>
+                        <div class="main-content-answer-bottom-content-day"><?php echo $answer['post_date']; ?></div>
+                        <div class="main-content-answer-bottom-content-likeImg"></div>
+                        <div class="main-content-answer-bottom-content-likeNum">10</div>
+                    </div>
+                </div>
+            </div>
+            <?php endforeach; ?>
+
+            <!-- <div class="main-content-answer">
                 <div class="main-content-answer-top">
                     <div class="main-content-answer-top-text">ここに回答を書いて行くよ！</div>
                 </div>
@@ -200,21 +215,7 @@ $answers = $stmt->fetch(PDO::FETCH_ASSOC);
                         <div class="main-content-answer-bottom-content-likeNum">10</div>
                     </div>
                 </div>
-            </div>
-
-            <div class="main-content-answer">
-                <div class="main-content-answer-top">
-                    <div class="main-content-answer-top-text">ここに回答を書いて行くよ！</div>
-                </div>
-                <div class="main-content-answer-bottom">
-                    <div class="main-content-answer-bottom-content">
-                        <div class="main-content-answer-bottom-content-name">名前</div>
-                        <div class="main-content-answer-bottom-content-day">2022-10 18:16:51</div>
-                        <div class="main-content-answer-bottom-content-likeImg"></div>
-                        <div class="main-content-answer-bottom-content-likeNum">10</div>
-                    </div>
-                </div>
-            </div>
+            </div> -->
 
         </div>
 
