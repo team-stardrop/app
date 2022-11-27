@@ -76,8 +76,10 @@ function print_favorite_count($comment_id) {
 
 function get_odai_posted_user($user_id) {
   $pdo = connect();
-  $sql = "SELECT id, username FROM `users` WHERE id = $user_id";
-  return $users = $pdo->query($sql);
+  $sql = "SELECT * FROM `users` WHERE id=$user_id";
+  $stmt = $pdo->query($sql);
+  $posted_user = $stmt->fetch(PDO::FETCH_ASSOC);
+  return $posted_user;
 }
 
 /**
@@ -91,4 +93,17 @@ function get_item_data($item_id) {
   $stmt = $pdo->query($sql);
   $item = $stmt->fetch(PDO::FETCH_ASSOC);
   return $item;
+}
+
+/**
+ * お題データを取得
+ * 
+ */
+
+function get_odai_data($odai_id) {
+  $pdo = connect();
+  $sql = "SELECT * FROM `odais` WHERE id=$odai_id";
+  $stmt = $pdo->query($sql);
+  $odai = $stmt->fetch(PDO::FETCH_ASSOC);
+  return $odai;
 }
