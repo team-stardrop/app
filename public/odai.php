@@ -19,11 +19,60 @@ $odai_id = $_GET['odai_id'];
 $odai =get_odai_data($_GET['odai_id']);
 //お題が存在しない時
 if(!$odai){
-    header('Location: http://localhost:80/oogiri-app/public/');
+    header('Location: http://localhost:80/oogiri-app/public/index.php');
 }
 $posted_user = get_odai_posted_user($odai['user_id']);
 
-//フォームを打ち込んだとき
+//投稿フォームを打ち込んだとき
+if (!empty($_POST['submitButton'])) {
+    //ログインしているか判定し，していなかったら投稿できない
+    if (!$result) {
+        $_SESSION['post_err'] = 'ユーザを登録してログインしてください';
+        header('Location: index.php');
+        return;
+    }
+    //投稿が空の場合
+    if (empty($_POST['odai'])) {
+        $err_messages['odai'] = "記入されていません";
+    } else if (empty($_POST['post_category'])) {
+        $err_messages['category'] = "カテゴリーが選択されていません";
+    } else if ($login_user['point']<20) {
+        $err_messages['point'] = "お題投稿には20ポイント必要です";
+    } else {
+        // お題を保存
+        try {
+            $stmt = $pdo->prepare("INSERT INTO `odais` (`odai`, `user_id`, `post_date` , `item_id`) VALUES (:odai, :user_id, :post_date, :item_id)");
+            $stmt->bindParam(':odai', $_POST['odai'], PDO::PARAM_STR);
+            $stmt->bindParam(':user_id', $_POST['user_id'], PDO::PARAM_STR);
+            $stmt->bindParam(':post_date', $_POST['post_date'], PDO::PARAM_STR);
+            $stmt->bindParam(':item_id', $_POST['post_category'], PDO::PARAM_STR);
+
+            $stmt->execute();
+
+            // ポイント処理
+            try{
+                $login_user['point'] = $login_user['point']-20;
+                $_SESSION['login_user'] = $login_user;
+                $stmt = $pdo->prepare("UPDATE `users` SET point = :point WHERE id = :user_id");
+                $stmt->bindParam(':point', $login_user['point'], PDO::PARAM_STR);
+                $stmt->bindParam(':user_id', $login_user['id'], PDO::PARAM_STR);
+                
+                $stmt->execute();
+        
+                header('Location: http://localhost:80/oogiri-app/public/odai.php?odai_id='.$odai_id.'');
+                exit;
+            } catch (PDOException $e){
+                echo $e->getMessage();
+            }
+
+            exit;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+}
+
+//編集フォームを打ち込んだとき
 if (!empty($_POST['post_answer_button'])) {
     //ログインしているか判定し，していなかったら投稿できない
     if (!$result) {
@@ -137,6 +186,7 @@ $answers = $pdo->query($sql);
     <!-- 投稿を表示 -->
     <main>
 
+        <!-- エラーメッセージ表示 -->
         <div class="error">
             <?php if (isset($_SESSION['post_err'])) : ?>
                 <script>
@@ -146,6 +196,16 @@ $answers = $pdo->query($sql);
             <?php if (isset($err_messages['odai'])) : ?>
                 <script>
                     notification("<?php echo $err_messages['odai']; ?>");
+                </script>
+            <?php endif; ?>
+            <?php if (isset($err_messages['category'])) : ?>
+                <script>
+                    notification("<?php echo $err_messages['category']; ?>");
+                </script>
+            <?php endif; ?>
+            <?php if (isset($err_messages['point'])) : ?>
+                <script>
+                    notification("<?php echo $err_messages['point']; ?>");
                 </script>
             <?php endif; ?>
         </div>
@@ -208,39 +268,39 @@ $answers = $pdo->query($sql);
     <form class="postLayer-content" method="POST">
         <div class="category">
             <ul class="category-content">
-                <li>
-                    <input type="radio" name="post-category" id="animal">
+            <li>
+                    <input type="radio" name="post_category" id="animal" value="1">
                     <label for="animal">動物</label>
                 </li>
                 <li>
-                    <input type="radio" name="post-category" id="sport">
+                    <input type="radio" name="post_category" id="sport" value="2">
                     <label for="sport">スポーツ</label>
                 </li>
-                <li><input type="radio" name="post-category" id="job">
+                <li><input type="radio" name="post_category" id="job" value="3">
                     <label for="job">仕事</label>
                 </li>
                 <li>
-                    <input type="radio" name="post-category" id="school">
+                    <input type="radio" name="post_category" id="school" value="4">
                     <label for="school">学校</label>
                 </li>
                 <li>
-                    <input type="radio" name="post-category" id="food">
+                    <input type="radio" name="post_category" id="food" value="5">
                     <label for="food">食べ物</label>
                 </li>
                 <li>
-                    <input type="radio" name="post-category" id="trip">
+                    <input type="radio" name="post_category" id="trip" value="6">
                     <label for="trip">旅行</label>
                 </li>
                 <li>
-                    <input type="radio" name="post-category" id="love">
+                    <input type="radio" name="post_category" id="love" value="7">
                     <label for="love">恋愛</label>
                 </li>
                 <li>
-                    <input type="radio" name="post-category" id="event">
+                    <input type="radio" name="post_category" id="event" value="8">
                     <label for="event">行事</label>
                 </li>
                 <li>
-                    <input type="radio" name="post-category" id="other">
+                    <input type="radio" name="post_category" id="other" value="9">
                     <label for="other">その他</label>
                 </li>
             </ul>

@@ -453,7 +453,7 @@ if (!empty($_POST['submitButton'])) {
     <form class="postLayer-content" method="POST">
         <div class="category">
             <ul class="category-content">
-            <li>
+                <li>
                     <input type="radio" name="post_category" id="animal" value="1">
                     <label for="animal">動物</label>
                 </li>
