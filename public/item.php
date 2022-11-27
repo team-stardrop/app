@@ -130,6 +130,31 @@ $post_array = $pdo->query($sql);
     </header>
     <!-- 投稿を表示 -->
     <main>
+        <!-- エラーメッセージ表示 -->
+        <div class="error">
+            <?php if (isset($_SESSION['post_err'])) : ?>
+                <script>
+                    notification("<?php echo $_SESSION['post_err']; ?>");
+                </script>
+            <?php endif; ?>
+            <?php if (isset($err_messages['odai'])) : ?>
+                <script>
+                    notification("<?php echo $err_messages['odai']; ?>");
+                </script>
+            <?php endif; ?>
+            <?php if (isset($err_messages['category'])) : ?>
+                <script>
+                    notification("<?php echo $err_messages['category']; ?>");
+                </script>
+            <?php endif; ?>
+            <?php if (isset($err_messages['point'])) : ?>
+                <script>
+                    notification("<?php echo $err_messages['point']; ?>");
+                </script>
+            <?php endif; ?>
+        </div>
+        
+        <!-- お題表示 -->
         <div class="main-header">
             <div class="main-header-text">
                 <h2><?php echo $item['item_name']; ?></h2>
