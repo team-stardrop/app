@@ -124,6 +124,7 @@ $answers = $pdo->query($sql);
         </div>
 
         <div class="main-content">
+
             <!-- お題表示 -->
             <div class="main-content-odai">
                 <div class="main-content-odai-text">
@@ -161,62 +162,6 @@ $answers = $pdo->query($sql);
             </div>
             <?php endforeach; ?>
 
-            <!-- <div class="main-content-answer">
-                <div class="main-content-answer-top">
-                    <div class="main-content-answer-top-text">ここに回答を書いて行くよ！</div>
-                </div>
-                <div class="main-content-answer-bottom">
-                    <div class="main-content-answer-bottom-content">
-                        <div class="main-content-answer-bottom-content-name">名前</div>
-                        <div class="main-content-answer-bottom-content-day">2022-10 18:16:51</div>
-                        <div class="main-content-answer-bottom-content-likeImg"></div>
-                        <div class="main-content-answer-bottom-content-likeNum">10</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="main-content-answer">
-                <div class="main-content-answer-top">
-                    <div class="main-content-answer-top-text">ここに回答を書いて行くよ！</div>
-                </div>
-                <div class="main-content-answer-bottom">
-                    <div class="main-content-answer-bottom-content">
-                        <div class="main-content-answer-bottom-content-name">名前</div>
-                        <div class="main-content-answer-bottom-content-day">2022-10 18:16:51</div>
-                        <div class="main-content-answer-bottom-content-likeImg"></div>
-                        <div class="main-content-answer-bottom-content-likeNum">10</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="main-content-answer">
-                <div class="main-content-answer-top">
-                    <div class="main-content-answer-top-text">ここに回答を書いて行くよ！</div>
-                </div>
-                <div class="main-content-answer-bottom">
-                    <div class="main-content-answer-bottom-content">
-                        <div class="main-content-answer-bottom-content-name">名前</div>
-                        <div class="main-content-answer-bottom-content-day">2022-10 18:16:51</div>
-                        <div class="main-content-answer-bottom-content-likeImg"></div>
-                        <div class="main-content-answer-bottom-content-likeNum">10</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="main-content-answer">
-                <div class="main-content-answer-top">
-                    <div class="main-content-answer-top-text">ここに回答を書いて行くよ！</div>
-                </div>
-                <div class="main-content-answer-bottom">
-                    <div class="main-content-answer-bottom-content">
-                        <div class="main-content-answer-bottom-content-name">名前</div>
-                        <div class="main-content-answer-bottom-content-day">2022-10 18:16:51</div>
-                        <div class="main-content-answer-bottom-content-likeImg"></div>
-                        <div class="main-content-answer-bottom-content-likeNum">10</div>
-                    </div>
-                </div>
-            </div> -->
-
         </div>
 
         <div class="slide">
@@ -224,7 +169,7 @@ $answers = $pdo->query($sql);
                 <div class="slide-bar-icon"></div>
             </div>
             <a class="slide-edit">編集する</a>
-            <a class="slide-delete">削除する</a>
+            <a class="slide-delete" href="delete.php?id=<?php echo $odai['id']; ?>">削除する</a>
         </div>
         <!-- ここに書くよ！ -->
     </main>
