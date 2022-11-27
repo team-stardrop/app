@@ -130,13 +130,13 @@ $post_array = $pdo->query($sql);
                 </div>
                 <div class="main-content-content-posts">
                     <div class="main-content-content-posts-area">
-                        <?php foreach ($post_array as $post) :
-                            $users = get_odai_posted_user($post['user_id']);
+                        <?php foreach ($post_array as $odai) :
+                            $users = get_odai_posted_user($odai['user_id']);
                         ?>
-                            <a href="odai.php" class="main-content-content-posts-area-post">
+                            <a href="odai.php?odai_id=<?php echo $odai['id']; ?>" class="main-content-content-posts-area-post">
                                 <div class="main-content-content-posts-area-post-top">
                                     <div class="main-content-content-posts-area-post-content">
-                                        <div class="main-content-content-posts-area-post-content-text"><?php echo $post['odai'] ?></div>
+                                        <div class="main-content-content-posts-area-post-content-text"><?php echo $odai['odai'] ?></div>
                                     </div>
                                 </div>
                             </a>
