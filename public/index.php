@@ -152,10 +152,6 @@ $post_array = $pdo->query($sql);
             <?php endif; ?>
         </div>
 
-        <!-- ポイント表示 -->
-
-        <p><?php echo $login_user['point']; ?></p>
-
         <div class="main-content">
             <div class="main-content-content">
                 <div class="main-content-content-name">
@@ -168,7 +164,13 @@ $post_array = $pdo->query($sql);
                             <div class="main-content-content-name-text-white-text">着</div>
                         </div>
                         <div class="main-content-content-name-text-white">
-                            <div class="main-content-content-name-text-white-text">順</div>
+                            <div class="main-content-content-name-text-white-text">の</div>
+                        </div>
+                        <div class="main-content-content-name-text-white">
+                            <div class="main-content-content-name-text-white-text">お</div>
+                        </div>
+                        <div class="main-content-content-name-text-white">
+                            <div class="main-content-content-name-text-white-text">題</div>
                         </div>
                     </div>
                 </div>
@@ -192,7 +194,16 @@ $post_array = $pdo->query($sql);
                     <div class="main-content-content-name-border"></div>
                     <div class="main-content-content-name-text">
                         <div class="main-content-content-name-text-orange">
-                            <div class="main-content-content-name-text-orange-text">お</div>
+                            <div class="main-content-content-name-text-orange-text">人</div>
+                        </div>
+                        <div class="main-content-content-name-text-white">
+                            <div class="main-content-content-name-text-white-text">気</div>
+                        </div>
+                        <div class="main-content-content-name-text-white">
+                            <div class="main-content-content-name-text-white-text">の</div>
+                        </div>
+                        <div class="main-content-content-name-text-white">
+                            <div class="main-content-content-name-text-white-text">お</div>
                         </div>
                         <div class="main-content-content-name-text-white">
                             <div class="main-content-content-name-text-white-text">題</div>
