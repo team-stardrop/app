@@ -83,6 +83,9 @@ function get_odai_posted_user($user_id) {
   $sql = "SELECT * FROM `users` WHERE id=$user_id";
   $stmt = $pdo->query($sql);
   $posted_user = $stmt->fetch(PDO::FETCH_ASSOC);
+  if(empty($posted_user['username'])){
+    $posted_user['username'] = '名無しユーザー';
+  }
   return $posted_user;
 }
 
