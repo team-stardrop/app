@@ -110,6 +110,7 @@ $answers = $pdo->query($sql);
             </div>
         </div>
     </header>
+
     <!-- 投稿を表示 -->
     <main>
 
@@ -166,7 +167,9 @@ $answers = $pdo->query($sql);
             <?php endforeach; ?>
 
         </div>
-
+        
+        <!-- 編集と削除 -->
+        <?php if($odai['user_id']==$login_user['id']): ?>
         <div class="slide">
             <div class="slide-bar">
                 <div class="slide-bar-icon"></div>
@@ -174,7 +177,7 @@ $answers = $pdo->query($sql);
             <a class="slide-edit">編集する</a>
             <a class="slide-delete" href="delete.php?id=<?php echo $odai['id']; ?>">削除する</a>
         </div>
-        <!-- ここに書くよ！ -->
+        <?php endif; ?>
     </main>
 
     <div class="postLayer"></div>
@@ -311,6 +314,4 @@ $answers = $pdo->query($sql);
 </body>
 
 <script src="../script/index/index.js"></script>
-
-
 </html>

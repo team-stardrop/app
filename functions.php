@@ -50,7 +50,11 @@ function print_username($user_id) {
   $sql = "SELECT username FROM `users` WHERE id=$user_id";
   $stmt = $pdo->query($sql);
   $username = $stmt->fetch(PDO::FETCH_ASSOC);
-  echo $username['username'];
+  if(empty($username)){
+    echo '名無しユーザー';
+  } else {
+    echo $username['username'];
+  }
 }
 
 /**
