@@ -43,7 +43,7 @@ if (!empty($_POST['post_answer_button'])) {
             $stmt->bindParam(':post_date', $_POST['post_date'], PDO::PARAM_STR);
 
             $stmt->execute();
-            header('Location: http://localhost:80/oogiri-app/public/odai.php?odai_id='.$odai_id.'');
+            header('Location: odai.php?odai_id='.$odai_id.'');
 
             exit;
         } catch (PDOException $e) {
@@ -51,6 +51,28 @@ if (!empty($_POST['post_answer_button'])) {
         }
     }
 }
+
+//編集が完了したとき
+if(!empty($_POST['updateButton'])){
+    //投稿が空の場合
+    if(empty($_POST['odai'])) {
+      $err_messages['odai'] = "記入されていません";
+    } else {
+      try{
+        $stmt = $pdo->prepare("UPDATE `odais` SET odai = :odai, post_date = :post_date WHERE id = :odai_id");
+        $stmt->bindParam(':odai_id', $_POST['odai_id'], PDO::PARAM_STR);
+        $stmt->bindParam(':odai', $_POST['odai'], PDO::PARAM_STR);
+        $stmt->bindParam(':post_date', $_POST['post_date'], PDO::PARAM_STR);
+
+        $stmt->execute();
+  
+        header('Location: http://localhost:80/oogiri-app/public/odai.php?odai_id='.$odai_id.'');
+        exit;
+      } catch (PDOException $e){
+        echo $e->getMessage();
+      }
+    }
+  }
 
 $sql = "SELECT * FROM `answers` WHERE odai_id=$odai_id";
 $answers = $pdo->query($sql);
@@ -247,6 +269,7 @@ $answers = $pdo->query($sql);
         </div>
     </form>
 
+    <!-- 編集モーダル -->
     <form class="postLayer-content-edit" method="POST">
         <div class="category">
             <ul class="category-content">
@@ -298,13 +321,14 @@ $answers = $pdo->query($sql);
                 </div>
                 <div class="form-top-bottom">
                     <div class="form-top-bottom-content">
-                        <textarea placeholder="お題を記入．．．" name="odai"></textarea>
+                        <textarea placeholder="お題を記入．．．" name="odai"><?php echo $odai['odai']; ?></textarea>
                     </div>
                 </div>
             </div>
             <div class="form-bottom">
                 <a class="form-bottom-postButtonContent">
-                    <input class="form-bottom-postButtonContent-text" type="submit" value="投稿する" name="submitButton">
+                    <input class="form-bottom-postButtonContent-text" type="submit" value="編集完了" name="updateButton">
+                    <input type="hidden" name="odai_id" value="<?php echo $odai['id'] ?>">
                     <input type="hidden" name="user_id" value="<?php echo $login_user['id'] ?>">
                     <input type="hidden" name="post_date" value="<?php echo date("Y-m-d H:i:s") ?>">
                 </a>

@@ -39,11 +39,11 @@ function postLayer_close() {
 
 
 $(".slide-edit").click(function() {
-    postLayer_open();
+    postLayer_edit_open();
 });
 
 $(".form-top-top-closeButton-editver").click(function() {
-    postLayer_close();
+    postLayer_edit_close();
 });
 
 
