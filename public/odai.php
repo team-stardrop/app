@@ -17,6 +17,9 @@ if ($result) {
 $pdo = connect();
 $odai_id = $_GET['odai_id'];
 $odai =get_odai_data($_GET['odai_id']);
+if(!$odai){
+    header('Location: http://localhost:80/oogiri-app/public/');
+}
 $posted_user = get_odai_posted_user($odai['user_id']);
 
 //フォームを打ち込んだとき
