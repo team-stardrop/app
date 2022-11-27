@@ -5,7 +5,7 @@ require_once '../classes/UserLogic.php';
 require_once '../dbconnect.php';
 require_once '../functions.php';
 
-$odai_id = $_GET['odai_id'];
+date_default_timezone_set("Asia/Tokyo");
 
 //ログインしているか判定
 $result = UserLogic::checkLogin();
@@ -15,16 +15,45 @@ if ($result) {
 }
 
 $pdo = connect();
-$sql = "SELECT * FROM `odais` WHERE id=$odai_id";
-$stmt = $pdo->query($sql);
-$odai = $stmt->fetch(PDO::FETCH_ASSOC);
+$odai_id = $_GET['odai_id'];
+$odai =get_odai_data($_GET['odai_id']);
+if(!$odai){
+    header('Location: http://localhost:80/oogiri-app/public/');
+}
+$posted_user = get_odai_posted_user($odai['user_id']);
 
-$user_id = $odai['user_id'];
+//フォームを打ち込んだとき
+if (!empty($_POST['post_answer_button'])) {
+    //ログインしているか判定し，していなかったら投稿できない
+    if (!$result) {
+        $_SESSION['post_err'] = 'ユーザを登録してログインしてください';
+        header('Location: odai.php');
+        return;
+    }
+    //投稿が空の場合
+    if (empty($_POST['answer'])) {
+        $err_messages['answer'] = "記入されていません";
+    } else {
+        // お題を保存
+        try {
+            $stmt = $pdo->prepare("INSERT INTO `answers` (`answer`, `odai_id`, `user_id`, `post_date`) VALUES (:answer, :odai_id, :user_id, :post_date)");
+            $stmt->bindParam(':answer', $_POST['answer'], PDO::PARAM_STR);
+            $stmt->bindParam(':odai_id', $odai['id'], PDO::PARAM_STR);
+            $stmt->bindParam(':user_id', $_POST['user_id'], PDO::PARAM_STR);
+            $stmt->bindParam(':post_date', $_POST['post_date'], PDO::PARAM_STR);
 
-$sql = "SELECT * FROM `users` WHERE id=$user_id";
-$stmt = $pdo->query($sql);
-$posted_user = $stmt->fetch(PDO::FETCH_ASSOC);
+            $stmt->execute();
+            header('Location: http://localhost:80/oogiri-app/public/odai.php?odai_id='.$odai_id.'');
 
+            exit;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+}
+
+$sql = "SELECT * FROM `answers` WHERE odai_id=$odai_id";
+$answers = $pdo->query($sql);
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -81,6 +110,7 @@ $posted_user = $stmt->fetch(PDO::FETCH_ASSOC);
             </div>
         </div>
     </header>
+
     <!-- 投稿を表示 -->
     <main>
 
@@ -97,8 +127,9 @@ $posted_user = $stmt->fetch(PDO::FETCH_ASSOC);
             <?php endif; ?>
         </div>
 
-        <!-- ここから -->
         <div class="main-content">
+
+            <!-- お題表示 -->
             <div class="main-content-odai">
                 <div class="main-content-odai-text">
                     <div class="main-content-odai-text-content"><?php echo $odai['odai']; ?></div>
@@ -108,90 +139,45 @@ $posted_user = $stmt->fetch(PDO::FETCH_ASSOC);
                     <div class="main-content-odai-meta-day"><?php echo $odai['post_date']; ?></div>
                 </div>
             </div>
-            <form class="main-content-post">
-                <input type="text" class="main-content-post-input" placeholder="回答をする">
-                <input type="submit" class="main-content-post-send"></input>
+
+            <!-- 回答投稿フォーム -->
+            <form class="main-content-post" method="POST">
+                <input type="text" class="main-content-post-input" name="answer" placeholder="回答を記入．．．">
+                <input type="submit" class="main-content-post-send" name="post_answer_button" value="回答"></input>
+                <input type="hidden" name="user_id" value="<?php echo $login_user['id']; ?>">
+                <input type="hidden" name="post_date" value="<?php echo date("Y-m-d H:i:s"); ?>">
+                <input type="hidden" name="odai_id" value="<?php echo $odai_id; ?>">
             </form>
-            <div class="main-content-answer">
-                <div class="main-content-answer-top">
-                    <div class="main-content-answer-top-text">ここに回答を書いて行くよ！</div>
-                </div>
-                <div class="main-content-answer-bottom">
-                    <div class="main-content-answer-bottom-content">
-                        <div class="main-content-answer-bottom-content-name">名前</div>
-                        <div class="main-content-answer-bottom-content-day">2022-10 18:16:51</div>
-                        <div class="main-content-answer-bottom-content-likeImg"></div>
-                        <div class="main-content-answer-bottom-content-likeNum">10</div>
-                    </div>
-                </div>
-            </div>
 
+            <!-- 回答を表示 -->
+            <?php foreach ($answers as $answer): ?>
             <div class="main-content-answer">
                 <div class="main-content-answer-top">
-                    <div class="main-content-answer-top-text">ここに回答を書いて行くよ！</div>
+                    <div class="main-content-answer-top-text"><?php echo $answer['answer']; ?></div>
                 </div>
                 <div class="main-content-answer-bottom">
                     <div class="main-content-answer-bottom-content">
-                        <div class="main-content-answer-bottom-content-name">名前</div>
-                        <div class="main-content-answer-bottom-content-day">2022-10 18:16:51</div>
+                        <div class="main-content-answer-bottom-content-name"><?php print_username($answer['user_id']); ?></div>
+                        <div class="main-content-answer-bottom-content-day"><?php echo $answer['post_date']; ?></div>
                         <div class="main-content-answer-bottom-content-likeImg"></div>
                         <div class="main-content-answer-bottom-content-likeNum">10</div>
                     </div>
                 </div>
             </div>
-
-            <div class="main-content-answer">
-                <div class="main-content-answer-top">
-                    <div class="main-content-answer-top-text">ここに回答を書いて行くよ！</div>
-                </div>
-                <div class="main-content-answer-bottom">
-                    <div class="main-content-answer-bottom-content">
-                        <div class="main-content-answer-bottom-content-name">名前</div>
-                        <div class="main-content-answer-bottom-content-day">2022-10 18:16:51</div>
-                        <div class="main-content-answer-bottom-content-likeImg"></div>
-                        <div class="main-content-answer-bottom-content-likeNum">10</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="main-content-answer">
-                <div class="main-content-answer-top">
-                    <div class="main-content-answer-top-text">ここに回答を書いて行くよ！</div>
-                </div>
-                <div class="main-content-answer-bottom">
-                    <div class="main-content-answer-bottom-content">
-                        <div class="main-content-answer-bottom-content-name">名前</div>
-                        <div class="main-content-answer-bottom-content-day">2022-10 18:16:51</div>
-                        <div class="main-content-answer-bottom-content-likeImg"></div>
-                        <div class="main-content-answer-bottom-content-likeNum">10</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="main-content-answer">
-                <div class="main-content-answer-top">
-                    <div class="main-content-answer-top-text">ここに回答を書いて行くよ！</div>
-                </div>
-                <div class="main-content-answer-bottom">
-                    <div class="main-content-answer-bottom-content">
-                        <div class="main-content-answer-bottom-content-name">名前</div>
-                        <div class="main-content-answer-bottom-content-day">2022-10 18:16:51</div>
-                        <div class="main-content-answer-bottom-content-likeImg"></div>
-                        <div class="main-content-answer-bottom-content-likeNum">10</div>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach; ?>
 
         </div>
-
+        
+        <!-- 編集と削除 -->
+        <?php if($odai['user_id']==$login_user['id']): ?>
         <div class="slide">
             <div class="slide-bar">
                 <div class="slide-bar-icon"></div>
             </div>
             <a class="slide-edit">編集する</a>
-            <a class="slide-delete">削除する</a>
+            <a class="slide-delete" href="delete.php?id=<?php echo $odai['id']; ?>">削除する</a>
         </div>
-        <!-- ここに書くよ！ -->
+        <?php endif; ?>
     </main>
 
     <div class="postLayer"></div>
@@ -328,6 +314,4 @@ $posted_user = $stmt->fetch(PDO::FETCH_ASSOC);
 </body>
 
 <script src="../script/index/index.js"></script>
-
-
 </html>
