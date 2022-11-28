@@ -195,7 +195,7 @@ html {
                 position: relative;
                 position: fixed;
                 z-index: 2;
-                width: 100%;
+                width: calc(100% - 75px);
                 height: 50px;
                 background-color: rgba(255, 255, 255);
                 border-bottom: 2px solid #fbb03b;
@@ -206,6 +206,27 @@ html {
                     left: 40px;
                     transform: translateY(-50%);
                     font-size: 1.2rem;
+                }
+                .main-header-coin {
+                    position: absolute;
+                    display: flex;
+                    top: 50%;
+                    right: 40px;
+                    transform: translateY(-50%);
+                    height: 50px;
+                    .main-header-coin-icon {
+                        height: 100%;
+                        aspect-ratio: 1 / 1;
+                        background-image: url(../../images/coin.svg);
+                        background-size: 70%;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                    }
+                    .main-header-coin-num {
+                        height: 50px;
+                        line-height: 50px;
+                        font-size: 1.4rem;
+                    }
                 }
             }
             .main-content {

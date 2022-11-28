@@ -160,6 +160,10 @@ $post_array = $pdo->query($sql);
             <div class="main-header-text">
                 <h2><?php echo $item['item_name']; ?></h2>
             </div>
+            <div class="main-header-coin">
+                <div class="main-header-coin-icon"></div>
+                <div class="main-header-coin-num">1234</div>
+            </div>
         </div>
         <div class="main-content">
             <div class="main-content-content">
