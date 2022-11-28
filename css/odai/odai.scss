@@ -310,11 +310,13 @@ html {
                                 margin: 0 10px;
                             }
                             .main-content-answer-bottom-content-likeImg {
+                                display: inline-block;
                                 background-image: url(../../images/06_0.svg);
                                 background-repeat: no-repeat;
                                 background-position: center;
                                 height: 25px;
                                 aspect-ratio: 1 / 1;
+                                cursor: pointer;
                             }
                             .main-content-answer-bottom-content-likeNum {
                                 font-size: 1rem;
