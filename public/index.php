@@ -59,13 +59,14 @@ if (!empty($_POST['submitButton'])) {
             } catch (PDOException $e){
                 echo $e->getMessage();
             }
-
-            exit;
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
     }
 }
+
+$sql = "SELECT * FROM `odais` ORDER BY id DESC";
+$arrival_order_post_array = $pdo->query($sql);
 
 $sql = "SELECT * FROM `odais`";
 $post_array = $pdo->query($sql);
@@ -186,7 +187,7 @@ $post_array = $pdo->query($sql);
                 </div>
                 <div class="main-content-content-posts">
                     <div class="main-content-content-posts-area">
-                        <?php foreach ($post_array as $odai) :?>
+                        <?php foreach ($arrival_order_post_array as $odai) :?>
                             <a href="odai.php?odai_id=<?php echo $odai['id']; ?>" class="main-content-content-posts-area-post">
                                 <div class="main-content-content-posts-area-post-top">
                                     <div class="main-content-content-posts-area-post-content">
@@ -222,34 +223,15 @@ $post_array = $pdo->query($sql);
                 </div>
                 <div class="main-content-content-posts">
                     <div class="main-content-content-posts-area">
-                        <a href="odai.php" class="main-content-content-posts-area-post">
-                            <div class="main-content-content-posts-area-post-top">
-                                <div class="main-content-content-posts-area-post-content">
-                                    <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
+                        <?php foreach ($post_array as $odai) :?>
+                            <a href="odai.php?odai_id=<?php echo $odai['id']; ?>" class="main-content-content-posts-area-post">
+                                <div class="main-content-content-posts-area-post-top">
+                                    <div class="main-content-content-posts-area-post-content">
+                                        <div class="main-content-content-posts-area-post-content-text"><?php echo $odai['odai'] ?></div>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                        <a href="odai.php" class="main-content-content-posts-area-post">
-                            <div class="main-content-content-posts-area-post-top">
-                                <div class="main-content-content-posts-area-post-content">
-                                    <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="odai.php" class="main-content-content-posts-area-post">
-                            <div class="main-content-content-posts-area-post-top">
-                                <div class="main-content-content-posts-area-post-content">
-                                    <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="odai.php" class="main-content-content-posts-area-post">
-                            <div class="main-content-content-posts-area-post-top">
-                                <div class="main-content-content-posts-area-post-content">
-                                    <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
-                                </div>
-                            </div>
-                        </a>
+                            </a>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
