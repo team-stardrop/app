@@ -92,13 +92,16 @@ html {
                             top: 0;
                             left: calc(100% + ((75px - 50px)/2) + 10px);
                             background-color: white;
-                            box-shadow: 4px 4px 10px gray;
+                            // box-shadow: 4px 4px 10px gray;
+                            border-radius: 10px;
+                            border: 2px solid #fbb03b;
                             .header-top-content-item-field-title {
                                 box-sizing: border-box;
                                 font-size: 1.2rem;
                                 width: 100%;
                                 padding-left: 10px;
                                 padding-bottom: 25px;
+                                font-weight: bold;
                             }
                             ul {
                                 margin: 0px 40px 20px 40px;
@@ -115,6 +118,11 @@ html {
                                         height: 100%;
                                         cursor: pointer;
                                         margin: 0;
+                                        color: black;
+                                        text-decoration: none;
+                                        &:visited {
+                                            color: black;
+                                        }
                                         &:hover {
                                             border-bottom: 1px solid orange;
                                             transition: .25s;
