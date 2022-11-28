@@ -314,6 +314,7 @@ html body main .main-content .main-content-answer .main-content-answer-bottom .m
   margin: 0 10px;
 }
 html body main .main-content .main-content-answer .main-content-answer-bottom .main-content-answer-bottom-content .main-content-answer-bottom-content-likeImg {
+  display: inline-block;
   background-image: url(../../images/06_0.svg);
   background-repeat: no-repeat;
   background-position: center;
