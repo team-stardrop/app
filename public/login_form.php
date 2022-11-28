@@ -38,6 +38,9 @@ session_destroy();
             <?php if (isset($err['msg'])) : ?>
                 <p><?php echo $err['msg']; ?></p>
             <?php endif; ?>
+            <?php if (isset($err['liked_user'])) : ?>
+                <p><?php echo $err['liked_user']; ?></p>
+            <?php endif; ?>
         </div>
         <!-- 登録フォーム -->
         <div class="container-login">

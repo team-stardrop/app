@@ -129,7 +129,6 @@ $answers = $pdo->query($sql);
 
 //いいね機能
 if (isset($_REQUEST['like']) && isset($login_user['id'])) {
-
     //過去にいいね済みであるか確認
     $my_like_cnt = check_favorite($_REQUEST['like'], $login_user['id']);
   
@@ -151,6 +150,10 @@ if (isset($_REQUEST['like']) && isset($login_user['id'])) {
     header("Location: odai.php?odai_id=$odai_id");
     exit();
   }
+} else if(isset($_REQUEST['like']) && !isset($login_user['id'])) {
+    $_SESSION['liked_user'] = 'いいねするにはログインしてください';
+    header("Location: login_form.php");
+    exit();
 }
 
 ?>
