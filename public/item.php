@@ -176,6 +176,7 @@ $answer_count_order_post = $pdo->query($sql);
             </div>
             <?php endif;?>
         </div>
+        
         <div class="main-content">
             <div class="main-content-content">
                 <div class="main-content-content-name">

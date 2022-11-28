@@ -72,12 +72,12 @@ if (!empty($_POST['submitButton'])) {
     }
 }
 
-//編集フォームを打ち込んだとき
+//回答フォームを打ち込んだとき
 if (!empty($_POST['post_answer_button'])) {
     //ログインしているか判定し，していなかったら投稿できない
     if (!$result) {
         $_SESSION['post_err'] = 'ユーザを登録してログインしてください';
-        header('Location: odai.php');
+        header('Location: odai.php?odai_id='.$odai_id.'');
         return;
     }
     //投稿が空の場合
