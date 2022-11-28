@@ -65,11 +65,13 @@ if (!empty($_POST['submitButton'])) {
     }
 }
 
+// 新着順でお題を抽出
 $sql = "SELECT * FROM `odais` ORDER BY id DESC";
 $arrival_order_post_array = $pdo->query($sql);
 
-$sql = "SELECT * FROM `odais`";
-$post_array = $pdo->query($sql);
+// 回答の数が多い順でodai_idとその数を抽出
+$sql = "SELECT odai_id,COUNT(odai_id) FROM answers GROUP BY odai_id ORDER BY COUNT(odai_id) DESC";
+$answer_count_order_post = $pdo->query($sql);
 
 ?>
 <!DOCTYPE html>
@@ -223,11 +225,16 @@ $post_array = $pdo->query($sql);
                 </div>
                 <div class="main-content-content-posts">
                     <div class="main-content-content-posts-area">
-                        <?php foreach ($post_array as $odai) :?>
+                        <?php foreach ($answer_count_order_post as $odai_data) :
+                            $odai_id = $odai_data['odai_id'];
+                            $sql = "SELECT * FROM `odais` WHERE id = $odai_id";
+                            $stmt = $pdo->query($sql);
+                            $odai = $stmt->fetch(PDO::FETCH_ASSOC);
+                            ?>
                             <a href="odai.php?odai_id=<?php echo $odai['id']; ?>" class="main-content-content-posts-area-post">
                                 <div class="main-content-content-posts-area-post-top">
                                     <div class="main-content-content-posts-area-post-content">
-                                        <div class="main-content-content-posts-area-post-content-text"><?php echo $odai['odai'] ?></div>
+                                        <div class="main-content-content-posts-area-post-content-text"><?php echo $odai['odai']; ?></div>
                                     </div>
                                 </div>
                             </a>
