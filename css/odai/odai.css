@@ -322,6 +322,15 @@ html body main .main-content .main-content-answer .main-content-answer-bottom .m
   aspect-ratio: 1/1;
   cursor: pointer;
 }
+html body main .main-content .main-content-answer .main-content-answer-bottom .main-content-answer-bottom-content .main-content-answer-bottom-content-clickedLikeImg {
+  display: inline-block;
+  background-image: url(../../images/06_1.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 25px;
+  aspect-ratio: 1/1;
+  cursor: pointer;
+}
 html body main .main-content .main-content-answer .main-content-answer-bottom .main-content-answer-bottom-content .main-content-answer-bottom-content-likeNum {
   font-size: 1rem;
 }
