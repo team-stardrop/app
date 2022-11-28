@@ -4,7 +4,7 @@
 }
 
 html {
-    // overflow: hidden;
+    overflow: hidden;
     cursor: default;
     body {
         position: relative;
@@ -171,7 +171,6 @@ html {
             width: calc(100% - 75px);
             height: 100%;
             margin-left: 75px;
-            overflow: hidden;
             overflow-y: auto;
             .error {
                 position: absolute;
@@ -191,197 +190,181 @@ html {
                     }
                 }
             }
-            // ここから
-            .main-content {
+            .main-header {
                 box-sizing: border-box;
+                position: relative;
+                position: fixed;
+                z-index: 2;
                 width: 100%;
-                height: 100%;
-                min-width: 1000px;
-                max-width: 1500px;
-                padding: 20px 220px;
-                overflow-y: auto;
-                margin: auto;
-                .main-content-odai {
-                    position: relative;
+                height: 50px;
+                background-color: rgba(255, 255, 255);
+                border-bottom: 2px solid #fbb03b;
+                // box-shadow: 0px 2px 2px rgb(221, 221, 221);
+                .main-header-text {
+                    position: absolute;
+                    top: 50%;
+                    left: 40px;
+                    transform: translateY(-50%);
+                    font-size: 1.2rem;
+                }
+            }
+            .main-content {
+                position: absolute;
+                top: 100px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 85%;
+                .main-content-content {
                     width: 100%;
-                    aspect-ratio: 1593 / 502;
-                    background-image: url(../../images/textbox_02.svg);
-                    background-repeat: no-repeat;
-                    background-position: center;
-                    .main-content-odai-text {
-                        position: absolute;
-                        top: 40%;
-                        left: 51%;
-                        transform: translate(-50%, -50%);
-                        width: 94%;
-                        height: 73%;
-                        resize: none;
-                        .main-content-odai-text-content {
+                    margin-bottom: 40px;
+                    .main-content-content-name {
+                        position: relative;
+                        width: 100%;
+                        font-size: 0;
+                        margin-bottom: 20px;
+                        .main-content-content-name-border {
+                            z-index: -1;
                             position: absolute;
                             top: 50%;
                             left: 50%;
                             transform: translate(-50%, -50%);
-                            font-size: 2rem;
-                        }
-                    }
-                    .main-content-odai-meta {
-                        box-sizing: border-box;
-                        display: flex;
-                        justify-content: space-between;
-                        position: absolute;
-                        bottom: 0;
-                        left: 0;
-                        width: 88%;
-                        height: 25px;
-                        padding: 0 20px;
-                    }
-                }
-                .main-content-post {
-                    position: relative;
-                    width: 100%;
-                    height: 50px;
-                    margin-top: 20px;
-                    border-bottom: 1px solid black;
-                    border-left: 1px solid black;
-                    .main-content-post-input {
-                        box-sizing: border-box;
-                        width: 100%;
-                        height: 100%;
-                        border: none;
-                        padding-left: 10px;
-                        padding-right: 60px;
-                    }
-                    .main-content-post-send {
-                        position: absolute;
-                        top: 50%;
-                        right: 0;
-                        transform: translateY(-50%);
-                        width: 50px;
-                        height: 25px;
-                        cursor: pointer;
-                        border: none;
-                        background-color: transparent;
-                        border: 1px solid #fbb03b;
-                        border-radius: 20px;
-                        transition: .5s;
-                        &:hover {
-                            background-color: #fbb13b4e;
-                        }
-                    }
-                }
-                .main-content-answer {
-                    position: relative;
-                    width: 100%;
-                    height: 75px;
-                    margin-top: 25px;
-                    border-left: 1px solid black;
-                    border-bottom: 1px solid black;
-                    .main-content-answer-top {
-                        width: 100%;
-                        height: 50px;
-                        .main-content-answer-top-text {
-                            box-sizing: border-box;
-                            margin-left: 20px;
                             width: 100%;
+                            height: 1px;
+                            background-color: lightgray;
+                        }
+                        .main-content-content-name-text {
+                            display: inline-block;
                             height: 100%;
-                            line-height: 50px;
-                        }
-                    }
-                    .main-content-answer-bottom {
-                        position: relative;
-                        width: 100%;
-                        height: 25px;
-                        .main-content-answer-bottom-content {
-                            position: absolute;
-                            top: 50%;
-                            right: 0;
-                            transform: translateY(-50%);
+                            background-color: white;
                             padding-right: 20px;
-                            div {
+                            .main-content-content-name-text-orange {
+                                position: relative;
+                                box-sizing: border-box;
+                                margin-right: 10px;
+                                border: 2px solid black;
                                 display: inline-block;
-                                margin: 0 10px;
-                            }
-                            .main-content-answer-bottom-content-likeImg {
-                                background-image: url(../../images/06_0.svg);
-                                background-repeat: no-repeat;
-                                background-position: center;
-                                height: 25px;
+                                width: 50px;
                                 aspect-ratio: 1 / 1;
+                                background-color: #fbb03b;
+                                .main-content-content-name-text-orange-text {
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);
+                                    font-size: 2rem;
+                                    font-weight: bold;
+                                }
                             }
-                            .main-content-answer-bottom-content-likeNum {
-                                font-size: 1rem;
+                            .main-content-content-name-text-white {
+                                position: relative;
+                                box-sizing: border-box;
+                                margin-right: 10px;
+                                border: 2px solid black;
+                                display: inline-block;
+                                width: 40px;
+                                aspect-ratio: 1 / 1;
+                                background-color: white;
+                                .main-content-content-name-text-white-text {
+                                    position: absolute;
+                                    top: 50%;
+                                    left: 50%;
+                                    transform: translate(-50%, -50%);
+                                    font-size: 1.7rem;
+                                    font-weight: bold;
+                                }
+                            }
+                        }
+                    }
+                    .main-content-content-posts {
+                        width: 100%;
+                        margin-bottom: 80px;
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                        .main-content-content-posts-area {
+                            display: flex;
+                            overflow-x: scroll;
+                            margin: 0 60px;
+                            width: calc(100% - (60px * 2));
+                            .main-content-content-posts-area-post {
+                                position: relative;
+                                display: inline-block;
+                                margin: 0 20px;
+                                font-size: 0;
+                                color: black;
+                                text-decoration: none;
+                                &:visited {
+                                    color: black;
+                                }
+                                .main-content-content-posts-area-post-top {
+                                    position: relative;
+                                    aspect-ratio: 404.4 / 279.8;
+                                    height: 180px;
+                                    background-image: url(../../images/textbox_01.svg);
+                                    background-repeat: no-repeat;
+                                    background-position: center;
+                                    .main-content-content-posts-area-post-content {
+                                        position: absolute;
+                                        top: 42%;
+                                        left: 52%;
+                                        transform: translate(-50%, -50%);
+                                        width: 70%;
+                                        height: 80%;
+                                        .main-content-content-posts-area-post-content-text {
+                                            position: absolute;
+                                            top: 50%;
+                                            left: 50%;
+                                            width: 75%;
+                                            transform: translate(-50%, -50%);
+                                            font-size: 1.9rem;
+                                            text-align: center;
+                                        }
+                                    }
+                                }
+                                .main-content-content-posts-area-post-bottom {
+                                    margin-top: 20px;
+                                    width: 100%;
+                                    height: 50px;
+                                    border-radius: 10px;
+                                    border: 1px solid black;
+                                    overflow: hidden;
+                                    .main-content-content-posts-area-post-bottom-top {
+                                        width: 100%;
+                                        height: 50%;
+                                        .main-content-content-posts-area-post-bottom-top-text {
+                                            box-sizing: border-box;
+                                            width: 100%;
+                                            height: 100%;
+                                            padding: 0 5px;
+                                            font-size: 1rem;
+                                        }
+                                    }
+                                    .main-content-content-posts-area-post-bottom-bottom {
+                                        width: 100%;
+                                        height: 50%;
+                                        .main-content-content-posts-area-post-bottom-bottom-text {
+                                            box-sizing: border-box;
+                                            width: 100%;
+                                            height: 100%;
+                                            padding: 0 5px;
+                                            font-size: 1rem;
+                                        }
+                                    }
+                                }
+                            }
+                             :first-child {
+                                margin-left: 0;
+                            }
+                             :last-child {
+                                margin-right: 0;
                             }
                         }
                     }
                 }
-            }
-            .slide {
-                position: absolute;
-                display: flex;
-                right: calc(-125px - 125px - (10px * 4));
-                top: 25px;
-                height: 52px;
-                // background-color: #fbb03b;
-                z-index: 100;
-                overflow: hidden;
-                transition: .5s;
-                background-color: #fbb03b;
-                &:hover {
-                    right: 0;
-                }
-                &:hover .slide-bar .slide-bar-icon {
-                    border-top: 7px solid transparent;
-                    border-left: 7px solid transparent;
-                    border-bottom: 7px solid black;
-                    border-right: 7px solid black;
-                    left: 25%;
-                }
-                .slide-bar {
-                    position: relative;
-                    width: 25px;
-                    height: 100%;
-                    .slide-bar-icon {
-                        position: absolute;
-                        top: 50%;
-                        left: 75%;
-                        transform: translate(-50%, -50%) rotate(-45deg);
-                        border-top: 7px solid black;
-                        border-left: 7px solid black;
-                        border-bottom: 7px solid transparent;
-                        border-right: 7px solid transparent;
-                        transition: .5s;
-                    }
-                }
-                .slide-edit {
-                    width: 125px;
-                    height: 40px;
-                    margin: 5px 10px;
-                    line-height: 40px;
-                    text-align: center;
-                    border: 1px solid transparent;
-                    border-radius: 20px;
-                    transition: .5s;
-                    cursor: pointer;
-                    &:hover {
-                        background-color: rgb(148, 251, 255);
-                    }
-                }
-                .slide-delete {
-                    width: 125px;
-                    height: 40px;
-                    margin: 5px 10px;
-                    line-height: 40px;
-                    text-align: center;
-                    border: 1px solid transparent;
-                    border-radius: 20px;
-                    transition: .5s;
-                    cursor: pointer;
-                    &:hover {
-                        background-color: rgb(255, 75, 75);
-                    }
+                 :last-child {
+                    margin-bottom: 0;
                 }
             }
-            // ここに書くよ！
         }
         .postLayer {
             display: none;
@@ -394,171 +377,6 @@ html {
             z-index: 100;
         }
         .postLayer-content {
-            z-index: 101;
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 50%;
-            height: 60%;
-            background-color: white;
-            font-size: 0;
-            .category {
-                position: relative;
-                height: 100%;
-                width: 200px;
-                display: inline-block;
-                .category-content {
-                    box-sizing: border-box;
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-                    width: 100%;
-                    height: calc(100% - 80px);
-                    padding: 40px 20px;
-                    list-style: none;
-                    border-right: 1px solid black;
-                    overflow-y: auto;
-                    li {
-                        margin: 5px 0;
-                        input {
-                            display: none;
-                            // position: absolute;
-                            // top: 505;
-                            // left: 50%;
-                            // transform: translate(-50%, -50%);
-                            // pointer-events: none;
-                            &:checked+label {
-                                background-color: #fbb13b4e;
-                            }
-                        }
-                        label {
-                            box-sizing: border-box;
-                            text-align: left;
-                            font-size: 1.4rem;
-                            padding: 10px 20px;
-                            transition: .25s;
-                            border-radius: 50px;
-                            cursor: pointer;
-                            border: 1px solid transparent;
-                            display: inline-block;
-                            width: 100%;
-                            height: 100%;
-                            &:hover {
-                                border: 1px solid #fbb03b;
-                            }
-                        }
-                    }
-                }
-            }
-            .form {
-                width: calc(100% - 200px);
-                height: 100%;
-                display: inline-block;
-                .form-top {
-                    width: 100%;
-                    height: calc(100% - 50px - 40px);
-                    .form-top-top {
-                        position: relative;
-                        width: 100%;
-                        height: 75px;
-                        .form-top-top-closeButton {
-                            position: absolute;
-                            right: 20px;
-                            top: 20px;
-                            height: 50px;
-                            aspect-ratio: 1 / 1;
-                            cursor: pointer;
-                            border: 1px solid transparent;
-                            border-radius: 50%;
-                            transition: .25s;
-                            &:hover {
-                                border: 1px solid #fbb03b;
-                            }
-                            .form-top-top-closeButton-border-1 {
-                                position: absolute;
-                                top: 50%;
-                                left: 50%;
-                                transform: translate(-50%, -50%) rotate(45deg);
-                                width: 1px;
-                                height: 80%;
-                                background-color: black;
-                            }
-                            .form-top-top-closeButton-border-2 {
-                                position: absolute;
-                                top: 50%;
-                                left: 50%;
-                                transform: translate(-50%, -50%) rotate(-45deg);
-                                width: 1px;
-                                height: 80%;
-                                background-color: black;
-                            }
-                        }
-                    }
-                    .form-top-bottom {
-                        width: 100%;
-                        height: calc(100% - 75px);
-                        .form-top-bottom-content {
-                            position: relative;
-                            height: 100%;
-                            margin: 0 auto;
-                            width: calc(100% - 20px - 50px);
-                            textarea {
-                                box-sizing: border-box;
-                                position: absolute;
-                                top: 50%;
-                                left: 50%;
-                                transform: translate(-50%, -50%);
-                                width: 100%;
-                                height: 100%;
-                                border: none;
-                                resize: none;
-                                padding: 5px 5px;
-                                font-size: 1.1rem;
-                                border: 1px solid rgb(226, 226, 226);
-                                border-radius: 10px;
-                            }
-                        }
-                    }
-                }
-                .form-bottom {
-                    position: relative;
-                    width: 100%;
-                    height: 50px;
-                    margin-bottom: 40px;
-                    .form-bottom-postButtonContent {
-                        box-sizing: border-box;
-                        position: absolute;
-                        right: 40px;
-                        margin: 5px 0;
-                        height: calc(100% - 10px);
-                        padding: 5px 20px;
-                        border-radius: 25px;
-                        border: 1px solid transparent;
-                        cursor: pointer;
-                        transition: .25s;
-                        &:hover {
-                            border: 1px solid #fbb03b;
-                        }
-                        input {
-                            cursor: pointer;
-                        }
-                        .form-bottom-postButtonContent-text {
-                            font-size: 1rem;
-                            height: 100%;
-                            width: 100%;
-                            text-align: center;
-                            line-height: 30px;
-                            background-color: transparent;
-                            border: none;
-                        }
-                    }
-                }
-            }
-        }
-        .postLayer-content-edit {
             z-index: 101;
             display: none;
             position: absolute;

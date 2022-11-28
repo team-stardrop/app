@@ -81,7 +81,8 @@ $post_array = $pdo->query($sql);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/index/main.css">
+    <title>大喜利</title>
+    <link rel="stylesheet" href="../css/item/item.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="../script/index/notification.js"></script>
     <title>大喜利</title>
