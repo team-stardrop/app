@@ -242,7 +242,7 @@ $answers = $pdo->query($sql);
                     <div class="main-content-answer-bottom-content">
                         <div class="main-content-answer-bottom-content-name"><?php print_username($answer['user_id']); ?></div>
                         <div class="main-content-answer-bottom-content-day"><?php echo $answer['post_date']; ?></div>
-                        <div class="main-content-answer-bottom-content-likeImg"></div>
+                        <a class="main-content-answer-bottom-content-likeImg"></a>
                         <div class="main-content-answer-bottom-content-likeNum">10</div>
                     </div>
                 </div>
