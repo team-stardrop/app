@@ -162,7 +162,7 @@ $answer_count_order_post = $pdo->query($sql);
             </div>
             <div class="main-header-coin">
                 <div class="main-header-coin-icon"></div>
-                <div class="main-header-coin-num">1234</div>
+                <div class="main-header-coin-num"><?php echo $login_user['point'] ?></div>
             </div>
         </div>
         <div class="main-content">

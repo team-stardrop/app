@@ -70,8 +70,13 @@ if (!empty($_POST['submitButton'])) {
     }
 }
 
-$sql = "SELECT id, odai, user_id, post_date FROM `odais` WHERE item_id = $item_id";
-$post_array = $pdo->query($sql);
+// 新着順でお題を抽出
+$sql = "SELECT * FROM `odais` WHERE item_id = $item_id ORDER BY id DESC";
+$arrival_order_post_array = $pdo->query($sql);
+
+// 回答の数が多い順でodai_idとその数を抽出
+$sql = "SELECT odai_id,COUNT(odai_id) FROM answers GROUP BY odai_id ORDER BY COUNT(odai_id) DESC";
+$answer_count_order_post = $pdo->query($sql);
 
 ?>
 <!DOCTYPE html>
@@ -162,7 +167,7 @@ $post_array = $pdo->query($sql);
             </div>
             <div class="main-header-coin">
                 <div class="main-header-coin-icon"></div>
-                <div class="main-header-coin-num">1234</div>
+                <div class="main-header-coin-num"><?php echo $login_user['point'] ?></div>
             </div>
         </div>
         <div class="main-content">
@@ -177,15 +182,19 @@ $post_array = $pdo->query($sql);
                             <div class="main-content-content-name-text-white-text">着</div>
                         </div>
                         <div class="main-content-content-name-text-white">
-                            <div class="main-content-content-name-text-white-text">順</div>
+                            <div class="main-content-content-name-text-white-text">の</div>
+                        </div>
+                        <div class="main-content-content-name-text-white">
+                            <div class="main-content-content-name-text-white-text">お</div>
+                        </div>
+                        <div class="main-content-content-name-text-white">
+                            <div class="main-content-content-name-text-white-text">題</div>
                         </div>
                     </div>
                 </div>
                 <div class="main-content-content-posts">
                     <div class="main-content-content-posts-area">
-                        <?php foreach ($post_array as $odai) :
-                            $users = get_odai_posted_user($odai['user_id']);
-                        ?>
+                        <?php foreach ($arrival_order_post_array as $odai) :?>
                             <a href="odai.php?odai_id=<?php echo $odai['id']; ?>" class="main-content-content-posts-area-post">
                                 <div class="main-content-content-posts-area-post-top">
                                     <div class="main-content-content-posts-area-post-content">
@@ -203,10 +212,10 @@ $post_array = $pdo->query($sql);
                     <div class="main-content-content-name-border"></div>
                     <div class="main-content-content-name-text">
                         <div class="main-content-content-name-text-orange">
-                            <div class="main-content-content-name-text-orange-text">注</div>
+                            <div class="main-content-content-name-text-orange-text">人</div>
                         </div>
                         <div class="main-content-content-name-text-white">
-                            <div class="main-content-content-name-text-white-text">目</div>
+                            <div class="main-content-content-name-text-white-text">気</div>
                         </div>
                         <div class="main-content-content-name-text-white">
                             <div class="main-content-content-name-text-white-text">の</div>
@@ -221,41 +230,23 @@ $post_array = $pdo->query($sql);
                 </div>
                 <div class="main-content-content-posts">
                     <div class="main-content-content-posts-area">
-                        <a href="odai.php" class="main-content-content-posts-area-post">
-                            <div class="main-content-content-posts-area-post-top">
-                                <div class="main-content-content-posts-area-post-content">
-                                    <div class="main-content-content-posts-area-post-content-text">ああああああああああああ</div>
+                        <?php foreach ($answer_count_order_post as $odai_data) :
+                            $odai_id = $odai_data['odai_id'];
+                            $sql = "SELECT * FROM `odais` WHERE id = $odai_id AND item_id = $item_id";
+                            $stmt = $pdo->query($sql);
+                            $odai = $stmt->fetch(PDO::FETCH_ASSOC);
+                            if(!isset($odai['odai'])) {
+                                continue;
+                            }
+                            ?>
+                            <a href="odai.php?odai_id=<?php echo $odai['id']; ?>" class="main-content-content-posts-area-post">
+                                <div class="main-content-content-posts-area-post-top">
+                                    <div class="main-content-content-posts-area-post-content">
+                                        <div class="main-content-content-posts-area-post-content-text"><?php echo $odai['odai']; ?></div>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                        <a href="odai.php" class="main-content-content-posts-area-post">
-                            <div class="main-content-content-posts-area-post-top">
-                                <div class="main-content-content-posts-area-post-content">
-                                    <div class="main-content-content-posts-area-post-content-text">ああああああああああああ</div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="odai.php" class="main-content-content-posts-area-post">
-                            <div class="main-content-content-posts-area-post-top">
-                                <div class="main-content-content-posts-area-post-content">
-                                    <div class="main-content-content-posts-area-post-content-text">ああああああああああああ</div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="odai.php" class="main-content-content-posts-area-post">
-                            <div class="main-content-content-posts-area-post-top">
-                                <div class="main-content-content-posts-area-post-content">
-                                    <div class="main-content-content-posts-area-post-content-text">ああああああああああああ</div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="odai.php" class="main-content-content-posts-area-post">
-                            <div class="main-content-content-posts-area-post-top">
-                                <div class="main-content-content-posts-area-post-content">
-                                    <div class="main-content-content-posts-area-post-content-text">ああああああああああああ</div>
-                                </div>
-                            </div>
-                        </a>
+                            </a>
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
