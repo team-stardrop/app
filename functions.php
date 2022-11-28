@@ -63,9 +63,9 @@ function print_username($user_id) {
  * @return void
  */
 
-function print_favorite_count($comment_id) {
+function print_favorite_count($answer_id) {
   $pdo = connect();
-  $sql = "SELECT COUNT(*) AS cnt FROM `favorite` WHERE comment_id=$comment_id";
+  $sql = "SELECT COUNT(*) AS cnt FROM `favorite` WHERE answer_id=$answer_id";
   $stmt = $pdo->query($sql);
   $count = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -113,4 +113,22 @@ function get_odai_data($odai_id) {
   $stmt = $pdo->query($sql);
   $odai = $stmt->fetch(PDO::FETCH_ASSOC);
   return $odai;
+}
+
+/**
+ * いいね済みか判定
+ * @param string post_id
+ * @param string $login_user_id
+ * @return string 
+ */
+
+function check_favorite($like, $login_user_id){
+  $pdo = connect();
+  $pressed = $pdo->prepare('SELECT COUNT(*) AS cnt FROM favorite WHERE user_id=? AND answer_id=?');
+  $pressed->execute(array(
+    $login_user_id,
+    $like
+  ));
+
+  return $pressed->fetch();
 }

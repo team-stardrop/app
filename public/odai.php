@@ -126,6 +126,33 @@ if(!empty($_POST['updateButton'])){
 
 $sql = "SELECT * FROM `answers` WHERE odai_id=$odai_id";
 $answers = $pdo->query($sql);
+
+//いいね機能
+if (isset($_REQUEST['like']) && isset($login_user['id'])) {
+
+    //過去にいいね済みであるか確認
+    $my_like_cnt = check_favorite($_REQUEST['like'], $login_user['id']);
+  
+    //いいねのデータを挿入or削除
+  if ($my_like_cnt['cnt'] < 1) {
+    $press = $pdo->prepare('INSERT INTO favorite SET user_id=?, answer_id=?');
+    $press->execute(array(
+        $login_user['id'],
+        $_REQUEST['like']
+    ));
+    header("Location: odai.php?odai_id=$odai_id");
+    exit();
+  } else {
+    $cancel = $pdo->prepare('DELETE FROM favorite WHERE user_id=? AND answer_id=?');
+    $cancel->execute(array(
+      $login_user['id'],
+      $_REQUEST['like']
+    ));
+    header("Location: odai.php?odai_id=$odai_id");
+    exit();
+  }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -242,8 +269,8 @@ $answers = $pdo->query($sql);
                     <div class="main-content-answer-bottom-content">
                         <div class="main-content-answer-bottom-content-name"><?php print_username($answer['user_id']); ?></div>
                         <div class="main-content-answer-bottom-content-day"><?php echo $answer['post_date']; ?></div>
-                        <a class="main-content-answer-bottom-content-likeImg"></a>
-                        <div class="main-content-answer-bottom-content-likeNum">10</div>
+                        <a class="main-content-answer-bottom-content-likeImg" href="odai.php?odai_id=<?php echo $odai_id; ?>&like=<?php echo h($answer['id']); ?>"></a>
+                        <div class="main-content-answer-bottom-content-likeNum"><?php print_favorite_count($answer['id']); ?></div>
                     </div>
                 </div>
             </div>
