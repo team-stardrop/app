@@ -34,7 +34,7 @@ html body .taggle-button-box .home .home-icon2 {
   background-image: url(../../images/01_0.svg);
   background-position: center;
   background-repeat: no-repeat;
-  transition: 0.8s;
+  transition: 0.5s;
 }
 html body .taggle-button-box .home:hover .home-icon2 {
   opacity: 0;

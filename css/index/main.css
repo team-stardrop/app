@@ -72,7 +72,7 @@ html body header .header-top .header-top-content .header-top-content-account .he
   background-image: url(../../images/02_0.svg);
   background-position: center;
   background-repeat: no-repeat;
-  transition: 0.8s;
+  transition: 0.5s;
 }
 html body header .header-top .header-top-content .header-top-content-account:hover .header-top-content-account-icon2 {
   opacity: 0;
@@ -99,7 +99,7 @@ html body header .header-top .header-top-content .header-top-content-item .heade
   background-image: url(../../images/03_0.svg);
   background-position: center;
   background-repeat: no-repeat;
-  transition: 0.8s;
+  transition: 0.5s;
 }
 html body header .header-top .header-top-content .header-top-content-item:hover .header-top-content-item-icon2 {
   opacity: 0;
@@ -197,7 +197,7 @@ html body header .header-bottom .header-bottom-content .header-bottom-register .
   background-image: url(../../images/04_0.svg);
   background-position: center;
   background-repeat: no-repeat;
-  transition: 0.8s;
+  transition: 0.5s;
 }
 html body header .header-bottom .header-bottom-content .header-bottom-register:hover .header-bottom-content-register-icon2 {
   opacity: 0;
@@ -222,7 +222,7 @@ html body header .header-bottom .header-bottom-content .header-bottom-content-po
   background-image: url(../../images/05_0.svg);
   background-position: center;
   background-repeat: no-repeat;
-  transition: 0.8s;
+  transition: 0.5s;
 }
 html body header .header-bottom .header-bottom-content .header-bottom-content-post:hover .header-bottom-content-post-icon2 {
   opacity: 0;

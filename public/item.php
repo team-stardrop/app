@@ -106,8 +106,7 @@ $answer_count_order_post = $pdo->query($sql);
                     <div class="header-top-content-account-icon2"></div>
                 </a>
                 <div class="header-top-content-item">
-                    <div class="header-top-content-item-icon1"></div>
-                    <div class="header-top-content-item-icon2"></div>
+                    <div class="header-top-content-item-icon"></div>
                     <div class="header-top-content-item-subField"></div>
                     <div class="header-top-content-item-field">
                         <div class="header-top-content-item-field-title">カテゴリー</div>
