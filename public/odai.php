@@ -86,11 +86,13 @@ if (!empty($_POST['post_answer_button'])) {
     } else {
         // お題を保存
         try {
-            $stmt = $pdo->prepare("INSERT INTO `answers` (`answer`, `odai_id`, `user_id`, `post_date`) VALUES (:answer, :odai_id, :user_id, :post_date)");
+            $favorite_count = 0;
+            $stmt = $pdo->prepare("INSERT INTO `answers` (`answer`, `odai_id`, `user_id`, `post_date`, `favorite_count`) VALUES (:answer, :odai_id, :user_id, :post_date, :favorite_count)");
             $stmt->bindParam(':answer', $_POST['answer'], PDO::PARAM_STR);
             $stmt->bindParam(':odai_id', $odai['id'], PDO::PARAM_STR);
             $stmt->bindParam(':user_id', $_POST['user_id'], PDO::PARAM_STR);
             $stmt->bindParam(':post_date', $_POST['post_date'], PDO::PARAM_STR);
+            $stmt->bindParam(':favorite_count', $favorite_count, PDO::PARAM_STR);
 
             $stmt->execute();
             header('Location: odai.php?odai_id='.$odai_id.'');
