@@ -131,7 +131,7 @@ function print_favorite_count($answer_id) {
     $count = $stmt->fetch(PDO::FETCH_ASSOC);
   
     add_favorite_count_into_answer($answer_id, $count['cnt']);
-  
+   echo 'いいね　';
     echo $count['cnt'];
   }
   
