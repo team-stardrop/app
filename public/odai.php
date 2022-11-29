@@ -275,12 +275,14 @@ $answers = $pdo->query($sql);
                         <div class="main-content-answer-bottom-content-name"><?php print_username($answer['user_id']); ?></div>
                         <div class="main-content-answer-bottom-content-day"><?php echo $answer['post_date']; ?></div>
                         <?php
+                            if(isset($login_user)) :
                             $my_like_cnt = check_favorite($answer['id'], $login_user['id']);
                             if ($my_like_cnt['cnt'] < 1):
                         ?>
                         <a class="main-content-answer-bottom-content-likeImg" href="odai.php?odai_id=<?php echo $odai_id; ?>&like=<?php echo h($answer['id']); ?>"></a>
                         <?php else : ?>
                         <a class="main-content-answer-bottom-content-clickedLikeImg" href="odai.php?odai_id=<?php echo $odai_id; ?>&like=<?php echo h($answer['id']); ?>"></a>
+                        <?php endif; ?>
                         <?php endif; ?>
                         <div class="main-content-answer-bottom-content-likeNum"><?php print_favorite_count($answer['id']); ?></div>
                     </div>
