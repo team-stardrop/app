@@ -26,7 +26,8 @@ unset($_SESSION['login_err']);
     <body>
         <div class="taggle-button-box">
             <a href="index.php" class="home">
-                <div class="home-icon"></div>
+                <div class="home-icon1"></div>
+                <div class="home-icon2"></div>
             </a>
         </div>
         <div class="signup-form">
