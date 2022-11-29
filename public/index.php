@@ -54,7 +54,7 @@ if (!empty($_POST['submitButton'])) {
                 
                 $stmt->execute();
         
-                header('Location: http://localhost:80/oogiri-app/public/index.php');
+                header('Location: index.php');
                 exit;
             } catch (PDOException $e){
                 echo $e->getMessage();

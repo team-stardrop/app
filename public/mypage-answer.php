@@ -53,7 +53,7 @@ if (!empty($_POST['submitButton'])) {
                 
                 $stmt->execute();
         
-                header('Location: http://localhost:80/oogiri-app/public/mypage-answer.php');
+                header('Location: mypage-answer.php');
                 exit;
             } catch (PDOException $e){
                 echo $e->getMessage();
