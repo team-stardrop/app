@@ -160,10 +160,16 @@ $answer_count_order_post = $pdo->query($sql);
             <div class="main-header-text">
                 <h1>大喜利アプリ</h1>
             </div>
+            <?php if(isset($login_user)): ?>
             <div class="main-header-coin">
                 <div class="main-header-coin-icon"></div>
                 <div class="main-header-coin-num"><?php echo $login_user['point'] ?></div>
             </div>
+            <?php else: ?>
+            <div class="main-header-coin">
+                <div class="main-header-coin-num">ログインしてお題を投稿しよう！</div>
+            </div>
+            <?php endif;?>
         </div>
         <div class="main-content">
             <div class="main-content-content">
