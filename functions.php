@@ -58,23 +58,8 @@ function print_username($user_id) {
 }
 
 /**
- * いいねの数を表示
- * @param string コメントのid
- * @return void
- */
-
-function print_favorite_count($answer_id) {
-  $pdo = connect();
-  $sql = "SELECT COUNT(*) AS cnt FROM `favorite` WHERE answer_id=$answer_id";
-  $stmt = $pdo->query($sql);
-  $count = $stmt->fetch(PDO::FETCH_ASSOC);
-
-  echo $count['cnt'];
-}
-
-/**
  * お題を投稿した人のデータを取得
- * @param 
+ * @param string お題を投稿したuserのid
  * @return 
  */
 
@@ -132,3 +117,41 @@ function check_favorite($like, $login_user_id){
 
   return $pressed->fetch();
 }
+
+/**
+ * いいねの数を表示
+ * @param string コメントのid
+ * @return void
+ */
+
+function print_favorite_count($answer_id) {
+    $pdo = connect();
+    $sql = "SELECT COUNT(*) AS cnt FROM `favorite` WHERE answer_id=$answer_id";
+    $stmt = $pdo->query($sql);
+    $count = $stmt->fetch(PDO::FETCH_ASSOC);
+  
+    add_favorite_count_into_answer($answer_id, $count['cnt']);
+  
+    echo $count['cnt'];
+  }
+  
+  /**
+   * いいねの数をanswersテーブルに保存
+   * @param string 回答のid
+   * @param string いいね数のid
+   * @return void
+   */
+  
+  function add_favorite_count_into_answer($answer_id, $count) {
+    $pdo = connect();
+    try {
+      $stmt = $pdo->prepare("UPDATE `answers` SET favorite_count = :count WHERE id = :answer_id");
+      $stmt->bindParam(':count', $count, PDO::PARAM_STR);
+      $stmt->bindParam(':answer_id', $answer_id, PDO::PARAM_STR);
+      
+      $stmt->execute();
+      
+    } catch (PDOException $e) {
+      echo $e->getMessage();
+    }
+  }

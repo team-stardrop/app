@@ -124,9 +124,6 @@ if(!empty($_POST['updateButton'])){
     }
   }
 
-$sql = "SELECT * FROM `answers` WHERE odai_id=$odai_id";
-$answers = $pdo->query($sql);
-
 //いいね機能
 if (isset($_REQUEST['like']) && isset($login_user['id'])) {
     //過去にいいね済みであるか確認
@@ -155,6 +152,9 @@ if (isset($_REQUEST['like']) && isset($login_user['id'])) {
     header("Location: login_form.php");
     exit();
 }
+
+$sql = "SELECT * FROM `answers` WHERE odai_id=$odai_id ORDER BY favorite_count DESC";
+$answers = $pdo->query($sql);
 
 ?>
 <!DOCTYPE html>
