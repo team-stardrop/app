@@ -65,6 +65,33 @@ if (!empty($_POST['submitButton'])) {
         }
     }
 }
+
+//ログインユーザがいいねした回答のid全て
+$login_user_id = $login_user['id'];
+$sql = "SELECT answer_id FROM `favorite` WHERE user_id = $login_user_id GROUP BY answer_id";
+$f_answers = $pdo->query($sql);
+
+
+//ログインユーザがいいねした回答をリストに追加
+foreach($f_answers as $f_answer) {
+    $f_answer_id = $f_answer['answer_id'];
+    $sql = "SELECT * FROM `answers` WHERE id=$f_answer_id";
+    $stmt = $pdo->query($sql);
+    $answer = $stmt->fetch(PDO::FETCH_ASSOC);
+    $answers[] = $answer;
+}
+
+//回答のodai_idでお題を取得
+$odais = [];
+foreach($answers as $answer) {
+    $odai_id = $answer['odai_id'];
+    $sql = "SELECT * FROM `odais` WHERE id=$odai_id";
+    $stmt = $pdo->query($sql);
+    $odai = $stmt->fetch(PDO::FETCH_ASSOC);
+    if (!in_array($odai['id'], array_column($odais, 'id'))) {
+        $odais[] = $odai;
+     }
+}
 ?>
 <!DOCTYPE html>
 <html lang="ja">
@@ -171,278 +198,43 @@ if (!empty($_POST['submitButton'])) {
                 <div class="main-content-myContent-content">
 
                 <div class="main-content-content">
-                        <div class="main-content-content-name">
-                            <div class="main-content-content-name-border"></div>
-                            <div class="main-content-content-name-text">
-                                <div class="main-content-content-name-text-orange">
-                                    <div class="main-content-content-name-text-orange-text">回</div>
-                                </div>
-                                <div class="main-content-content-name-text-white">
-                                    <div class="main-content-content-name-text-white-text">答</div>
-                                </div>
+                    <div class="main-content-content-name">
+                        <div class="main-content-content-name-border"></div>
+                        <div class="main-content-content-name-text">
+                            <div class="main-content-content-name-text-orange">
+                                <div class="main-content-content-name-text-orange-text">回</div>
                             </div>
-                        </div>
-                        <div class="main-content-content-posts">
-                            <div class="main-content-content-posts-area">
-                                <a href="odai.php" class="main-content-content-posts-area-post">
-                                    <div class="main-content-content-posts-area-post-top">
-                                        <div class="main-content-content-posts-area-post-content">
-                                            <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
-                                        </div>
-                                    </div>
-                                    <div class="main-content-content-posts-area-post-bottom">
-                                        <div class="main-content-content-posts-area-post-bottom-top">
-                                            <div class="main-content-content-posts-area-post-bottom-top-text">一つ目の回答</div>
-                                        </div>
-                                        <div class="main-content-content-posts-area-post-bottom-bottom">
-                                            <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="odai.php" class="main-content-content-posts-area-post">
-                                    <div class="main-content-content-posts-area-post-top">
-                                        <div class="main-content-content-posts-area-post-content">
-                                            <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
-                                        </div>
-                                    </div>
-                                    <div class="main-content-content-posts-area-post-bottom">
-                                        <div class="main-content-content-posts-area-post-bottom-top">
-                                            <div class="main-content-content-posts-area-post-bottom-top-text">一つ目の回答</div>
-                                        </div>
-                                        <div class="main-content-content-posts-area-post-bottom-bottom">
-                                            <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="odai.php" class="main-content-content-posts-area-post">
-                                    <div class="main-content-content-posts-area-post-top">
-                                        <div class="main-content-content-posts-area-post-content">
-                                            <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
-                                        </div>
-                                    </div>
-                                    <div class="main-content-content-posts-area-post-bottom">
-                                        <div class="main-content-content-posts-area-post-bottom-top">
-                                            <div class="main-content-content-posts-area-post-bottom-top-text">一つ目の回答</div>
-                                        </div>
-                                        <div class="main-content-content-posts-area-post-bottom-bottom">
-                                            <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="odai.php" class="main-content-content-posts-area-post">
-                                    <div class="main-content-content-posts-area-post-top">
-                                        <div class="main-content-content-posts-area-post-content">
-                                            <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
-                                        </div>
-                                    </div>
-                                    <div class="main-content-content-posts-area-post-bottom">
-                                        <div class="main-content-content-posts-area-post-bottom-top">
-                                            <div class="main-content-content-posts-area-post-bottom-top-text">一つ目の回答</div>
-                                        </div>
-                                        <div class="main-content-content-posts-area-post-bottom-bottom">
-                                            <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="main-content-content-posts">
-                            <div class="main-content-content-posts-area">
-                                <a href="odai.php" class="main-content-content-posts-area-post">
-                                    <div class="main-content-content-posts-area-post-top">
-                                        <div class="main-content-content-posts-area-post-content">
-                                            <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
-                                        </div>
-                                    </div>
-                                    <div class="main-content-content-posts-area-post-bottom">
-                                        <div class="main-content-content-posts-area-post-bottom-top">
-                                            <div class="main-content-content-posts-area-post-bottom-top-text">一つ目の回答</div>
-                                        </div>
-                                        <div class="main-content-content-posts-area-post-bottom-bottom">
-                                            <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="odai.php" class="main-content-content-posts-area-post">
-                                    <div class="main-content-content-posts-area-post-top">
-                                        <div class="main-content-content-posts-area-post-content">
-                                            <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
-                                        </div>
-                                    </div>
-                                    <div class="main-content-content-posts-area-post-bottom">
-                                        <div class="main-content-content-posts-area-post-bottom-top">
-                                            <div class="main-content-content-posts-area-post-bottom-top-text">一つ目の回答</div>
-                                        </div>
-                                        <div class="main-content-content-posts-area-post-bottom-bottom">
-                                            <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="odai.php" class="main-content-content-posts-area-post">
-                                    <div class="main-content-content-posts-area-post-top">
-                                        <div class="main-content-content-posts-area-post-content">
-                                            <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
-                                        </div>
-                                    </div>
-                                    <div class="main-content-content-posts-area-post-bottom">
-                                        <div class="main-content-content-posts-area-post-bottom-top">
-                                            <div class="main-content-content-posts-area-post-bottom-top-text">一つ目の回答</div>
-                                        </div>
-                                        <div class="main-content-content-posts-area-post-bottom-bottom">
-                                            <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="odai.php" class="main-content-content-posts-area-post">
-                                    <div class="main-content-content-posts-area-post-top">
-                                        <div class="main-content-content-posts-area-post-content">
-                                            <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
-                                        </div>
-                                    </div>
-                                    <div class="main-content-content-posts-area-post-bottom">
-                                        <div class="main-content-content-posts-area-post-bottom-top">
-                                            <div class="main-content-content-posts-area-post-bottom-top-text">一つ目の回答</div>
-                                        </div>
-                                        <div class="main-content-content-posts-area-post-bottom-bottom">
-                                            <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="main-content-content-posts">
-                            <div class="main-content-content-posts-area">
-                                <a href="odai.php" class="main-content-content-posts-area-post">
-                                    <div class="main-content-content-posts-area-post-top">
-                                        <div class="main-content-content-posts-area-post-content">
-                                            <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
-                                        </div>
-                                    </div>
-                                    <div class="main-content-content-posts-area-post-bottom">
-                                        <div class="main-content-content-posts-area-post-bottom-top">
-                                            <div class="main-content-content-posts-area-post-bottom-top-text">一つ目の回答</div>
-                                        </div>
-                                        <div class="main-content-content-posts-area-post-bottom-bottom">
-                                            <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="odai.php" class="main-content-content-posts-area-post">
-                                    <div class="main-content-content-posts-area-post-top">
-                                        <div class="main-content-content-posts-area-post-content">
-                                            <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
-                                        </div>
-                                    </div>
-                                    <div class="main-content-content-posts-area-post-bottom">
-                                        <div class="main-content-content-posts-area-post-bottom-top">
-                                            <div class="main-content-content-posts-area-post-bottom-top-text">一つ目の回答</div>
-                                        </div>
-                                        <div class="main-content-content-posts-area-post-bottom-bottom">
-                                            <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="odai.php" class="main-content-content-posts-area-post">
-                                    <div class="main-content-content-posts-area-post-top">
-                                        <div class="main-content-content-posts-area-post-content">
-                                            <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
-                                        </div>
-                                    </div>
-                                    <div class="main-content-content-posts-area-post-bottom">
-                                        <div class="main-content-content-posts-area-post-bottom-top">
-                                            <div class="main-content-content-posts-area-post-bottom-top-text">一つ目の回答</div>
-                                        </div>
-                                        <div class="main-content-content-posts-area-post-bottom-bottom">
-                                            <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="odai.php" class="main-content-content-posts-area-post">
-                                    <div class="main-content-content-posts-area-post-top">
-                                        <div class="main-content-content-posts-area-post-content">
-                                            <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
-                                        </div>
-                                    </div>
-                                    <div class="main-content-content-posts-area-post-bottom">
-                                        <div class="main-content-content-posts-area-post-bottom-top">
-                                            <div class="main-content-content-posts-area-post-bottom-top-text">一つ目の回答</div>
-                                        </div>
-                                        <div class="main-content-content-posts-area-post-bottom-bottom">
-                                            <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="main-content-content-posts">
-                            <div class="main-content-content-posts-area">
-                                <a href="odai.php" class="main-content-content-posts-area-post">
-                                    <div class="main-content-content-posts-area-post-top">
-                                        <div class="main-content-content-posts-area-post-content">
-                                            <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
-                                        </div>
-                                    </div>
-                                    <div class="main-content-content-posts-area-post-bottom">
-                                        <div class="main-content-content-posts-area-post-bottom-top">
-                                            <div class="main-content-content-posts-area-post-bottom-top-text">一つ目の回答</div>
-                                        </div>
-                                        <div class="main-content-content-posts-area-post-bottom-bottom">
-                                            <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="odai.php" class="main-content-content-posts-area-post">
-                                    <div class="main-content-content-posts-area-post-top">
-                                        <div class="main-content-content-posts-area-post-content">
-                                            <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
-                                        </div>
-                                    </div>
-                                    <div class="main-content-content-posts-area-post-bottom">
-                                        <div class="main-content-content-posts-area-post-bottom-top">
-                                            <div class="main-content-content-posts-area-post-bottom-top-text">一つ目の回答</div>
-                                        </div>
-                                        <div class="main-content-content-posts-area-post-bottom-bottom">
-                                            <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="odai.php" class="main-content-content-posts-area-post">
-                                    <div class="main-content-content-posts-area-post-top">
-                                        <div class="main-content-content-posts-area-post-content">
-                                            <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
-                                        </div>
-                                    </div>
-                                    <div class="main-content-content-posts-area-post-bottom">
-                                        <div class="main-content-content-posts-area-post-bottom-top">
-                                            <div class="main-content-content-posts-area-post-bottom-top-text">一つ目の回答</div>
-                                        </div>
-                                        <div class="main-content-content-posts-area-post-bottom-bottom">
-                                            <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="odai.php" class="main-content-content-posts-area-post">
-                                    <div class="main-content-content-posts-area-post-top">
-                                        <div class="main-content-content-posts-area-post-content">
-                                            <div class="main-content-content-posts-area-post-content-text">あああああああああああ</div>
-                                        </div>
-                                    </div>
-                                    <div class="main-content-content-posts-area-post-bottom">
-                                        <div class="main-content-content-posts-area-post-bottom-top">
-                                            <div class="main-content-content-posts-area-post-bottom-top-text">一つ目の回答</div>
-                                        </div>
-                                        <div class="main-content-content-posts-area-post-bottom-bottom">
-                                            <div class="main-content-content-posts-area-post-bottom-bottom-text">二つ目の回答</div>
-                                        </div>
-                                    </div>
-                                </a>
+                            <div class="main-content-content-name-text-white">
+                                <div class="main-content-content-name-text-white-text">答</div>
                             </div>
                         </div>
                     </div>
-
+                    <div class="main-content-content-posts">
+                        <div class="main-content-content-posts-area">
+                        <?php foreach ($odais as $odai) :?>
+                        <a href="odai.php?odai_id=<?php echo $odai['id']; ?>" class="main-content-content-posts-area-post">
+                            <div class="main-content-content-posts-area-post-top">
+                                <div class="main-content-content-posts-area-post-content">
+                                    <div class="main-content-content-posts-area-post-content-text"><?php echo $odai['odai'] ?></div>
+                                </div>
+                            </div>
+                            <div class="main-content-content-posts-area-post-bottom">
+                                <?php 
+                                    //回答を2つ抽出
+                                    $odai_id = $odai['id'];
+                                    $login_user_id = $login_user['id'];
+                                    $sql = "SELECT * FROM `answers` WHERE odai_id = $odai_id ORDER BY favorite_count DESC LIMIT 2";
+                                    $favorite_count_order_answer_array = $pdo->query($sql);
+                                    foreach ($favorite_count_order_answer_array as $answer) :?>
+                                <div class="main-content-content-posts-area-post-bottom-top">
+                                    <div class="main-content-content-posts-area-post-bottom-top-text"><?php echo $answer['answer'] ?></div>
+                                </div>
+                                <?php endforeach; ?>
+                            </div>
+                        </a>
+                        <?php endforeach; ?>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
