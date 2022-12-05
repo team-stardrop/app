@@ -31,6 +31,11 @@ if($password !== $password_conf) {
   $err[] = '確認用パスワードと異なっています';
 }
 
+$result = UserLogic::check_created_user_account($email);
+if($result){
+  $err[] = 'このメールアドレスのアカウントはすでに存在しています';
+}
+
 if (count($err) === 0) {
   //登録処理
   $hasCreated = UserLogic::createUser($_POST);

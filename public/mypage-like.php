@@ -73,6 +73,7 @@ $f_answers = $pdo->query($sql);
 
 
 //ログインユーザがいいねした回答をリストに追加
+$answers = [];
 foreach($f_answers as $f_answer) {
     $f_answer_id = $f_answer['answer_id'];
     $sql = "SELECT * FROM `answers` WHERE id=$f_answer_id";
@@ -206,7 +207,22 @@ foreach($answers as $answer) {
                         <div class="main-content-content-name-border"></div>
                         <div class="main-content-content-name-text">
                             <div class="main-content-content-name-text-orange">
-                                <div class="main-content-content-name-text-orange-text">回</div>
+                                <div class="main-content-content-name-text-orange-text">い</div>
+                            </div>
+                            <div class="main-content-content-name-text-white">
+                                <div class="main-content-content-name-text-white-text">い</div>
+                            </div>
+                            <div class="main-content-content-name-text-white">
+                                <div class="main-content-content-name-text-white-text">ね</div>
+                            </div>
+                            <div class="main-content-content-name-text-white">
+                                <div class="main-content-content-name-text-white-text">し</div>
+                            </div>
+                            <div class="main-content-content-name-text-white">
+                                <div class="main-content-content-name-text-white-text">た</div>
+                            </div>
+                            <div class="main-content-content-name-text-white">
+                                <div class="main-content-content-name-text-white-text">回</div>
                             </div>
                             <div class="main-content-content-name-text-white">
                                 <div class="main-content-content-name-text-white-text">答</div>
