@@ -32,6 +32,20 @@ class UserLogic
   }
 
   /**
+   * すでにユーザーが存在していないか確認
+   * @param string $email
+   * @return bool $result
+   */
+  public static function check_created_user_account($email)
+  {
+    $result = self::getUserByEmail($email);
+    if($result){
+      $result = true;
+    }
+    return $result;
+  }
+
+  /**
    * ログイン処理
    * @param string $email
    * @param string $password
