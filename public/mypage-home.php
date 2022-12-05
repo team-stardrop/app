@@ -250,7 +250,7 @@ foreach($answers as $answer) {
                             <div class="main-content-content-name-border"></div>
                             <div class="main-content-content-name-text">
                                 <div class="main-content-content-name-text-orange">
-                                    <div class="main-content-content-name-text-orange-text">お</div>
+                                    <div class="main-content-content-name-text-orange-text">回</div>
                                 </div>
                                 <div class="main-content-content-name-text-white">
                                     <div class="main-content-content-name-text-white-text">答</div>
