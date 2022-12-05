@@ -95,6 +95,7 @@ $f_answers = $pdo->query($sql);
 
 
 //ログインユーザがいいねした回答をリストに追加
+$answers = [];
 foreach($f_answers as $f_answer) {
     $f_answer_id = $f_answer['answer_id'];
     $sql = "SELECT * FROM `answers` WHERE id=$f_answer_id";
