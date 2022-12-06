@@ -28,6 +28,7 @@ session_destroy();
 <body>
     <div class="taggle-button-box">
         <a href="index.php" class="home">
+            <div class="header-top-content-home-ex">ホーム</div>
             <div class="home-icon1"></div>
             <div class="home-icon2"></div>
         </a>
