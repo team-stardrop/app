@@ -19,6 +19,25 @@ html body .taggle-button-box .home {
   width: 50px;
   aspect-ratio: 1/1;
 }
+html body .taggle-button-box .home:hover .header-top-content-home-ex {
+  opacity: 1;
+}
+html body .taggle-button-box .home .header-top-content-home-ex {
+  box-sizing: border-box;
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  font-size: 0.8rem;
+  transform: translateX(-50%);
+  height: 25px;
+  line-height: 25px;
+  width: 75px;
+  text-align: center;
+  pointer-events: none;
+  color: black;
+  transition: 0.5s;
+  opacity: 0;
+}
 html body .taggle-button-box .home .home-icon1 {
   width: 100%;
   height: 100%;

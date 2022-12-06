@@ -86,13 +86,16 @@ if (!empty($_POST['submitButton'])) {
         <div class="header-top">
             <div class="header-top-content">
                 <a href="index.php" class="header-top-content-home">
+                    <div class="header-top-content-home-ex">ホーム</div>
                     <div class="header-top-content-home-icon1"></div>
                     <div class="header-top-content-home-icon2"></div>
                 </a>
                 <a href="mypage-home.php" class="header-top-content-account">
+                    <div class="header-top-content-account-ex">マイページ</div>    
                     <div class="header-top-content-account-icon"></div>
                 </a>
                 <div class="header-top-content-item">
+                    <div class="header-top-content-item-ex">カテゴリー</div>
                     <div class="header-top-content-item-icon1"></div>
                     <div class="header-top-content-item-icon2"></div>
                     <div class="header-top-content-item-subField"></div>
@@ -116,10 +119,12 @@ if (!empty($_POST['submitButton'])) {
         <div class="header-bottom">
             <div class="header-bottom-content">
                 <a href="signup_form.php" class="header-bottom-register">
+                    <div class="header-bottom-register-ex">新規登録</div>
                     <div class="header-bottom-content-register-icon1"></div>
                     <div class="header-bottom-content-register-icon2"></div>
                 </a>
                 <a class="header-bottom-content-post">
+                    <div class="header-bottom-content-post-ex">投稿</div>
                     <div class="header-bottom-content-post-icon1"></div>
                     <div class="header-bottom-content-post-icon2"></div>
                 </a>
