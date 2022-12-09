@@ -184,11 +184,6 @@ foreach($answers as $answer) {
     <main>
         <!-- エラーメッセージ表示 -->
         <div class="error">
-            <?php if (isset($_SESSION['post_err'])) : ?>
-                <script>
-                    notification("<?php echo $_SESSION['post_err']; ?>");
-                </script>
-            <?php endif; ?>
             <?php if (isset($err_messages['odai'])) : ?>
                 <script>
                     notification("<?php echo $err_messages['odai']; ?>");

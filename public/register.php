@@ -42,6 +42,7 @@ if (count($err) === 0) {
 
   if($hasCreated) {
     UserLogic::login($email, $password);
+    $_SESSION['post_err'] = [];
   } else {
     $err[] = '登録に失敗しました';
   }

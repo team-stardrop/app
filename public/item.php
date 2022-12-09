@@ -19,6 +19,7 @@ $result = UserLogic::checkLogin();
 
 if ($result) {
     $login_user = $_SESSION['login_user'];
+    $_SESSION['post_err'] = [];
 }
 
 //フォームを打ち込んだとき

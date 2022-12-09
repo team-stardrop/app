@@ -30,6 +30,8 @@ if(!$result) {
   return;
 }
 
+$_SESSION['post_err'] = [];
+
 ?>
 <!DOCTYPE html>
 <html lang="ja">
