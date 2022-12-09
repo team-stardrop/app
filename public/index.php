@@ -85,7 +85,7 @@ $answer_count_order_post = $pdo->query($sql);
     <link rel="stylesheet" href="../css/index/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="../script/index/notification.js"></script>
-    <title>大喜利</title>
+    <title>クスッと</title>
 </head>
 
 <body>
@@ -168,7 +168,7 @@ $answer_count_order_post = $pdo->query($sql);
 
         <div class="main-header">
             <div class="main-header-text">
-                <h1>大喜利アプリ</h1>
+                <h1>クスッと</h1>
             </div>
             <?php if(isset($login_user)): ?>
             <div class="main-header-coin">
