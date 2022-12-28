@@ -239,7 +239,7 @@ foreach($answers as $answer) {
                             <div class="main-content-content-posts-area">
                                 <?php foreach($arrival_order_odai_array as $odai): 
                                     $post_date = new DateTime($odai['post_date']);
-                                    $post_date->modify('+5 days');
+                                    $post_date->modify('+100 days');
                                     if(date($post_date->format('Y-m-d H:i')) < date('Y-m-d H:i')){
                                         best_answer_process($odai);
                                     }

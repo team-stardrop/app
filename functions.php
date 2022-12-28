@@ -185,37 +185,37 @@ function best_answer_process($odai) {
   }
   
   // お題に対する回答を抽出
-  $sql = "SELECT * FROM `answers` WHERE odai_id=$odai_id";
-  $answers = $pdo->query($sql);
+  // $sql = "SELECT * FROM `answers` WHERE odai_id=$odai_id";
+  // $answers = $pdo->query($sql);
 
   // 回答ごとのいいねデータを削除
-  foreach($answers as $a){
-    $sql = "DELETE FROM favorite WHERE answer_id = :answer_id";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(":answer_id", $a['id']);
-    $stmt->execute();
-  }
+  // foreach($answers as $a){
+  //   $sql = "DELETE FROM favorite WHERE answer_id = :answer_id";
+  //   $stmt = $pdo->prepare($sql);
+  //   $stmt->bindParam(":answer_id", $a['id']);
+  //   $stmt->execute();
+  // }
 
   // 回答削除
-  try {
-    $sql = "DELETE FROM answers WHERE odai_id = :odai_id";
-    $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(":odai_id", $odai_id);
-    $stmt->execute();
+  // try {
+    // $sql = "DELETE FROM answers WHERE odai_id = :odai_id";
+    // $stmt = $pdo->prepare($sql);
+    // $stmt->bindParam(":odai_id", $odai_id);
+    // $stmt->execute();
     
     //お題の削除
-    try {
-      $sql = "DELETE FROM odais WHERE id = :odai_id";
-      $stmt = $pdo->prepare($sql);
-      $stmt->bindParam(":odai_id", $odai_id);
-      $stmt->execute();
-    } catch (PDOException $e) {
-      echo $e->getMessage();
-    }
+  //   try {
+  //     $sql = "DELETE FROM odais WHERE id = :odai_id";
+  //     $stmt = $pdo->prepare($sql);
+  //     $stmt->bindParam(":odai_id", $odai_id);
+  //     $stmt->execute();
+  //   } catch (PDOException $e) {
+  //     echo $e->getMessage();
+  //   }
     
-    exit;
-  } catch (PDOException $e) {
-    echo $e->getMessage();
-    die();
-  }
+  //   exit;
+  // } catch (PDOException $e) {
+  //   echo $e->getMessage();
+  //   die();
+  // }
 }
