@@ -73,7 +73,7 @@ html {
                             background-image: url(../../images/01_0.svg);
                             background-position: center;
                             background-repeat: no-repeat;
-	                        transition: .5s;
+                            transition: .5s;
                         }
                         &:hover .header-top-content-home-icon2 {
                             opacity: 0;
@@ -117,7 +117,7 @@ html {
                             background-image: url(../../images/02_0.svg);
                             background-position: center;
                             background-repeat: no-repeat;
-	                        transition: .5s;
+                            transition: .5s;
                         }
                         &:hover .header-top-content-account-icon2 {
                             opacity: 0;
@@ -163,7 +163,7 @@ html {
                             background-image: url(../../images/03_0.svg);
                             background-position: center;
                             background-repeat: no-repeat;
-	                        transition: .5s;
+                            transition: .5s;
                         }
                         &:hover .header-top-content-item-icon2 {
                             opacity: 0;
@@ -281,7 +281,7 @@ html {
                             background-image: url(../../images/04_0.svg);
                             background-position: center;
                             background-repeat: no-repeat;
-	                        transition: .5s;
+                            transition: .5s;
                         }
                         &:hover .header-bottom-content-register-icon2 {
                             opacity: 0;
@@ -325,7 +325,7 @@ html {
                             background-image: url(../../images/05_0.svg);
                             background-position: center;
                             background-repeat: no-repeat;
-	                        transition: .5s;
+                            transition: .5s;
                         }
                         &:hover .header-bottom-content-post-icon2 {
                             opacity: 0;
@@ -435,6 +435,50 @@ html {
                         &:hover {
                             background-color: #fbb13b4e;
                         }
+                    }
+                }
+                .main-content-selector {
+                    display: inline-block;
+                    width: 100%;
+                    height: 50px;
+                    border-bottom: 1px solid black;
+                    margin-top: 25px;
+                    .main-content-selector-content {
+                        display: inline-flex;
+                        height: 100%;
+                        margin-left: 25px;
+                        a {
+                            margin: 0 25px;
+                            cursor: pointer;
+                            display: inline-block;
+                            width: 150px;
+                            height: 100%;
+                            border-radius: 25px 25px 0 0;
+                            font-size: 1.2rem;
+                            line-height: 50px;
+                            text-align: center;
+                            border: none;
+                            text-decoration: none;
+                            color: black;
+                            &:visited {
+                                color: black;
+                                border: none;
+                            }
+                            &:first-child {
+                                margin-left: 0;
+                            }
+                            &:last-child {
+                                margin-right: 0;
+                            }
+                        }
+                        .main-content-selector-content-new {
+                            box-sizing: border-box;
+                            background-color: #fbb03b;
+                            border-left: 1px solid black;
+                            border-top: 1px solid black;
+                            border-right: 1px solid black;
+                        }
+                        .main-content-selector-content-like {}
                     }
                 }
                 .main-content-answer {

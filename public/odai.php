@@ -113,6 +113,13 @@
                 <input type="hidden" name="odai_id" value="<?php echo $odai_id; ?>">
             </form>
 
+            <div class="main-content-selector">
+                <div class="main-content-selector-content">
+                    <a href="#" class="main-content-selector-content-new">新着順</a>
+                    <a href="./odai-like.php" class="main-content-selector-content-like">いいね順</a>
+                </div>
+            </div>
+
             <!-- 回答を表示 -->
             <div class="main-content-answer">
                 <div class="main-content-answer-top">

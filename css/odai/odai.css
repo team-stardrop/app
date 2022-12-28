@@ -438,6 +438,49 @@ html body main .main-content .main-content-post .main-content-post-send {
 html body main .main-content .main-content-post .main-content-post-send:hover {
   background-color: rgba(251, 177, 59, 0.3058823529);
 }
+html body main .main-content .main-content-selector {
+  display: inline-block;
+  width: 100%;
+  height: 50px;
+  border-bottom: 1px solid black;
+  margin-top: 25px;
+}
+html body main .main-content .main-content-selector .main-content-selector-content {
+  display: inline-flex;
+  height: 100%;
+  margin-left: 25px;
+}
+html body main .main-content .main-content-selector .main-content-selector-content a {
+  margin: 0 25px;
+  cursor: pointer;
+  display: inline-block;
+  width: 150px;
+  height: 100%;
+  border-radius: 25px 25px 0 0;
+  font-size: 1.2rem;
+  line-height: 50px;
+  text-align: center;
+  border: none;
+  text-decoration: none;
+  color: black;
+}
+html body main .main-content .main-content-selector .main-content-selector-content a:visited {
+  color: black;
+  border: none;
+}
+html body main .main-content .main-content-selector .main-content-selector-content a:first-child {
+  margin-left: 0;
+}
+html body main .main-content .main-content-selector .main-content-selector-content a:last-child {
+  margin-right: 0;
+}
+html body main .main-content .main-content-selector .main-content-selector-content .main-content-selector-content-new {
+  box-sizing: border-box;
+  background-color: #fbb03b;
+  border-left: 1px solid black;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+}
 html body main .main-content .main-content-answer {
   position: relative;
   width: 100%;
