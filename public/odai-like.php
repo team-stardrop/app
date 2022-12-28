@@ -22,7 +22,7 @@
                     <div class="header-top-content-home-icon2"></div>
                 </a>
                 <a href="mypage-home.php" class="header-top-content-account">
-                    <div class="header-top-content-account-ex">マイページ</div>  
+                    <div class="header-top-content-account-ex">マイページ</div>
                     <div class="header-top-content-account-icon1"></div>
                     <div class="header-top-content-account-icon2"></div>
                 </a>
@@ -51,7 +51,7 @@
         <div class="header-bottom">
             <div class="header-bottom-content">
                 <a href="signup_form.php" class="header-bottom-register">
-                    <div class="header-bottom-register-ex">新規登録</div>    
+                    <div class="header-bottom-register-ex">新規登録</div>
                     <div class="header-bottom-content-register-icon1"></div>
                     <div class="header-bottom-content-register-icon2"></div>
                 </a>
@@ -129,16 +129,16 @@
             </div>
 
         </div>
-        
+
         <!-- 編集と削除 -->
-        <?php if($odai['user_id']==$login_user['id']): ?>
-        <div class="slide">
-            <div class="slide-bar">
-                <div class="slide-bar-icon"></div>
+        <?php if ($odai['user_id'] == $login_user['id']) : ?>
+            <div class="slide">
+                <div class="slide-bar">
+                    <div class="slide-bar-icon"></div>
+                </div>
+                <a class="slide-edit">編集する</a>
+                <a class="slide-delete" href="delete.php?id=<?php echo $odai['id']; ?>">削除する</a>
             </div>
-            <a class="slide-edit">編集する</a>
-            <a class="slide-delete" href="delete.php?id=<?php echo $odai['id']; ?>">削除する</a>
-        </div>
         <?php endif; ?>
     </main>
 
@@ -147,7 +147,7 @@
     <form class="postLayer-content" method="POST">
         <div class="category">
             <ul class="category-content">
-            <li>
+                <li>
                     <input type="radio" name="post_category" id="animal" value="1">
                     <label for="animal">動物</label>
                 </li>
@@ -278,4 +278,5 @@
 </body>
 
 <script src="../script/index/index.js"></script>
+
 </html>
