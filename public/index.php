@@ -16,6 +16,7 @@ $result = UserLogic::checkLogin();
 
 if ($result) {
     $login_user = $_SESSION['login_user'];
+    $_SESSION['post_err'] = [];
 }
 
 //フォームを打ち込んだとき
@@ -84,7 +85,7 @@ $answer_count_order_post = $pdo->query($sql);
     <link rel="stylesheet" href="../css/index/main.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="../script/index/notification.js"></script>
-    <title>大喜利</title>
+    <title>クスッと</title>
 </head>
 
 <body>
@@ -167,7 +168,7 @@ $answer_count_order_post = $pdo->query($sql);
 
         <div class="main-header">
             <div class="main-header-text">
-                <h1>大喜利アプリ</h1>
+                <h1>クスッと</h1>
             </div>
             <?php if(isset($login_user)): ?>
             <div class="main-header-coin">
@@ -204,7 +205,13 @@ $answer_count_order_post = $pdo->query($sql);
                 </div>
                 <div class="main-content-content-posts">
                     <div class="main-content-content-posts-area">
-                        <?php foreach ($arrival_order_post_array as $odai) :?>
+                        <?php foreach ($arrival_order_post_array as $odai) :
+                                $post_date = new DateTime($odai['post_date']);
+                                $post_date->modify('+100 days');
+                                if(date($post_date->format('Y-m-d H:i')) < date('Y-m-d H:i')){
+                                    best_answer_process($odai);
+                                }
+                            ?>
                             <a href="odai.php?odai_id=<?php echo $odai['id']; ?>" class="main-content-content-posts-area-post">
                                 <div class="main-content-content-posts-area-post-top">
                                     <div class="main-content-content-posts-area-post-content">

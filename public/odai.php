@@ -12,6 +12,7 @@ $result = UserLogic::checkLogin();
 
 if ($result) {
     $login_user = $_SESSION['login_user'];
+    $_SESSION['post_err'] = [];
 }
 
 $pdo = connect();
@@ -95,9 +96,21 @@ if (!empty($_POST['post_answer_button'])) {
             $stmt->bindParam(':favorite_count', $favorite_count, PDO::PARAM_STR);
 
             $stmt->execute();
-            header('Location: odai.php?odai_id='.$odai_id.'');
 
-            exit;
+            try {
+                $login_user['point']+=5;
+                $_SESSION['login_user'] = $login_user;
+                $stmt = $pdo->prepare("UPDATE `users` SET point = :point WHERE id = :user_id");
+                $stmt->bindParam(':user_id', $login_user['id'], PDO::PARAM_STR);
+                $stmt->bindParam(':point', $login_user['point'], PDO::PARAM_STR);
+
+                $stmt->execute();
+                header('Location: odai.php?odai_id='.$odai_id.'');
+    
+                exit;
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
         } catch (PDOException $e) {
             echo $e->getMessage();
         }

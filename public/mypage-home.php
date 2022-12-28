@@ -184,11 +184,6 @@ foreach($answers as $answer) {
     <main>
         <!-- エラーメッセージ表示 -->
         <div class="error">
-            <?php if (isset($_SESSION['post_err'])) : ?>
-                <script>
-                    notification("<?php echo $_SESSION['post_err']; ?>");
-                </script>
-            <?php endif; ?>
             <?php if (isset($err_messages['odai'])) : ?>
                 <script>
                     notification("<?php echo $err_messages['odai']; ?>");
@@ -242,7 +237,13 @@ foreach($answers as $answer) {
                         </div>
                         <div class="main-content-content-posts">
                             <div class="main-content-content-posts-area">
-                                <?php foreach($arrival_order_odai_array as $odai): ?>
+                                <?php foreach($arrival_order_odai_array as $odai): 
+                                    $post_date = new DateTime($odai['post_date']);
+                                    $post_date->modify('+100 days');
+                                    if(date($post_date->format('Y-m-d H:i')) < date('Y-m-d H:i')){
+                                        best_answer_process($odai);
+                                    }
+                                ?>
                                 <a href="odai.php?odai_id=<?php echo $odai['id']; ?>" class="main-content-content-posts-area-post">
                                     <div class="main-content-content-posts-area-post-top">
                                         <div class="main-content-content-posts-area-post-content">
