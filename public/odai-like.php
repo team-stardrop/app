@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="../script/index/notification.js"></script>
-    <link rel="stylesheet" href="../css/odai/odai.css">
+    <link rel="stylesheet" href="../css/odai/like.css">
     <title>大喜利</title>
 </head>
 
@@ -112,6 +112,13 @@
                 <input type="hidden" name="post_date" value="<?php echo date("Y-m-d H:i:s"); ?>">
                 <input type="hidden" name="odai_id" value="<?php echo $odai_id; ?>">
             </form>
+
+            <div class="main-content-selector">
+                <div class="main-content-selector-content">
+                    <a href="./odai.php" class="main-content-selector-content-new">新着順</a>
+                    <a href="#" class="main-content-selector-content-like">いいね順</a>
+                </div>
+            </div>
 
             <!-- 回答を表示 -->
             <div class="main-content-answer">
