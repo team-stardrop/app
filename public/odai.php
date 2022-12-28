@@ -96,11 +96,11 @@
             <!-- お題表示 -->
             <div class="main-content-odai">
                 <div class="main-content-odai-text">
-                    <div class="main-content-odai-text-content"></div>
+                    <div class="main-content-odai-text-content">ここにお題を書く</div>
                 </div>
                 <div class="main-content-odai-meta">
-                    <div class="main-content-odai-meta-name"></div>
-                    <div class="main-content-odai-meta-day"></div>
+                    <div class="main-content-odai-meta-name">名前</div>
+                    <div class="main-content-odai-meta-day">2022-22-22 22:22:22</div>
                 </div>
             </div>
 
@@ -116,14 +116,42 @@
             <!-- 回答を表示 -->
             <div class="main-content-answer">
                 <div class="main-content-answer-top">
-                    <div class="main-content-answer-top-text"></div>
+                    <div class="main-content-answer-top-text">ここに回答を書く</div>
                 </div>
                 <div class="main-content-answer-bottom">
                     <div class="main-content-answer-bottom-content">
-                        <div class="main-content-answer-bottom-content-name"></div>
-                        <div class="main-content-answer-bottom-content-day"></div>
+                        <div class="main-content-answer-bottom-content-name">名前</div>
+                        <div class="main-content-answer-bottom-content-day">2022-22-22 22:22:22</div>
                         <div class="main-content-answer-bottom-content-likeImg"></div>
-                        <div class="main-content-answer-bottom-content-likeNum"></div>
+                        <div class="main-content-answer-bottom-content-likeNum">999</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-content-answer">
+                <div class="main-content-answer-top">
+                    <div class="main-content-answer-top-text">ここに回答を書く</div>
+                </div>
+                <div class="main-content-answer-bottom">
+                    <div class="main-content-answer-bottom-content">
+                        <div class="main-content-answer-bottom-content-name">名前</div>
+                        <div class="main-content-answer-bottom-content-day">2022-22-22 22:22:22</div>
+                        <div class="main-content-answer-bottom-content-likeImg"></div>
+                        <div class="main-content-answer-bottom-content-likeNum">999</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-content-answer">
+                <div class="main-content-answer-top">
+                    <div class="main-content-answer-top-text">ここに回答を書く</div>
+                </div>
+                <div class="main-content-answer-bottom">
+                    <div class="main-content-answer-bottom-content">
+                        <div class="main-content-answer-bottom-content-name">名前</div>
+                        <div class="main-content-answer-bottom-content-day">2022-22-22 22:22:22</div>
+                        <div class="main-content-answer-bottom-content-likeImg"></div>
+                        <div class="main-content-answer-bottom-content-likeNum">999</div>
                     </div>
                 </div>
             </div>
