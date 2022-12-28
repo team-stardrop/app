@@ -96,11 +96,11 @@
             <!-- お題表示 -->
             <div class="main-content-odai">
                 <div class="main-content-odai-text">
-                    <div class="main-content-odai-text-content"><?php echo $odai['odai']; ?></div>
+                    <div class="main-content-odai-text-content">ここにお題を書く</div>
                 </div>
                 <div class="main-content-odai-meta">
-                    <div class="main-content-odai-meta-name"><?php echo $posted_user['username']; ?></div>
-                    <div class="main-content-odai-meta-day"><?php echo $odai['post_date']; ?></div>
+                    <div class="main-content-odai-meta-name">名前</div>
+                    <div class="main-content-odai-meta-day">2022-12-12 12:12:12</div>
                 </div>
             </div>
 
