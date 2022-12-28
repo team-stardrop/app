@@ -128,6 +128,34 @@
                 </div>
             </div>
 
+            <div class="main-content-answer">
+                <div class="main-content-answer-top">
+                    <div class="main-content-answer-top-text">ここに回答の内容</div>
+                </div>
+                <div class="main-content-answer-bottom">
+                    <div class="main-content-answer-bottom-content">
+                        <div class="main-content-answer-bottom-content-name">名前</div>
+                        <div class="main-content-answer-bottom-content-day">2022-12-12 12:12</div>
+                        <div class="main-content-answer-bottom-content-likeImg"></div>
+                        <div class="main-content-answer-bottom-content-likeNum">999</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-content-answer">
+                <div class="main-content-answer-top">
+                    <div class="main-content-answer-top-text">ここに回答の内容</div>
+                </div>
+                <div class="main-content-answer-bottom">
+                    <div class="main-content-answer-bottom-content">
+                        <div class="main-content-answer-bottom-content-name">名前</div>
+                        <div class="main-content-answer-bottom-content-day">2022-12-12 12:12</div>
+                        <div class="main-content-answer-bottom-content-likeImg"></div>
+                        <div class="main-content-answer-bottom-content-likeNum">999</div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <!-- 編集と削除 -->
