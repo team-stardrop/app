@@ -474,7 +474,7 @@ html body main .main-content .main-content-selector .main-content-selector-conte
 html body main .main-content .main-content-selector .main-content-selector-content a:last-child {
   margin-right: 0;
 }
-html body main .main-content .main-content-selector .main-content-selector-content .main-content-selector-content-new {
+html body main .main-content .main-content-selector .main-content-selector-content .main-content-selector-content-like {
   box-sizing: border-box;
   background-color: #fbb03b;
   border-left: 1px solid black;
@@ -932,4 +932,4 @@ html body .postLayer-content-edit .form .form-bottom .form-bottom-postButtonCont
   background-color: transparent;
   border: none;
 }
-/*# sourceMappingURL=odai.css.map */
+/*# sourceMappingURL=like.css.map */

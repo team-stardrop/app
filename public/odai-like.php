@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="../script/index/notification.js"></script>
-    <link rel="stylesheet" href="../css/odai/odai.css">
+    <link rel="stylesheet" href="../css/odai/like.css">
     <title>大喜利</title>
 </head>
 
@@ -22,7 +22,7 @@
                     <div class="header-top-content-home-icon2"></div>
                 </a>
                 <a href="mypage-home.php" class="header-top-content-account">
-                    <div class="header-top-content-account-ex">マイページ</div>  
+                    <div class="header-top-content-account-ex">マイページ</div>
                     <div class="header-top-content-account-icon1"></div>
                     <div class="header-top-content-account-icon2"></div>
                 </a>
@@ -51,7 +51,7 @@
         <div class="header-bottom">
             <div class="header-bottom-content">
                 <a href="signup_form.php" class="header-bottom-register">
-                    <div class="header-bottom-register-ex">新規登録</div>    
+                    <div class="header-bottom-register-ex">新規登録</div>
                     <div class="header-bottom-content-register-icon1"></div>
                     <div class="header-bottom-content-register-icon2"></div>
                 </a>
@@ -100,7 +100,7 @@
                 </div>
                 <div class="main-content-odai-meta">
                     <div class="main-content-odai-meta-name">名前</div>
-                    <div class="main-content-odai-meta-day">2022-22-22 22:22:22</div>
+                    <div class="main-content-odai-meta-day">2022-12-12 12:12:12</div>
                 </div>
             </div>
 
@@ -115,20 +115,20 @@
 
             <div class="main-content-selector">
                 <div class="main-content-selector-content">
-                    <a href="#" class="main-content-selector-content-new">新着順</a>
-                    <a href="./odai-like.php" class="main-content-selector-content-like">いいね順</a>
+                    <a href="./odai.php" class="main-content-selector-content-new">新着順</a>
+                    <a href="#" class="main-content-selector-content-like">いいね順</a>
                 </div>
             </div>
 
             <!-- 回答を表示 -->
             <div class="main-content-answer">
                 <div class="main-content-answer-top">
-                    <div class="main-content-answer-top-text">ここに回答を書く</div>
+                    <div class="main-content-answer-top-text">ここに回答の内容</div>
                 </div>
                 <div class="main-content-answer-bottom">
                     <div class="main-content-answer-bottom-content">
                         <div class="main-content-answer-bottom-content-name">名前</div>
-                        <div class="main-content-answer-bottom-content-day">2022-22-22 22:22:22</div>
+                        <div class="main-content-answer-bottom-content-day">2022-12-12 12:12</div>
                         <div class="main-content-answer-bottom-content-likeImg"></div>
                         <div class="main-content-answer-bottom-content-likeNum">999</div>
                     </div>
@@ -137,12 +137,12 @@
 
             <div class="main-content-answer">
                 <div class="main-content-answer-top">
-                    <div class="main-content-answer-top-text">ここに回答を書く</div>
+                    <div class="main-content-answer-top-text">ここに回答の内容</div>
                 </div>
                 <div class="main-content-answer-bottom">
                     <div class="main-content-answer-bottom-content">
                         <div class="main-content-answer-bottom-content-name">名前</div>
-                        <div class="main-content-answer-bottom-content-day">2022-22-22 22:22:22</div>
+                        <div class="main-content-answer-bottom-content-day">2022-12-12 12:12</div>
                         <div class="main-content-answer-bottom-content-likeImg"></div>
                         <div class="main-content-answer-bottom-content-likeNum">999</div>
                     </div>
@@ -151,12 +151,12 @@
 
             <div class="main-content-answer">
                 <div class="main-content-answer-top">
-                    <div class="main-content-answer-top-text">ここに回答を書く</div>
+                    <div class="main-content-answer-top-text">ここに回答の内容</div>
                 </div>
                 <div class="main-content-answer-bottom">
                     <div class="main-content-answer-bottom-content">
                         <div class="main-content-answer-bottom-content-name">名前</div>
-                        <div class="main-content-answer-bottom-content-day">2022-22-22 22:22:22</div>
+                        <div class="main-content-answer-bottom-content-day">2022-12-12 12:12</div>
                         <div class="main-content-answer-bottom-content-likeImg"></div>
                         <div class="main-content-answer-bottom-content-likeNum">999</div>
                     </div>
@@ -164,16 +164,16 @@
             </div>
 
         </div>
-        
+
         <!-- 編集と削除 -->
-        <?php if($odai['user_id']==$login_user['id']): ?>
-        <div class="slide">
-            <div class="slide-bar">
-                <div class="slide-bar-icon"></div>
+        <?php if ($odai['user_id'] == $login_user['id']) : ?>
+            <div class="slide">
+                <div class="slide-bar">
+                    <div class="slide-bar-icon"></div>
+                </div>
+                <a class="slide-edit">編集する</a>
+                <a class="slide-delete" href="delete.php?id=<?php echo $odai['id']; ?>">削除する</a>
             </div>
-            <a class="slide-edit">編集する</a>
-            <a class="slide-delete" href="delete.php?id=<?php echo $odai['id']; ?>">削除する</a>
-        </div>
         <?php endif; ?>
     </main>
 
@@ -182,7 +182,7 @@
     <form class="postLayer-content" method="POST">
         <div class="category">
             <ul class="category-content">
-            <li>
+                <li>
                     <input type="radio" name="post_category" id="animal" value="1">
                     <label for="animal">動物</label>
                 </li>
@@ -313,4 +313,5 @@
 </body>
 
 <script src="../script/index/index.js"></script>
+
 </html>
