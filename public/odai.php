@@ -1,3 +1,177 @@
+<?php
+
+session_start();
+require_once '../classes/UserLogic.php';
+require_once '../dbconnect.php';
+require_once '../functions.php';
+
+date_default_timezone_set("Asia/Tokyo");
+
+//ログインしているか判定
+$result = UserLogic::checkLogin();
+
+if ($result) {
+    $login_user = $_SESSION['login_user'];
+    $_SESSION['post_err'] = [];
+}
+
+$pdo = connect();
+$odai_id = $_GET['odai_id'];
+$odai =get_odai_data($_GET['odai_id']);
+//お題が存在しない時
+if(!$odai){
+    header('Location: http://localhost:80/oogiri-app/public/index.php');
+}
+$posted_user = get_odai_posted_user($odai['user_id']);
+
+//投稿フォームを打ち込んだとき
+if (!empty($_POST['submitButton'])) {
+    //ログインしているか判定し，していなかったら投稿できない
+    if (!$result) {
+        $_SESSION['post_err'] = 'ユーザを登録してログインしてください';
+        header('Location: index.php');
+        return;
+    }
+    //投稿が空の場合
+    if (empty($_POST['odai'])) {
+        $err_messages['odai'] = "記入されていません";
+    } else if (empty($_POST['post_category'])) {
+        $err_messages['category'] = "カテゴリーが選択されていません";
+    } else if ($login_user['point']<20) {
+        $err_messages['point'] = "お題投稿には20ポイント必要です";
+    } else {
+        // お題を保存
+        try {
+            $stmt = $pdo->prepare("INSERT INTO `odais` (`odai`, `user_id`, `post_date` , `item_id`) VALUES (:odai, :user_id, :post_date, :item_id)");
+            $stmt->bindParam(':odai', $_POST['odai'], PDO::PARAM_STR);
+            $stmt->bindParam(':user_id', $_POST['user_id'], PDO::PARAM_STR);
+            $stmt->bindParam(':post_date', $_POST['post_date'], PDO::PARAM_STR);
+            $stmt->bindParam(':item_id', $_POST['post_category'], PDO::PARAM_STR);
+
+            $stmt->execute();
+
+            // ポイント処理
+            try{
+                $login_user['point'] = $login_user['point']-20;
+                $_SESSION['login_user'] = $login_user;
+                $stmt = $pdo->prepare("UPDATE `users` SET point = :point WHERE id = :user_id");
+                $stmt->bindParam(':point', $login_user['point'], PDO::PARAM_STR);
+                $stmt->bindParam(':user_id', $login_user['id'], PDO::PARAM_STR);
+
+                $stmt->execute();
+
+                header('Location: odai.php?odai_id='.$odai_id.'');
+                exit;
+            } catch (PDOException $e){
+                echo $e->getMessage();
+            }
+
+            exit;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+}
+
+//回答フォームを打ち込んだとき
+if (!empty($_POST['post_answer_button'])) {
+    //ログインしているか判定し，していなかったら投稿できない
+    if (!$result) {
+        $_SESSION['post_err'] = 'ユーザを登録してログインしてください';
+        header('Location: odai.php?odai_id='.$odai_id.'');
+        return;
+    }
+    //投稿が空の場合
+    if (empty($_POST['answer'])) {
+        $err_messages['answer'] = "記入されていません";
+    } else {
+        // お題を保存
+        try {
+            $favorite_count = 0;
+            $stmt = $pdo->prepare("INSERT INTO `answers` (`answer`, `odai_id`, `user_id`, `post_date`, `favorite_count`) VALUES (:answer, :odai_id, :user_id, :post_date, :favorite_count)");
+            $stmt->bindParam(':answer', $_POST['answer'], PDO::PARAM_STR);
+            $stmt->bindParam(':odai_id', $odai['id'], PDO::PARAM_STR);
+            $stmt->bindParam(':user_id', $_POST['user_id'], PDO::PARAM_STR);
+            $stmt->bindParam(':post_date', $_POST['post_date'], PDO::PARAM_STR);
+            $stmt->bindParam(':favorite_count', $favorite_count, PDO::PARAM_STR);
+
+            $stmt->execute();
+
+            try {
+                $login_user['point']+=5;
+                $_SESSION['login_user'] = $login_user;
+                $stmt = $pdo->prepare("UPDATE `users` SET point = :point WHERE id = :user_id");
+                $stmt->bindParam(':user_id', $login_user['id'], PDO::PARAM_STR);
+                $stmt->bindParam(':point', $login_user['point'], PDO::PARAM_STR);
+
+                $stmt->execute();
+                header('Location: odai.php?odai_id='.$odai_id.'');
+
+                exit;
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+}
+
+//編集が完了したとき
+if(!empty($_POST['updateButton'])){
+    //投稿が空の場合
+    if(empty($_POST['odai'])) {
+      $err_messages['odai'] = "記入されていません";
+    } else {
+      try{
+        $stmt = $pdo->prepare("UPDATE `odais` SET odai = :odai, post_date = :post_date WHERE id = :odai_id");
+        $stmt->bindParam(':odai_id', $_POST['odai_id'], PDO::PARAM_STR);
+        $stmt->bindParam(':odai', $_POST['odai'], PDO::PARAM_STR);
+        $stmt->bindParam(':post_date', $_POST['post_date'], PDO::PARAM_STR);
+
+        $stmt->execute();
+
+        header('Location: http://localhost:80/oogiri-app/public/odai.php?odai_id='.$odai_id.'');
+        exit;
+      } catch (PDOException $e){
+        echo $e->getMessage();
+      }
+    }
+  }
+
+//いいね機能
+if (isset($_REQUEST['like']) && isset($login_user['id'])) {
+    //過去にいいね済みであるか確認
+    $my_like_cnt = check_favorite($_REQUEST['like'], $login_user['id']);
+
+    //いいねのデータを挿入or削除
+  if ($my_like_cnt['cnt'] < 1) {
+    $press = $pdo->prepare('INSERT INTO favorite SET user_id=?, answer_id=?');
+    $press->execute(array(
+        $login_user['id'],
+        $_REQUEST['like']
+    ));
+    header("Location: odai.php?odai_id=$odai_id");
+    exit();
+  } else {
+    $cancel = $pdo->prepare('DELETE FROM favorite WHERE user_id=? AND answer_id=?');
+    $cancel->execute(array(
+      $login_user['id'],
+      $_REQUEST['like']
+    ));
+    header("Location: odai.php?odai_id=$odai_id");
+    exit();
+  }
+} else if(isset($_REQUEST['like']) && !isset($login_user['id'])) {
+    $_SESSION['liked_user'] = 'いいねするにはログインしてください';
+    header("Location: login_form.php");
+    exit();
+}
+
+$sql = "SELECT * FROM `answers` WHERE odai_id=$odai_id ORDER BY favorite_count DESC";
+$answers = $pdo->query($sql);
+
+?>
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -96,11 +270,11 @@
             <!-- お題表示 -->
             <div class="main-content-odai">
                 <div class="main-content-odai-text">
-                    <div class="main-content-odai-text-content">ここにお題を書く</div>
+                    <div class="main-content-odai-text-content"><?php echo $odai['odai']; ?></div>
                 </div>
                 <div class="main-content-odai-meta">
-                    <div class="main-content-odai-meta-name">名前</div>
-                    <div class="main-content-odai-meta-day">2022-22-22 22:22:22</div>
+                    <div class="main-content-odai-meta-name"><?php echo $posted_user['username']; ?></div>
+                    <div class="main-content-odai-meta-day"><?php echo $odai['post_date']; ?></div>
                 </div>
             </div>
 
