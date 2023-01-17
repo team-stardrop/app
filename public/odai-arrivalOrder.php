@@ -290,7 +290,7 @@ $answers = $pdo->query($sql);
             <div class="main-content-selector">
                 <div class="main-content-selector-content">
                     <a href="#" class="main-content-selector-content-new">新着順</a>
-                    <a href="./odai-like.php" class="main-content-selector-content-like">いいね順</a>
+                    <a href="./odai-like.php?odai_id=<?php echo $odai_id; ?>" class="main-content-selector-content-like">いいね順</a>
                 </div>
             </div>
 
