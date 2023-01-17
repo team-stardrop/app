@@ -50,7 +50,7 @@
         </div>
         <div class="header-bottom">
             <div class="header-bottom-content">
-                <a href="signup_form.php" class="header-bottom-register">
+                <a href="signup-form.php" class="header-bottom-register">
                     <div class="header-bottom-register-ex">新規登録</div>
                     <div class="header-bottom-content-register-icon1"></div>
                     <div class="header-bottom-content-register-icon2"></div>

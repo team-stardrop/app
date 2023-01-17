@@ -126,7 +126,7 @@ $answer_count_order_post = $pdo->query($sql);
         </div>
         <div class="header-bottom">
             <div class="header-bottom-content">
-                <a href="signup_form.php" class="header-bottom-register">
+                <a href="signup-form.php" class="header-bottom-register">
                     <div class="header-bottom-register-ex">新規登録</div>
                     <div class="header-bottom-content-register-icon1"></div>
                     <div class="header-bottom-content-register-icon2"></div>
@@ -212,7 +212,7 @@ $answer_count_order_post = $pdo->query($sql);
                                     best_answer_process($odai);
                                 }
                             ?>
-                            <a href="odai.php?odai_id=<?php echo $odai['id']; ?>" class="main-content-content-posts-area-post">
+                            <a href="odai-arrivalOrder.php?odai_id=<?php echo $odai['id']; ?>" class="main-content-content-posts-area-post">
                                 <div class="main-content-content-posts-area-post-top">
                                     <div class="main-content-content-posts-area-post-content">
                                         <div class="main-content-content-posts-area-post-content-text"><?php echo $odai['odai'] ?></div>
@@ -253,7 +253,7 @@ $answer_count_order_post = $pdo->query($sql);
                             $stmt = $pdo->query($sql);
                             $odai = $stmt->fetch(PDO::FETCH_ASSOC);
                             ?>
-                            <a href="odai.php?odai_id=<?php echo $odai['id']; ?>" class="main-content-content-posts-area-post">
+                            <a href="odai-arrivalOrder.php?odai_id=<?php echo $odai['id']; ?>" class="main-content-content-posts-area-post">
                                 <div class="main-content-content-posts-area-post-top">
                                     <div class="main-content-content-posts-area-post-content">
                                         <div class="main-content-content-posts-area-post-content-text"><?php echo $odai['odai']; ?></div>

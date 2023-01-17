@@ -65,7 +65,7 @@ if (count($err) === 0) {
                 <?php foreach($err as $e) : ?>
                     <p class="message"><?php echo $e ?></p>
                 <?php endforeach ?>
-                <a href="./signup_form.php" class="return-signup">戻る</a>
+                <a href="./signup-form.php" class="return-signup">戻る</a>
             <?php else : ?>
                 <p class="message">ユーザ登録が完了しました</p>
                 <a href="./index.php" class="go-home">ホーム</a>
