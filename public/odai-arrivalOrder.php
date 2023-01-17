@@ -168,7 +168,7 @@ if (isset($_REQUEST['like']) && isset($login_user['id'])) {
     exit();
 }
 
-$sql = "SELECT * FROM `answers` WHERE odai_id=$odai_id ORDER BY favorite_count DESC";
+$sql = "SELECT * FROM answers WHERE odai_id=$odai_id ORDER BY id DESC";
 $answers = $pdo->query($sql);
 
 ?>
