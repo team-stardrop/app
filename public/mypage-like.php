@@ -10,7 +10,7 @@ $result = UserLogic::checkLogin();
 
 if (!$result) {
     $_SESSION['login_err'] = 'ユーザを登録してログインしてください';
-    header('Location: signup_form.php');
+    header('Location: signup-form.php');
     return;
 }
 
@@ -146,7 +146,7 @@ foreach($answers as $answer) {
         </div>
         <div class="header-bottom">
             <div class="header-bottom-content">
-                <a href="signup_form.php" class="header-bottom-register">
+                <a href="signup-form.php" class="header-bottom-register">
                     <div class="header-bottom-register-ex">新規登録</div>
                     <div class="header-bottom-content-register-icon1"></div>
                     <div class="header-bottom-content-register-icon2"></div>
@@ -232,7 +232,7 @@ foreach($answers as $answer) {
                     <div class="main-content-content-posts">
                         <div class="main-content-content-posts-area">
                         <?php foreach ($odais as $odai) :?>
-                        <a href="odai.php?odai_id=<?php echo $odai['id']; ?>" class="main-content-content-posts-area-post">
+                        <a href="odai-arrivalOrder?odai_id=<?php echo $odai['id']; ?>" class="main-content-content-posts-area-post">
                             <div class="main-content-content-posts-area-post-top">
                                 <div class="main-content-content-posts-area-post-content">
                                     <div class="main-content-content-posts-area-post-content-text"><?php echo $odai['odai'] ?></div>

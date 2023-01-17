@@ -60,7 +60,7 @@ if (!empty($_POST['submitButton'])) {
 
                 $stmt->execute();
 
-                header('Location: odai.php?odai_id='.$odai_id.'');
+                header('Location: odai-arrivalOrder?odai_id='.$odai_id.'');
                 exit;
             } catch (PDOException $e){
                 echo $e->getMessage();
@@ -78,7 +78,7 @@ if (!empty($_POST['post_answer_button'])) {
     //ログインしているか判定し，していなかったら投稿できない
     if (!$result) {
         $_SESSION['post_err'] = 'ユーザを登録してログインしてください';
-        header('Location: odai.php?odai_id='.$odai_id.'');
+        header('Location: odai-arrivalOrder?odai_id='.$odai_id.'');
         return;
     }
     //投稿が空の場合
@@ -105,7 +105,7 @@ if (!empty($_POST['post_answer_button'])) {
                 $stmt->bindParam(':point', $login_user['point'], PDO::PARAM_STR);
 
                 $stmt->execute();
-                header('Location: odai.php?odai_id='.$odai_id.'');
+                header('Location: odai-arrivalOrder?odai_id='.$odai_id.'');
 
                 exit;
             } catch (PDOException $e) {
@@ -131,7 +131,7 @@ if(!empty($_POST['updateButton'])){
 
         $stmt->execute();
 
-        header('Location: http://localhost:80/oogiri-app/public/odai.php?odai_id='.$odai_id.'');
+        header('Location: http://localhost:80/oogiri-app/public/odai-arrivalOrder?odai_id='.$odai_id.'');
         exit;
       } catch (PDOException $e){
         echo $e->getMessage();
@@ -151,7 +151,7 @@ if (isset($_REQUEST['like']) && isset($login_user['id'])) {
         $login_user['id'],
         $_REQUEST['like']
     ));
-    header("Location: odai.php?odai_id=$odai_id");
+    header("Location: odai-arrivalOrder?odai_id=$odai_id");
     exit();
   } else {
     $cancel = $pdo->prepare('DELETE FROM favorite WHERE user_id=? AND answer_id=?');
@@ -159,12 +159,12 @@ if (isset($_REQUEST['like']) && isset($login_user['id'])) {
       $login_user['id'],
       $_REQUEST['like']
     ));
-    header("Location: odai.php?odai_id=$odai_id");
+    header("Location: odai-arrivalOrder?odai_id=$odai_id");
     exit();
   }
 } else if(isset($_REQUEST['like']) && !isset($login_user['id'])) {
     $_SESSION['liked_user'] = 'いいねするにはログインしてください';
-    header("Location: login_form.php");
+    header("Location: login-form.php");
     exit();
 }
 
@@ -224,7 +224,7 @@ $answers = $pdo->query($sql);
         </div>
         <div class="header-bottom">
             <div class="header-bottom-content">
-                <a href="signup_form.php" class="header-bottom-register">
+                <a href="signup-form.php" class="header-bottom-register">
                     <div class="header-bottom-register-ex">新規登録</div>    
                     <div class="header-bottom-content-register-icon1"></div>
                     <div class="header-bottom-content-register-icon2"></div>
@@ -309,9 +309,9 @@ $answers = $pdo->query($sql);
                                 $my_like_cnt = check_favorite($answer['id'], $login_user['id']);
                                 if ($my_like_cnt['cnt'] < 1):
                         ?>
-                        <div class="main-content-answer-bottom-content-likeImg" href="odai.php?odai_id=<?php echo $odai_id; ?>&like=<?php echo h($answer['id']); ?>"></div>
+                        <div class="main-content-answer-bottom-content-likeImg" href="odai-arrivalOrder?odai_id=<?php echo $odai_id; ?>&like=<?php echo h($answer['id']); ?>"></div>
                         <?php else : ?>
-                            <a class="main-content-answer-bottom-content-clickedLikeImg" href="odai.php?odai_id=<?php echo $odai_id; ?>&like=<?php echo h($answer['id']); ?>"></a>
+                            <a class="main-content-answer-bottom-content-clickedLikeImg" href="odai-arrivalOrder?odai_id=<?php echo $odai_id; ?>&like=<?php echo h($answer['id']); ?>"></a>
                         <?php endif; ?>
                         <?php endif; ?>
                         <div class="main-content-answer-bottom-content-likeNum"><?php print_favorite_count($answer['id']); ?></div>

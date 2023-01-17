@@ -50,7 +50,7 @@
         </div>
         <div class="header-bottom">
             <div class="header-bottom-content">
-                <a href="signup_form.php" class="header-bottom-register">
+                <a href="signup-form.php" class="header-bottom-register">
                     <div class="header-bottom-register-ex">新規登録</div>
                     <div class="header-bottom-content-register-icon1"></div>
                     <div class="header-bottom-content-register-icon2"></div>
@@ -115,7 +115,7 @@
 
             <div class="main-content-selector">
                 <div class="main-content-selector-content">
-                    <a href="./odai.php" class="main-content-selector-content-new">新着順</a>
+                    <a href="./odai-arrivalOrder" class="main-content-selector-content-new">新着順</a>
                     <a href="#" class="main-content-selector-content-like">いいね順</a>
                 </div>
             </div>
