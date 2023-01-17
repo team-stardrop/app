@@ -115,7 +115,7 @@
 
             <div class="main-content-selector">
                 <div class="main-content-selector-content">
-                    <a href="./odai-arrivalOrder" class="main-content-selector-content-new">新着順</a>
+                    <a href="./odai-arrivalOrder.php" class="main-content-selector-content-new">新着順</a>
                     <a href="#" class="main-content-selector-content-like">いいね順</a>
                 </div>
             </div>

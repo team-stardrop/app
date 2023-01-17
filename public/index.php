@@ -212,7 +212,7 @@ $answer_count_order_post = $pdo->query($sql);
                                     best_answer_process($odai);
                                 }
                             ?>
-                            <a href="odai-arrivalOrder?odai_id=<?php echo $odai['id']; ?>" class="main-content-content-posts-area-post">
+                            <a href="odai-arrivalOrder.php?odai_id=<?php echo $odai['id']; ?>" class="main-content-content-posts-area-post">
                                 <div class="main-content-content-posts-area-post-top">
                                     <div class="main-content-content-posts-area-post-content">
                                         <div class="main-content-content-posts-area-post-content-text"><?php echo $odai['odai'] ?></div>
@@ -253,7 +253,7 @@ $answer_count_order_post = $pdo->query($sql);
                             $stmt = $pdo->query($sql);
                             $odai = $stmt->fetch(PDO::FETCH_ASSOC);
                             ?>
-                            <a href="odai-arrivalOrder?odai_id=<?php echo $odai['id']; ?>" class="main-content-content-posts-area-post">
+                            <a href="odai-arrivalOrder.php?odai_id=<?php echo $odai['id']; ?>" class="main-content-content-posts-area-post">
                                 <div class="main-content-content-posts-area-post-top">
                                     <div class="main-content-content-posts-area-post-content">
                                         <div class="main-content-content-posts-area-post-content-text"><?php echo $odai['odai']; ?></div>

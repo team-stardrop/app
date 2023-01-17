@@ -244,7 +244,7 @@ foreach($answers as $answer) {
                                         best_answer_process($odai);
                                     }
                                 ?>
-                                <a href="odai-arrivalOrder?odai_id=<?php echo $odai['id']; ?>" class="main-content-content-posts-area-post">
+                                <a href="odai-arrivalOrder.php?odai_id=<?php echo $odai['id']; ?>" class="main-content-content-posts-area-post">
                                     <div class="main-content-content-posts-area-post-top">
                                         <div class="main-content-content-posts-area-post-content">
                                             <div class="main-content-content-posts-area-post-content-text"><?php echo $odai['odai']; ?></div>
@@ -271,7 +271,7 @@ foreach($answers as $answer) {
                         <div class="main-content-content-posts">
                             <div class="main-content-content-posts-area">
                                 <?php foreach($posted_answer_odais as $odai): ?>
-                                <a href="odai-arrivalOrder?odai_id=<?php echo $odai['id']; ?>" class="main-content-content-posts-area-post">
+                                <a href="odai-arrivalOrder.php?odai_id=<?php echo $odai['id']; ?>" class="main-content-content-posts-area-post">
                                     <div class="main-content-content-posts-area-post-top">
                                         <div class="main-content-content-posts-area-post-content">
                                             <div class="main-content-content-posts-area-post-content-text"><?php echo $odai['odai']; ?></div>
@@ -326,7 +326,7 @@ foreach($answers as $answer) {
                         <div class="main-content-content-posts">
                             <div class="main-content-content-posts-area">
                                 <?php foreach ($odais as $odai) :?>
-                                <a href="odai-arrivalOrder?odai_id=<?php echo $odai['id']; ?>" class="main-content-content-posts-area-post">
+                                <a href="odai-arrivalOrder.php?odai_id=<?php echo $odai['id']; ?>" class="main-content-content-posts-area-post">
                                     <div class="main-content-content-posts-area-post-top">
                                         <div class="main-content-content-posts-area-post-content">
                                             <div class="main-content-content-posts-area-post-content-text"><?php echo $odai['odai'] ?></div>
