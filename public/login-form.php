@@ -67,7 +67,7 @@ session_destroy();
                 <input type="submit" value="ログイン" class="submit">
             </form>
         </div>
-        <a href="signup_form.php" class="login">新規登録はこちら</a>
+        <a href="signup-form.php" class="login">新規登録はこちら</a>
     </div>
 </body>
 </html>

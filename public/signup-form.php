@@ -62,7 +62,7 @@ unset($_SESSION['login_err']);
                     <input type="submit" value="登録" class="submit">
                 </form>
             </div>
-            <a href="login_form.php" class="login">ログインはこちら</a>
+            <a href="login-form.php" class="login">ログインはこちら</a>
         </div>
     </body>
 </html>
