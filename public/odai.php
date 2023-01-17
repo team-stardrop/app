@@ -323,7 +323,7 @@ $answers = $pdo->query($sql);
         </div>
         
         <!-- 編集と削除 -->
-        <?php if($odai['user_id']==$login_user['id']): ?>
+        <?php if(isset($login_user)&&$odai['user_id']==$login_user['id']): ?>
         <div class="slide">
             <div class="slide-bar">
                 <div class="slide-bar-icon"></div>
