@@ -20,7 +20,7 @@ $odai_id = $_GET['odai_id'];
 $odai =get_odai_data($_GET['odai_id']);
 //お題が存在しない時
 if(!$odai){
-    header('Location: http://localhost:80/oogiri-app/public/index.php');
+    header('Location: index.php');
 }
 $posted_user = get_odai_posted_user($odai['user_id']);
 
