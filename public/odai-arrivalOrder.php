@@ -28,12 +28,27 @@ if($odai['processed']){
     header('Location: bestanswer.php');
 }
 
-$post_date = new DateTime($odai['deadline']);
-// // $post_date->modify('+5 days');
-if(date($post_date->format('Y-m-d H:i')) < date('Y-m-d H:i')){
-    echo 'true';
-} else {
-    echo 'false';
+$deadline = new DateTime($odai['deadline']);
+// // $deadline->modify('+5 days');
+if(date($deadline->format('Y-m-d H:i')) < date('Y-m-d H:i')){ // deadlineを過ぎている
+    if(notEqual_favorite_count($odai_id)&&notZero_answer_count($odai_id)){ //　回答のいいね数が被ってないかつ回答が0じゃない
+        // bestanswer処理
+        $stmt = $pdo->prepare("UPDATE `odais` SET processed = 1 WHERE id = :odai_id");
+        $stmt->bindParam(':odai_id', $odai_id, PDO::PARAM_STR);
+
+        $stmt->execute();
+        best_answer_process($odai_id);
+        header('Location: bestanswer.php');
+    } else {
+        // deadlineに+7日
+        $added_daadline = $deadline->modify('+7 days');
+        $changed_deadline = $added_daadline -> format('Y-m-d H:i:s');
+        $stmt = $pdo->prepare("UPDATE `odais` SET deadline = :deadline WHERE id = :odai_id");
+        $stmt->bindParam(':deadline', $changed_deadline, PDO::PARAM_STR);
+        $stmt->bindParam(':odai_id', $odai_id, PDO::PARAM_STR);
+
+        $stmt->execute();
+    }
 }
 
 $posted_user = get_odai_posted_user($odai['user_id']);
