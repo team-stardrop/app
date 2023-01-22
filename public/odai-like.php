@@ -124,10 +124,9 @@ if(!empty($_POST['updateButton'])){
       $err_messages['odai'] = "記入されていません";
     } else {
       try{
-        $stmt = $pdo->prepare("UPDATE `odais` SET odai = :odai, post_date = :post_date WHERE id = :odai_id");
+        $stmt = $pdo->prepare("UPDATE `odais` SET odai = :odai WHERE id = :odai_id");
         $stmt->bindParam(':odai_id', $_POST['odai_id'], PDO::PARAM_STR);
         $stmt->bindParam(':odai', $_POST['odai'], PDO::PARAM_STR);
-        $stmt->bindParam(':post_date', $_POST['post_date'], PDO::PARAM_STR);
 
         $stmt->execute();
 
