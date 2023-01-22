@@ -17,11 +17,25 @@ if ($result) {
 
 $pdo = connect();
 $odai_id = $_GET['odai_id'];
+//お題データを取得
 $odai =get_odai_data($_GET['odai_id']);
 //お題が存在しない時
 if(!$odai){
     header('Location: index.php');
 }
+
+if($odai['processed']){
+    header('Location: bestanswer.php');
+}
+
+$post_date = new DateTime($odai['deadline']);
+// // $post_date->modify('+5 days');
+if(date($post_date->format('Y-m-d H:i')) < date('Y-m-d H:i')){
+    echo 'true';
+} else {
+    echo 'false';
+}
+
 $posted_user = get_odai_posted_user($odai['user_id']);
 
 //投稿フォームを打ち込んだとき
