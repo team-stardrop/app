@@ -42,10 +42,11 @@ if (!empty($_POST['submitButton'])) {
     } else {
         // お題を保存
         try {
-            $stmt = $pdo->prepare("INSERT INTO `odais` (`odai`, `user_id`, `post_date` , `item_id`) VALUES (:odai, :user_id, :post_date, :item_id)");
+            $stmt = $pdo->prepare("INSERT INTO `odais` (`odai`, `user_id`, `post_date` , `deadline`, `item_id`) VALUES (:odai, :user_id, :post_date, :deadline, :item_id)");
             $stmt->bindParam(':odai', $_POST['odai'], PDO::PARAM_STR);
             $stmt->bindParam(':user_id', $_POST['user_id'], PDO::PARAM_STR);
             $stmt->bindParam(':post_date', $_POST['post_date'], PDO::PARAM_STR);
+            $stmt->bindParam(':deadline', $_POST['deadline'], PDO::PARAM_STR);
             $stmt->bindParam(':item_id', $_POST['post_category'], PDO::PARAM_STR);
 
             $stmt->execute();
@@ -61,12 +62,9 @@ if (!empty($_POST['submitButton'])) {
                 $stmt->execute();
 
                 header('Location: odai-like.php?odai_id='.$odai_id.'');
-                exit;
             } catch (PDOException $e){
                 echo $e->getMessage();
             }
-
-            exit;
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
@@ -77,42 +75,39 @@ if (!empty($_POST['submitButton'])) {
 if (!empty($_POST['post_answer_button'])) {
     //ログインしているか判定し，していなかったら投稿できない
     if (!$result) {
-        $_SESSION['post_err'] = 'ユーザを登録してログインしてください';
-        header('Location: odai-like.php?odai_id='.$odai_id.'');
-        return;
-    }
-    //投稿が空の場合
-    if (empty($_POST['answer'])) {
-        $err_messages['answer'] = "記入されていません";
+        $err_messages['post_err'] = 'ユーザを登録してログインしてください';
     } else {
-        // お題を保存
-        try {
-            $favorite_count = 0;
-            $stmt = $pdo->prepare("INSERT INTO `answers` (`answer`, `odai_id`, `user_id`, `post_date`, `favorite_count`) VALUES (:answer, :odai_id, :user_id, :post_date, :favorite_count)");
-            $stmt->bindParam(':answer', $_POST['answer'], PDO::PARAM_STR);
-            $stmt->bindParam(':odai_id', $odai['id'], PDO::PARAM_STR);
-            $stmt->bindParam(':user_id', $_POST['user_id'], PDO::PARAM_STR);
-            $stmt->bindParam(':post_date', $_POST['post_date'], PDO::PARAM_STR);
-            $stmt->bindParam(':favorite_count', $favorite_count, PDO::PARAM_STR);
-
-            $stmt->execute();
-
+        //投稿が空の場合
+        if (empty($_POST['answer'])) {
+            $err_messages['answer'] = "記入されていません";
+        } else {
+            // お題を保存
             try {
-                $login_user['point']+=5;
-                $_SESSION['login_user'] = $login_user;
-                $stmt = $pdo->prepare("UPDATE `users` SET point = :point WHERE id = :user_id");
-                $stmt->bindParam(':user_id', $login_user['id'], PDO::PARAM_STR);
-                $stmt->bindParam(':point', $login_user['point'], PDO::PARAM_STR);
-
+                $favorite_count = 0;
+                $stmt = $pdo->prepare("INSERT INTO `answers` (`answer`, `odai_id`, `user_id`, `post_date`, `favorite_count`) VALUES (:answer, :odai_id, :user_id, :post_date, :favorite_count)");
+                $stmt->bindParam(':answer', $_POST['answer'], PDO::PARAM_STR);
+                $stmt->bindParam(':odai_id', $odai['id'], PDO::PARAM_STR);
+                $stmt->bindParam(':user_id', $_POST['user_id'], PDO::PARAM_STR);
+                $stmt->bindParam(':post_date', $_POST['post_date'], PDO::PARAM_STR);
+                $stmt->bindParam(':favorite_count', $favorite_count, PDO::PARAM_STR);
+    
                 $stmt->execute();
-                header('Location: odai-like.php?odai_id='.$odai_id.'');
-
-                exit;
+    
+                try {
+                    $login_user['point']+=5;
+                    $_SESSION['login_user'] = $login_user;
+                    $stmt = $pdo->prepare("UPDATE `users` SET point = :point WHERE id = :user_id");
+                    $stmt->bindParam(':user_id', $login_user['id'], PDO::PARAM_STR);
+                    $stmt->bindParam(':point', $login_user['point'], PDO::PARAM_STR);
+    
+                    $stmt->execute();
+                    header('Location: odai-like.php?odai_id='.$odai_id.'');
+                } catch (PDOException $e) {
+                    echo $e->getMessage();
+                }
             } catch (PDOException $e) {
                 echo $e->getMessage();
             }
-        } catch (PDOException $e) {
-            echo $e->getMessage();
         }
     }
 }
@@ -181,7 +176,7 @@ $answers = $pdo->query($sql);
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="../script/index/notification.js"></script>
     <link rel="stylesheet" href="../css/odai/like.css">
-    <title>大喜利</title>
+    <title>クスッと</title>
 </head>
 
 <body>
@@ -241,28 +236,7 @@ $answers = $pdo->query($sql);
     <main>
 
         <!-- エラーメッセージ表示 -->
-        <div class="error">
-            <?php if (isset($_SESSION['post_err'])) : ?>
-                <script>
-                    notification("<?php echo $_SESSION['post_err']; ?>");
-                </script>
-            <?php endif; ?>
-            <?php if (isset($err_messages['odai'])) : ?>
-                <script>
-                    notification("<?php echo $err_messages['odai']; ?>");
-                </script>
-            <?php endif; ?>
-            <?php if (isset($err_messages['category'])) : ?>
-                <script>
-                    notification("<?php echo $err_messages['category']; ?>");
-                </script>
-            <?php endif; ?>
-            <?php if (isset($err_messages['point'])) : ?>
-                <script>
-                    notification("<?php echo $err_messages['point']; ?>");
-                </script>
-            <?php endif; ?>
-        </div>
+        <?php include('../inc/error-messages.php'); ?>
 
         <div class="main-content">
 
@@ -333,72 +307,8 @@ $answers = $pdo->query($sql);
         <?php endif; ?>
     </main>
 
-    <div class="postLayer"></div>
     <!-- 投稿モーダル -->
-    <form class="postLayer-content" method="POST">
-        <div class="category">
-            <ul class="category-content">
-                <li>
-                    <input type="radio" name="post_category" id="animal" value="1">
-                    <label for="animal">動物</label>
-                </li>
-                <li>
-                    <input type="radio" name="post_category" id="sport" value="2">
-                    <label for="sport">スポーツ</label>
-                </li>
-                <li><input type="radio" name="post_category" id="job" value="3">
-                    <label for="job">仕事</label>
-                </li>
-                <li>
-                    <input type="radio" name="post_category" id="school" value="4">
-                    <label for="school">学校</label>
-                </li>
-                <li>
-                    <input type="radio" name="post_category" id="food" value="5">
-                    <label for="food">食べ物</label>
-                </li>
-                <li>
-                    <input type="radio" name="post_category" id="trip" value="6">
-                    <label for="trip">旅行</label>
-                </li>
-                <li>
-                    <input type="radio" name="post_category" id="love" value="7">
-                    <label for="love">恋愛</label>
-                </li>
-                <li>
-                    <input type="radio" name="post_category" id="event" value="8">
-                    <label for="event">行事</label>
-                </li>
-                <li>
-                    <input type="radio" name="post_category" id="other" value="9">
-                    <label for="other">その他</label>
-                </li>
-            </ul>
-        </div>
-
-        <div class="form">
-            <div class="form-top">
-                <div class="form-top-top">
-                    <a class="form-top-top-closeButton">
-                        <div class="form-top-top-closeButton-border-1"></div>
-                        <div class="form-top-top-closeButton-border-2"></div>
-                    </a>
-                </div>
-                <div class="form-top-bottom">
-                    <div class="form-top-bottom-content">
-                        <textarea placeholder="お題を記入．．．" name="odai"></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="form-bottom">
-                <a class="form-bottom-postButtonContent">
-                    <input class="form-bottom-postButtonContent-text" type="submit" value="投稿する" name="submitButton">
-                    <input type="hidden" name="user_id" value="<?php echo $login_user['id'] ?>">
-                    <input type="hidden" name="post_date" value="<?php echo date("Y-m-d H:i:s") ?>">
-                </a>
-            </div>
-        </div>
-    </form>
+    <?php include('../inc/post-modal.php'); ?>
 
     <!-- 編集モーダル -->
     <form class="postLayer-content-edit" method="POST">

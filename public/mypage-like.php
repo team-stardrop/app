@@ -21,47 +21,46 @@ $login_user = $_SESSION['login_user'];
 if (!empty($_POST['submitButton'])) {
     //ログインしているか判定し，していなかったら投稿できない
     if (!$result) {
-        $_SESSION['post_err'] = 'ユーザを登録してログインしてください';
-        header('Location: index.php');
-        return;
-    }
-    //投稿が空の場合
-    if (empty($_POST['odai'])) {
-        $err_messages['odai'] = "記入されていません";
-    } else if (empty($_POST['post_category'])) {
-        $err_messages['category'] = "カテゴリーが選択されていません";
-    } else if ($login_user['point']<20) {
-        $err_messages['point'] = "お題投稿には20ポイント必要です";
+        $err_messages['post_err'] = 'ユーザを登録してログインしてください';
     } else {
-        // お題を保存
-        try {
-            $stmt = $pdo->prepare("INSERT INTO `odais` (`odai`, `user_id`, `post_date` , `item_id`) VALUES (:odai, :user_id, :post_date, :item_id)");
-            $stmt->bindParam(':odai', $_POST['odai'], PDO::PARAM_STR);
-            $stmt->bindParam(':user_id', $_POST['user_id'], PDO::PARAM_STR);
-            $stmt->bindParam(':post_date', $_POST['post_date'], PDO::PARAM_STR);
-            $stmt->bindParam(':item_id', $_POST['post_category'], PDO::PARAM_STR);
-
-            $stmt->execute();
-
-            // ポイント処理
-            try{
-                $login_user['point'] = $login_user['point']-20;
-                $_SESSION['login_user'] = $login_user;
-                $stmt = $pdo->prepare("UPDATE `users` SET point = :point WHERE id = :user_id");
-                $stmt->bindParam(':point', $login_user['point'], PDO::PARAM_STR);
-                $stmt->bindParam(':user_id', $login_user['id'], PDO::PARAM_STR);
-                
+        //投稿が空の場合
+        if (empty($_POST['odai'])) {
+            $err_messages['odai'] = "記入されていません";
+        } else if (empty($_POST['post_category'])) {
+            $err_messages['category'] = "カテゴリーが選択されていません";
+        } else if ($login_user['point']<20) {
+            $err_messages['point'] = "お題投稿には20ポイント必要です";
+        } else {
+            // お題を保存
+            try {
+                $stmt = $pdo->prepare("INSERT INTO `odais` (`odai`, `user_id`, `post_date` , `deadline`, `item_id`) VALUES (:odai, :user_id, :post_date, :deadline, :item_id)");
+                $stmt->bindParam(':odai', $_POST['odai'], PDO::PARAM_STR);
+                $stmt->bindParam(':user_id', $_POST['user_id'], PDO::PARAM_STR);
+                $stmt->bindParam(':post_date', $_POST['post_date'], PDO::PARAM_STR);
+                $stmt->bindParam(':deadline', $_POST['deadline'], PDO::PARAM_STR);
+                $stmt->bindParam(':item_id', $_POST['post_category'], PDO::PARAM_STR);
+    
                 $stmt->execute();
-        
-                header('Location: http://localhost:80/oogiri-app/public/mypage-like.php');
+    
+                // ポイント処理
+                try{
+                    $login_user['point'] = $login_user['point']-20;
+                    $_SESSION['login_user'] = $login_user;
+                    $stmt = $pdo->prepare("UPDATE `users` SET point = :point WHERE id = :user_id");
+                    $stmt->bindParam(':point', $login_user['point'], PDO::PARAM_STR);
+                    $stmt->bindParam(':user_id', $login_user['id'], PDO::PARAM_STR);
+                    
+                    $stmt->execute();
+            
+                    header('Location: mypage-like.php');
+                } catch (PDOException $e){
+                    echo $e->getMessage();
+                }
+    
                 exit;
-            } catch (PDOException $e){
+            } catch (PDOException $e) {
                 echo $e->getMessage();
             }
-
-            exit;
-        } catch (PDOException $e) {
-            echo $e->getMessage();
         }
     }
 }
@@ -162,23 +161,7 @@ foreach($answers as $answer) {
     <!-- 投稿を表示 -->
     <main>
         <!-- エラーメッセージ表示 -->
-        <div class="error">
-            <?php if (isset($err_messages['odai'])) : ?>
-                <script>
-                    notification("<?php echo $err_messages['odai']; ?>");
-                </script>
-            <?php endif; ?>
-            <?php if (isset($err_messages['category'])) : ?>
-                <script>
-                    notification("<?php echo $err_messages['category']; ?>");
-                </script>
-            <?php endif; ?>
-            <?php if (isset($err_messages['point'])) : ?>
-                <script>
-                    notification("<?php echo $err_messages['point']; ?>");
-                </script>
-            <?php endif; ?>
-        </div>
+        <?php include('../inc/error-messages.php'); ?>
 
         <div class="main-content">
             <div class="main-content-myInfo">
@@ -260,72 +243,8 @@ foreach($answers as $answer) {
         </div>
     </main>
 
-    <div class="postLayer"></div>
     <!-- 投稿モーダル -->
-    <form class="postLayer-content" method="POST">
-        <div class="category">
-            <ul class="category-content">
-                <li>
-                    <input type="radio" name="post_category" id="animal" value="1">
-                    <label for="animal">動物</label>
-                </li>
-                <li>
-                    <input type="radio" name="post_category" id="sport" value="2">
-                    <label for="sport">スポーツ</label>
-                </li>
-                <li><input type="radio" name="post_category" id="job" value="3">
-                    <label for="job">仕事</label>
-                </li>
-                <li>
-                    <input type="radio" name="post_category" id="school" value="4">
-                    <label for="school">学校</label>
-                </li>
-                <li>
-                    <input type="radio" name="post_category" id="food" value="5">
-                    <label for="food">食べ物</label>
-                </li>
-                <li>
-                    <input type="radio" name="post_category" id="trip" value="6">
-                    <label for="trip">旅行</label>
-                </li>
-                <li>
-                    <input type="radio" name="post_category" id="love" value="7">
-                    <label for="love">恋愛</label>
-                </li>
-                <li>
-                    <input type="radio" name="post_category" id="event" value="8">
-                    <label for="event">行事</label>
-                </li>
-                <li>
-                    <input type="radio" name="post_category" id="other" value="9">
-                    <label for="other">その他</label>
-                </li>
-            </ul>
-        </div>
-
-        <div class="form">
-            <div class="form-top">
-                <div class="form-top-top">
-                    <a class="form-top-top-closeButton">
-                        <div class="form-top-top-closeButton-border-1"></div>
-                        <div class="form-top-top-closeButton-border-2"></div>
-                    </a>
-                </div>
-                <div class="form-top-bottom">
-                    <div class="form-top-bottom-content">
-                        <textarea placeholder="お題を記入．．．" name="odai"></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="form-bottom">
-                <a class="form-bottom-postButtonContent">
-                    <input class="form-bottom-postButtonContent-text" type="submit" value="投稿する" name="submitButton">
-                    <input type="hidden" name="user_id" value="<?php echo $login_user['id'] ?>">
-                    <input type="hidden" name="post_date" value="<?php echo date("Y-m-d H:i:s") ?>">
-                </a>
-            </div>
-        </div>
-    </form>
+    <?php include('../inc/post-modal.php'); ?>
 
     <script src="../script/index/index.js"></script>
 </body>
