@@ -131,34 +131,73 @@ function print_favorite_count($answer_id) {
     $count = $stmt->fetch(PDO::FETCH_ASSOC);
   
     add_favorite_count_into_answer($answer_id, $count['cnt']);
-   echo 'いいね　';
+    echo 'いいね　';
     echo $count['cnt'];
   }
-  
-  /**
-   * いいねの数をanswersテーブルに保存
-   * @param string 回答のid
-   * @param string いいね数のid
-   * @return void
-   */
-  
-  function add_favorite_count_into_answer($answer_id, $count) {
-    $pdo = connect();
-    try {
-      $stmt = $pdo->prepare("UPDATE `answers` SET favorite_count = :count WHERE id = :answer_id");
-      $stmt->bindParam(':count', $count, PDO::PARAM_STR);
-      $stmt->bindParam(':answer_id', $answer_id, PDO::PARAM_STR);
-      
-      $stmt->execute();
-      
-    } catch (PDOException $e) {
-      echo $e->getMessage();
-    }
-  }
 
-function best_answer_process($odai) {
+/**
+ * いいねの数をanswersテーブルに保存
+ * @param string 回答のid
+ * @param string いいね数のid
+ * @return void
+ */
+
+function add_favorite_count_into_answer($answer_id, $count) {
+  $pdo = connect();
+  try {
+    $stmt = $pdo->prepare("UPDATE `answers` SET favorite_count = :count WHERE id = :answer_id");
+    $stmt->bindParam(':count', $count, PDO::PARAM_STR);
+    $stmt->bindParam(':answer_id', $answer_id, PDO::PARAM_STR);
+    
+    $stmt->execute();
+    
+  } catch (PDOException $e) {
+    echo $e->getMessage();
+  }
+}
+
+/**
+ * いいね数が一位の回答が一つかどうかの確認
+ * 
+ */
+
+function notEqual_favorite_count($odai_id) {
+  $pdo = connect();
+
+  $sql = "SELECT * FROM `answers` WHERE odai_id=$odai_id ORDER BY favorite_count DESC LIMIT 2";
+  $stmt = $pdo->query($sql);
+  $answers = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  // var_dump($answers);
+  if($answers[0]['favorite_count']!=$answers[1]['favorite_count']){
+    return true;
+  } else {
+    return false;
+  }
+}
+
+/**
+ * いいね数が一位の回答が一つかどうかの確認
+ * 
+ */
+
+function notZero_answer_count($odai_id) {
+  $pdo = connect();
+  $sql = "SELECT COUNT(*) AS CNT FROM `answers` WHERE odai_id=$odai_id";
+  $stmt = $pdo->query($sql);
+  $count = $stmt->fetch(PDO::FETCH_ASSOC);
+  if($count['CNT']!=0){
+    return true;
+  } else {
+    return false;
+  }
+}
+
+/**
+ * ベストアンサー処理（回答者にポイントを追加
+ */
+
+function best_answer_process($odai_id) {
   // お題IDから一番いいねの多い回答を1つ取得
-  $odai_id = $odai['id'];
   $pdo = connect();
   $sql = "SELECT * FROM `answers` WHERE odai_id=$odai_id ORDER BY favorite_count DESC LIMIT 1";
   $stmt = $pdo->query($sql);
@@ -176,46 +215,11 @@ function best_answer_process($odai) {
     }
     
     // ポイント追加
-    $answer_posted_user['point'] += 100;
+    $answer_posted_user['point'] += 200;
     $stmt = $pdo->prepare("UPDATE `users` SET point = :point WHERE id = :user_id");
     $stmt->bindParam(':point', $answer_posted_user['point'], PDO::PARAM_STR);
     $stmt->bindParam(':user_id', $answer_posted_user['id'], PDO::PARAM_STR);
     
     $stmt->execute();
   }
-  
-  // お題に対する回答を抽出
-  // $sql = "SELECT * FROM `answers` WHERE odai_id=$odai_id";
-  // $answers = $pdo->query($sql);
-
-  // 回答ごとのいいねデータを削除
-  // foreach($answers as $a){
-  //   $sql = "DELETE FROM favorite WHERE answer_id = :answer_id";
-  //   $stmt = $pdo->prepare($sql);
-  //   $stmt->bindParam(":answer_id", $a['id']);
-  //   $stmt->execute();
-  // }
-
-  // 回答削除
-  // try {
-    // $sql = "DELETE FROM answers WHERE odai_id = :odai_id";
-    // $stmt = $pdo->prepare($sql);
-    // $stmt->bindParam(":odai_id", $odai_id);
-    // $stmt->execute();
-    
-    //お題の削除
-  //   try {
-  //     $sql = "DELETE FROM odais WHERE id = :odai_id";
-  //     $stmt = $pdo->prepare($sql);
-  //     $stmt->bindParam(":odai_id", $odai_id);
-  //     $stmt->execute();
-  //   } catch (PDOException $e) {
-  //     echo $e->getMessage();
-  //   }
-    
-  //   exit;
-  // } catch (PDOException $e) {
-  //   echo $e->getMessage();
-  //   die();
-  // }
 }

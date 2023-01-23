@@ -17,11 +17,40 @@ if ($result) {
 
 $pdo = connect();
 $odai_id = $_GET['odai_id'];
+//お題データを取得
 $odai =get_odai_data($_GET['odai_id']);
 //お題が存在しない時
 if(!$odai){
-    header('Location: http://localhost:80/oogiri-app/public/index.php');
+    header('Location: index.php');
 }
+
+if($odai['processed']){
+    header('Location: bestanswer.php?odai_id='.$odai_id.'');
+}
+
+$deadline = new DateTime($odai['deadline']);
+// // $deadline->modify('+5 days');
+if(date($deadline->format('Y-m-d H:i')) < date('Y-m-d H:i')){ // deadlineを過ぎている
+    if(notEqual_favorite_count($odai_id)&&notZero_answer_count($odai_id)){ //　回答のいいね数が被ってないかつ回答が0じゃない
+        // bestanswer処理
+        $stmt = $pdo->prepare("UPDATE `odais` SET processed = 1 WHERE id = :odai_id");
+        $stmt->bindParam(':odai_id', $odai_id, PDO::PARAM_STR);
+
+        $stmt->execute();
+        best_answer_process($odai_id);
+        header('Location: bestanswer.php?odai_id='.$odai_id.'');
+    } else {
+        // deadlineに+7日
+        $added_daadline = $deadline->modify('+7 days');
+        $changed_deadline = $added_daadline -> format('Y-m-d H:i:s');
+        $stmt = $pdo->prepare("UPDATE `odais` SET deadline = :deadline WHERE id = :odai_id");
+        $stmt->bindParam(':deadline', $changed_deadline, PDO::PARAM_STR);
+        $stmt->bindParam(':odai_id', $odai_id, PDO::PARAM_STR);
+
+        $stmt->execute();
+    }
+}
+
 $posted_user = get_odai_posted_user($odai['user_id']);
 
 //投稿フォームを打ち込んだとき
@@ -124,10 +153,9 @@ if(!empty($_POST['updateButton'])){
       $err_messages['odai'] = "記入されていません";
     } else {
       try{
-        $stmt = $pdo->prepare("UPDATE `odais` SET odai = :odai, post_date = :post_date WHERE id = :odai_id");
+        $stmt = $pdo->prepare("UPDATE `odais` SET odai = :odai WHERE id = :odai_id");
         $stmt->bindParam(':odai_id', $_POST['odai_id'], PDO::PARAM_STR);
         $stmt->bindParam(':odai', $_POST['odai'], PDO::PARAM_STR);
-        $stmt->bindParam(':post_date', $_POST['post_date'], PDO::PARAM_STR);
 
         $stmt->execute();
 
@@ -309,7 +337,7 @@ $answers = $pdo->query($sql);
                                 $my_like_cnt = check_favorite($answer['id'], $login_user['id']);
                                 if ($my_like_cnt['cnt'] < 1):
                         ?>
-                        <div class="main-content-answer-bottom-content-likeImg" href="odai-arrivalOrder.php?odai_id=<?php echo $odai_id; ?>&like=<?php echo h($answer['id']); ?>"></div>
+                            <a class="main-content-answer-bottom-content-likeImg" href="odai-arrivalOrder.php?odai_id=<?php echo $odai_id; ?>&like=<?php echo h($answer['id']); ?>"></a>
                         <?php else : ?>
                             <a class="main-content-answer-bottom-content-clickedLikeImg" href="odai-arrivalOrder.php?odai_id=<?php echo $odai_id; ?>&like=<?php echo h($answer['id']); ?>"></a>
                         <?php endif; ?>

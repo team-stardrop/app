@@ -124,10 +124,9 @@ if(!empty($_POST['updateButton'])){
       $err_messages['odai'] = "記入されていません";
     } else {
       try{
-        $stmt = $pdo->prepare("UPDATE `odais` SET odai = :odai, post_date = :post_date WHERE id = :odai_id");
+        $stmt = $pdo->prepare("UPDATE `odais` SET odai = :odai WHERE id = :odai_id");
         $stmt->bindParam(':odai_id', $_POST['odai_id'], PDO::PARAM_STR);
         $stmt->bindParam(':odai', $_POST['odai'], PDO::PARAM_STR);
-        $stmt->bindParam(':post_date', $_POST['post_date'], PDO::PARAM_STR);
 
         $stmt->execute();
 
@@ -309,7 +308,7 @@ $answers = $pdo->query($sql);
                                 $my_like_cnt = check_favorite($answer['id'], $login_user['id']);
                                 if ($my_like_cnt['cnt'] < 1):
                         ?>
-                        <div class="main-content-answer-bottom-content-likeImg" href="odai-like.php?odai_id=<?php echo $odai_id; ?>&like=<?php echo h($answer['id']); ?>"></div>
+                            <a class="main-content-answer-bottom-content-likeImg" href="odai-like.php?odai_id=<?php echo $odai_id; ?>&like=<?php echo h($answer['id']); ?>"></a>
                         <?php else : ?>
                             <a class="main-content-answer-bottom-content-clickedLikeImg" href="odai-like.php?odai_id=<?php echo $odai_id; ?>&like=<?php echo h($answer['id']); ?>"></a>
                         <?php endif; ?>
