@@ -138,7 +138,7 @@ $arrival_order_odai_array = $pdo->query($sql);
     <!-- 投稿を表示 -->
     <main>
         <!-- エラーメッセージ表示 -->
-        <?php include('error-messages.php'); ?>
+        <?php include('../inc/error-messages.php'); ?>
 
         <div class="main-content">
             <div class="main-content-myInfo">

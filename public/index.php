@@ -140,7 +140,7 @@ $answer_count_order_post = $pdo->query($sql);
     <!-- 投稿を表示 -->
     <main>
         <!-- エラーメッセージ表示 -->
-        <?php include('error-messages.php'); ?>
+        <?php include('../inc/error-messages.php'); ?>
 
         <div class="main-header">
             <div class="main-header-text">

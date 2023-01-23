@@ -238,7 +238,7 @@ $answers = $pdo->query($sql);
     <main>
 
         <!-- エラーメッセージ表示 -->
-        <?php include('error-messages.php'); ?>
+        <?php include('../inc/error-messages.php'); ?>
 
         <div class="main-content">
 

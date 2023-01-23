@@ -148,7 +148,7 @@ foreach($favorite_count_order_answer_array as $answer) {
     <main>
 
         <!-- エラーメッセージ表示 -->
-        <?php include('error-messages.php'); ?>
+        <?php include('../inc/error-messages.php'); ?>
 
         <div class="main-content">
             <div class="main-content-myInfo">
