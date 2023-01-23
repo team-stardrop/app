@@ -103,42 +103,41 @@ if (!empty($_POST['submitButton'])) {
 if (!empty($_POST['post_answer_button'])) {
     //ログインしているか判定し，していなかったら投稿できない
     if (!$result) {
-        $_SESSION['post_err'] = 'ユーザを登録してログインしてください';
-        header('Location: odai-arrivalOrder.php?odai_id='.$odai_id.'');
-        return;
-    }
-    //投稿が空の場合
-    if (empty($_POST['answer'])) {
-        $err_messages['answer'] = "記入されていません";
+        $err_messages['post_err'] = 'ユーザを登録してログインしてください';
     } else {
-        // お題を保存
-        try {
-            $favorite_count = 0;
-            $stmt = $pdo->prepare("INSERT INTO `answers` (`answer`, `odai_id`, `user_id`, `post_date`, `favorite_count`) VALUES (:answer, :odai_id, :user_id, :post_date, :favorite_count)");
-            $stmt->bindParam(':answer', $_POST['answer'], PDO::PARAM_STR);
-            $stmt->bindParam(':odai_id', $odai['id'], PDO::PARAM_STR);
-            $stmt->bindParam(':user_id', $_POST['user_id'], PDO::PARAM_STR);
-            $stmt->bindParam(':post_date', $_POST['post_date'], PDO::PARAM_STR);
-            $stmt->bindParam(':favorite_count', $favorite_count, PDO::PARAM_STR);
-
-            $stmt->execute();
-
+        //投稿が空の場合
+        if (empty($_POST['answer'])) {
+            $err_messages['answer'] = "記入されていません";
+        } else {
+            // お題を保存
             try {
-                $login_user['point']+=5;
-                $_SESSION['login_user'] = $login_user;
-                $stmt = $pdo->prepare("UPDATE `users` SET point = :point WHERE id = :user_id");
-                $stmt->bindParam(':user_id', $login_user['id'], PDO::PARAM_STR);
-                $stmt->bindParam(':point', $login_user['point'], PDO::PARAM_STR);
-
+                $favorite_count = 0;
+                $stmt = $pdo->prepare("INSERT INTO `answers` (`answer`, `odai_id`, `user_id`, `post_date`, `favorite_count`) VALUES (:answer, :odai_id, :user_id, :post_date, :favorite_count)");
+                $stmt->bindParam(':answer', $_POST['answer'], PDO::PARAM_STR);
+                $stmt->bindParam(':odai_id', $odai['id'], PDO::PARAM_STR);
+                $stmt->bindParam(':user_id', $_POST['user_id'], PDO::PARAM_STR);
+                $stmt->bindParam(':post_date', $_POST['post_date'], PDO::PARAM_STR);
+                $stmt->bindParam(':favorite_count', $favorite_count, PDO::PARAM_STR);
+    
                 $stmt->execute();
-                header('Location: odai-arrivalOrder.php?odai_id='.$odai_id.'');
-
-                exit;
+    
+                try {
+                    $login_user['point']+=5;
+                    $_SESSION['login_user'] = $login_user;
+                    $stmt = $pdo->prepare("UPDATE `users` SET point = :point WHERE id = :user_id");
+                    $stmt->bindParam(':user_id', $login_user['id'], PDO::PARAM_STR);
+                    $stmt->bindParam(':point', $login_user['point'], PDO::PARAM_STR);
+    
+                    $stmt->execute();
+                    header('Location: odai-arrivalOrder.php?odai_id='.$odai_id.'');
+    
+                    exit;
+                } catch (PDOException $e) {
+                    echo $e->getMessage();
+                }
             } catch (PDOException $e) {
                 echo $e->getMessage();
             }
-        } catch (PDOException $e) {
-            echo $e->getMessage();
         }
     }
 }

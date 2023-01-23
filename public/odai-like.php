@@ -28,45 +28,44 @@ $posted_user = get_odai_posted_user($odai['user_id']);
 if (!empty($_POST['submitButton'])) {
     //ログインしているか判定し，していなかったら投稿できない
     if (!$result) {
-        $_SESSION['post_err'] = 'ユーザを登録してログインしてください';
-        header('Location: index.php');
-        return;
-    }
-    //投稿が空の場合
-    if (empty($_POST['odai'])) {
-        $err_messages['odai'] = "記入されていません";
-    } else if (empty($_POST['post_category'])) {
-        $err_messages['category'] = "カテゴリーが選択されていません";
-    } else if ($login_user['point']<20) {
-        $err_messages['point'] = "お題投稿には20ポイント必要です";
+        $err_messages['post_err'] = 'ユーザを登録してログインしてください';
     } else {
-        // お題を保存
-        try {
-            $stmt = $pdo->prepare("INSERT INTO `odais` (`odai`, `user_id`, `post_date` , `deadline`, `item_id`) VALUES (:odai, :user_id, :post_date, :deadline, :item_id)");
-            $stmt->bindParam(':odai', $_POST['odai'], PDO::PARAM_STR);
-            $stmt->bindParam(':user_id', $_POST['user_id'], PDO::PARAM_STR);
-            $stmt->bindParam(':post_date', $_POST['post_date'], PDO::PARAM_STR);
-            $stmt->bindParam(':deadline', $_POST['deadline'], PDO::PARAM_STR);
-            $stmt->bindParam(':item_id', $_POST['post_category'], PDO::PARAM_STR);
-
-            $stmt->execute();
-
-            // ポイント処理
-            try{
-                $login_user['point'] = $login_user['point']-20;
-                $_SESSION['login_user'] = $login_user;
-                $stmt = $pdo->prepare("UPDATE `users` SET point = :point WHERE id = :user_id");
-                $stmt->bindParam(':point', $login_user['point'], PDO::PARAM_STR);
-                $stmt->bindParam(':user_id', $login_user['id'], PDO::PARAM_STR);
-
+        //投稿が空の場合
+        if (empty($_POST['odai'])) {
+            $err_messages['odai'] = "記入されていません";
+        } else if (empty($_POST['post_category'])) {
+            $err_messages['category'] = "カテゴリーが選択されていません";
+        } else if ($login_user['point']<20) {
+            $err_messages['point'] = "お題投稿には20ポイント必要です";
+        } else {
+            // お題を保存
+            try {
+                $stmt = $pdo->prepare("INSERT INTO `odais` (`odai`, `user_id`, `post_date` , `deadline`, `item_id`) VALUES (:odai, :user_id, :post_date, :deadline, :item_id)");
+                $stmt->bindParam(':odai', $_POST['odai'], PDO::PARAM_STR);
+                $stmt->bindParam(':user_id', $_POST['user_id'], PDO::PARAM_STR);
+                $stmt->bindParam(':post_date', $_POST['post_date'], PDO::PARAM_STR);
+                $stmt->bindParam(':deadline', $_POST['deadline'], PDO::PARAM_STR);
+                $stmt->bindParam(':item_id', $_POST['post_category'], PDO::PARAM_STR);
+    
                 $stmt->execute();
-
-                header('Location: odai-like.php?odai_id='.$odai_id.'');
-            } catch (PDOException $e){
+    
+                // ポイント処理
+                try{
+                    $login_user['point'] = $login_user['point']-20;
+                    $_SESSION['login_user'] = $login_user;
+                    $stmt = $pdo->prepare("UPDATE `users` SET point = :point WHERE id = :user_id");
+                    $stmt->bindParam(':point', $login_user['point'], PDO::PARAM_STR);
+                    $stmt->bindParam(':user_id', $login_user['id'], PDO::PARAM_STR);
+    
+                    $stmt->execute();
+    
+                    header('Location: odai-like.php?odai_id='.$odai_id.'');
+                } catch (PDOException $e){
+                    echo $e->getMessage();
+                }
+            } catch (PDOException $e) {
                 echo $e->getMessage();
             }
-        } catch (PDOException $e) {
-            echo $e->getMessage();
         }
     }
 }
