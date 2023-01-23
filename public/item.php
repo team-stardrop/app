@@ -38,10 +38,11 @@ if (!empty($_POST['submitButton'])) {
         } else {
             // お題を保存
             try {
-                $stmt = $pdo->prepare("INSERT INTO `odais` (`odai`, `user_id`, `post_date` , `item_id`) VALUES (:odai, :user_id, :post_date, :item_id)");
+                $stmt = $pdo->prepare("INSERT INTO `odais` (`odai`, `user_id`, `post_date` , `deadline`, `item_id`) VALUES (:odai, :user_id, :post_date, :deadline, :item_id)");
                 $stmt->bindParam(':odai', $_POST['odai'], PDO::PARAM_STR);
                 $stmt->bindParam(':user_id', $_POST['user_id'], PDO::PARAM_STR);
                 $stmt->bindParam(':post_date', $_POST['post_date'], PDO::PARAM_STR);
+                $stmt->bindParam(':deadline', $_POST['deadline'], PDO::PARAM_STR);
                 $stmt->bindParam(':item_id', $_POST['post_category'], PDO::PARAM_STR);
     
                 $stmt->execute();
@@ -248,7 +249,7 @@ $answer_count_order_post = $pdo->query($sql);
 
     <!-- 投稿モーダル -->
     <?php include('../inc/post-modal.php'); ?>
-    
+
     <script src="../script/index/index.js"></script>
 </body>
 
