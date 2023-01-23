@@ -25,7 +25,7 @@ if(!$odai){
 }
 
 if($odai['processed']){
-    header('Location: bestanswer.php');
+    header('Location: bestanswer.php?odai_id='.$odai_id.'');
 }
 
 $deadline = new DateTime($odai['deadline']);
@@ -38,7 +38,7 @@ if(date($deadline->format('Y-m-d H:i')) < date('Y-m-d H:i')){ // deadlineを過�
 
         $stmt->execute();
         best_answer_process($odai_id);
-        header('Location: bestanswer.php');
+        header('Location: bestanswer.php?odai_id='.$odai_id.'');
     } else {
         // deadlineに+7日
         $added_daadline = $deadline->modify('+7 days');

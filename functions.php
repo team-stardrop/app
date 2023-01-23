@@ -192,6 +192,10 @@ function notZero_answer_count($odai_id) {
   }
 }
 
+/**
+ * ベストアンサー処理（回答者にポイントを追加
+ */
+
 function best_answer_process($odai_id) {
   // お題IDから一番いいねの多い回答を1つ取得
   $pdo = connect();
