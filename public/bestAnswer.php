@@ -73,9 +73,6 @@ if (!empty($_POST['submitButton'])) {
     }
 }
 
-// $sql = "SELECT * FROM `answers` WHERE odai_id=$odai_id ORDER BY favorite_count DESC LIMIT 1";
-// $answers = $pdo->query($sql);
-
 $sql = "SELECT * FROM `answers` WHERE odai_id=$odai_id ORDER BY favorite_count DESC LIMIT 1";
 $stmt = $pdo->query($sql);
 $bestanswer = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -191,6 +188,7 @@ $answers = $pdo->query($sql);
                 </div>
             </div>
 
+            <!-- ベストアンサー -->
             <div class="main-content-bestAns">
                 <div class="main-content-bestAns-background"></div>
                 <div class="main-content-bestAns-content">
@@ -201,7 +199,6 @@ $answers = $pdo->query($sql);
                     <div class="main-content-bestAns-content-meta">
                         <div class="main-content-bestAns-content-meta-name"><?php print_username($bestanswer['user_id']); ?></div>
                         <div class="main-content-bestAns-content-meta-day"><?php echo $bestanswer['post_date']; ?></div>
-                        <!-- <div class="main-content-bestAns-content-meta-likeImg"></div> -->
                         <div class="main-content-answer-bottom-content-likeNum"><?php print_favorite_count($bestanswer['id']); ?></div>
                     </div>
                 </div>
@@ -212,7 +209,7 @@ $answers = $pdo->query($sql);
                 <div class="main-content-border-text">その他の回答</div>
             </div>
 
-            <!-- 回答を表示 -->
+            <!-- その他の回答を表示 -->
             <?php foreach ($answers as $answer): ?>
             <div class="main-content-answer">
                 <div class="main-content-answer-top">
@@ -222,7 +219,6 @@ $answers = $pdo->query($sql);
                     <div class="main-content-answer-bottom-content">
                         <div class="main-content-answer-bottom-content-name"><?php print_username($answer['user_id']); ?></div>
                         <div class="main-content-answer-bottom-content-day"><?php echo $answer['post_date']; ?></div>
-                        <!-- <div class="main-content-answer-bottom-content-likeImg"></div> -->
                         <div class="main-content-answer-bottom-content-likeNum"><?php print_favorite_count($answer['id']); ?></div>
                     </div>
                 </div>
@@ -230,13 +226,6 @@ $answers = $pdo->query($sql);
             <?php endforeach; ?>
         </div>
 
-        <!-- 編集と削除 -->
-        <div class="slide">
-            <div class="slide-bar">
-                <div class="slide-bar-icon"></div>
-            </div>
-            <a class="slide-edit">編集する</a>
-        </div>
     </main>
 
     <div class="postLayer"></div>
@@ -305,8 +294,6 @@ $answers = $pdo->query($sql);
             </div>
         </div>
     </form>
-
-    <!-- 編集モーダル -->
     
 </body>
 
