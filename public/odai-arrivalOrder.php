@@ -207,7 +207,7 @@ $answers = $pdo->query($sql);
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="../script/index/notification.js"></script>
     <link rel="stylesheet" href="../css/odai/odai.css">
-    <title>大喜利</title>
+    <title>クスッと</title>
 </head>
 
 <body>
