@@ -20,4 +20,9 @@
             notification("<?php echo $err_messages['point']; ?>");
         </script>
     <?php endif; ?>
+    <?php if (isset($err_messages['answer'])) : ?>
+        <script>
+            notification("<?php echo $err_messages['answer']; ?>");
+        </script>
+    <?php endif; ?>
 </div>
