@@ -103,42 +103,41 @@ if (!empty($_POST['submitButton'])) {
 if (!empty($_POST['post_answer_button'])) {
     //ログインしているか判定し，していなかったら投稿できない
     if (!$result) {
-        $_SESSION['post_err'] = 'ユーザを登録してログインしてください';
-        header('Location: odai-arrivalOrder.php?odai_id='.$odai_id.'');
-        return;
-    }
-    //投稿が空の場合
-    if (empty($_POST['answer'])) {
-        $err_messages['answer'] = "記入されていません";
+        $err_messages['post_err'] = 'ユーザを登録してログインしてください';
     } else {
-        // お題を保存
-        try {
-            $favorite_count = 0;
-            $stmt = $pdo->prepare("INSERT INTO `answers` (`answer`, `odai_id`, `user_id`, `post_date`, `favorite_count`) VALUES (:answer, :odai_id, :user_id, :post_date, :favorite_count)");
-            $stmt->bindParam(':answer', $_POST['answer'], PDO::PARAM_STR);
-            $stmt->bindParam(':odai_id', $odai['id'], PDO::PARAM_STR);
-            $stmt->bindParam(':user_id', $_POST['user_id'], PDO::PARAM_STR);
-            $stmt->bindParam(':post_date', $_POST['post_date'], PDO::PARAM_STR);
-            $stmt->bindParam(':favorite_count', $favorite_count, PDO::PARAM_STR);
-
-            $stmt->execute();
-
+        //投稿が空の場合
+        if (empty($_POST['answer'])) {
+            $err_messages['answer'] = "回答が記入されていません";
+        } else {
+            // お題を保存
             try {
-                $login_user['point']+=5;
-                $_SESSION['login_user'] = $login_user;
-                $stmt = $pdo->prepare("UPDATE `users` SET point = :point WHERE id = :user_id");
-                $stmt->bindParam(':user_id', $login_user['id'], PDO::PARAM_STR);
-                $stmt->bindParam(':point', $login_user['point'], PDO::PARAM_STR);
-
+                $favorite_count = 0;
+                $stmt = $pdo->prepare("INSERT INTO `answers` (`answer`, `odai_id`, `user_id`, `post_date`, `favorite_count`) VALUES (:answer, :odai_id, :user_id, :post_date, :favorite_count)");
+                $stmt->bindParam(':answer', $_POST['answer'], PDO::PARAM_STR);
+                $stmt->bindParam(':odai_id', $odai['id'], PDO::PARAM_STR);
+                $stmt->bindParam(':user_id', $_POST['user_id'], PDO::PARAM_STR);
+                $stmt->bindParam(':post_date', $_POST['post_date'], PDO::PARAM_STR);
+                $stmt->bindParam(':favorite_count', $favorite_count, PDO::PARAM_STR);
+    
                 $stmt->execute();
-                header('Location: odai-arrivalOrder.php?odai_id='.$odai_id.'');
-
-                exit;
+    
+                try {
+                    $login_user['point']+=5;
+                    $_SESSION['login_user'] = $login_user;
+                    $stmt = $pdo->prepare("UPDATE `users` SET point = :point WHERE id = :user_id");
+                    $stmt->bindParam(':user_id', $login_user['id'], PDO::PARAM_STR);
+                    $stmt->bindParam(':point', $login_user['point'], PDO::PARAM_STR);
+    
+                    $stmt->execute();
+                    header('Location: odai-arrivalOrder.php?odai_id='.$odai_id.'');
+    
+                    exit;
+                } catch (PDOException $e) {
+                    echo $e->getMessage();
+                }
             } catch (PDOException $e) {
                 echo $e->getMessage();
             }
-        } catch (PDOException $e) {
-            echo $e->getMessage();
         }
     }
 }
@@ -148,11 +147,14 @@ if(!empty($_POST['updateButton'])){
     //投稿が空の場合
     if(empty($_POST['odai'])) {
       $err_messages['odai'] = "記入されていません";
+    } else if (empty($_POST['post_category'])) {
+        $err_messages['category'] = "カテゴリーが選択されていません";
     } else {
       try{
-        $stmt = $pdo->prepare("UPDATE `odais` SET odai = :odai WHERE id = :odai_id");
+        $stmt = $pdo->prepare("UPDATE `odais` SET odai = :odai, item_id = :item_id WHERE id = :odai_id");
         $stmt->bindParam(':odai_id', $_POST['odai_id'], PDO::PARAM_STR);
         $stmt->bindParam(':odai', $_POST['odai'], PDO::PARAM_STR);
+        $stmt->bindParam(':item_id', $_POST['post_category'], PDO::PARAM_STR);
 
         $stmt->execute();
 
@@ -346,39 +348,39 @@ $answers = $pdo->query($sql);
         <div class="category">
             <ul class="category-content">
                 <li>
-                    <input type="radio" name="post-category" id="animal">
-                    <label for="animal">動物</label>
+                    <input type="radio" name="post_category" id="edit_animal" value="1" >
+                    <label for="edit_animal">動物</label>
                 </li>
                 <li>
-                    <input type="radio" name="post-category" id="sport">
-                    <label for="sport">スポーツ</label>
+                    <input type="radio" name="post_category" id="edit_sport" value="2">
+                    <label for="edit_sport">スポーツ</label>
                 </li>
-                <li><input type="radio" name="post-category" id="job">
-                    <label for="job">仕事</label>
-                </li>
-                <li>
-                    <input type="radio" name="post-category" id="school">
-                    <label for="school">学校</label>
+                <li><input type="radio" name="post_category" id="edit_job" value="3">
+                    <label for="edit_job">仕事</label>
                 </li>
                 <li>
-                    <input type="radio" name="post-category" id="food">
-                    <label for="food">食べ物</label>
+                    <input type="radio" name="post_category" id="edit_school" value="4">
+                    <label for="edit_school">学校</label>
                 </li>
                 <li>
-                    <input type="radio" name="post-category" id="trip">
-                    <label for="trip">旅行</label>
+                    <input type="radio" name="post_category" id="edit_food" value="5">
+                    <label for="edit_food">食べ物</label>
                 </li>
                 <li>
-                    <input type="radio" name="post-category" id="love">
-                    <label for="love">恋愛</label>
+                    <input type="radio" name="post_category" id="edit_trip" value="6">
+                    <label for="edit_trip">旅行</label>
                 </li>
                 <li>
-                    <input type="radio" name="post-category" id="event">
-                    <label for="event">行事</label>
+                    <input type="radio" name="post_category" id="edit_love" value="7">
+                    <label for="edit_love">恋愛</label>
                 </li>
                 <li>
-                    <input type="radio" name="post-category" id="other">
-                    <label for="other">その他</label>
+                    <input type="radio" name="post_category" id="edit_event" value="8">
+                    <label for="edit_event">行事</label>
+                </li>
+                <li>
+                    <input type="radio" name="post_category" id="edit_other" value="9">
+                    <label for="edit_other">その他</label>
                 </li>
             </ul>
         </div>
